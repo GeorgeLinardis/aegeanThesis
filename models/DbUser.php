@@ -31,7 +31,7 @@ class DbUser extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Username', 'Password'], 'required'],
+            [['Username', 'Password'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['Role'], 'string'],
             [['Username'], 'string', 'max' => 50],
             [['Password'], 'string', 'max' => 64],

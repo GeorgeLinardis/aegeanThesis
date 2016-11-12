@@ -1,18 +1,21 @@
 <?php
-/* @var $this ThesisController */
-/* @var $model Thesis */
 
-$this->breadcrumbs=array(
-	'Thesises'=>array('index'),
-	'Create',
-);
+use yii\helpers\Html;
 
-$this->menu=array(
-	array('label'=>'List Thesis', 'url'=>array('index')),
-	array('label'=>'Manage Thesis', 'url'=>array('admin')),
-);
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Thesis */
+
+$this->title = 'Create Thesis';
+$this->params['breadcrumbs'][] = ['label' => 'Theses', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="thesis-create">
 
-<h1>Create Thesis</h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
+
+</div>

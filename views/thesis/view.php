@@ -1,38 +1,47 @@
 <?php
-/* @var $this ThesisController */
-/* @var $model Thesis */
 
-$this->breadcrumbs=array(
-	'Thesises'=>array('index'),
-	$model->title,
-);
+use yii\helpers\Html;
+use yii\widgets\DetailView;
 
-$this->menu=array(
-	array('label'=>'List Thesis', 'url'=>array('index')),
-	array('label'=>'Create Thesis', 'url'=>array('create')),
-	array('label'=>'Update Thesis', 'url'=>array('update', 'id'=>$model->ID)),
-	array('label'=>'Delete Thesis', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->ID),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Thesis', 'url'=>array('admin')),
-);
+/* @var $this yii\web\View */
+/* @var $model app\models\Thesis */
+
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Theses', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="thesis-view">
 
-<h1>View Thesis #<?php echo $model->ID; ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'ID',
-		'professorID',
-		'studentID',
-		'title',
-		'description',
-		'goal',
-		'prerequisite_knowledge',
-		'max_students',
-		'comments',
-		'status',
-		'committee1',
-		'committee2',
-		'committee3',
-	),
-)); ?>
+    <p>
+        <?= Html::a('Update', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->ID], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'ID',
+            'professorID',
+            'studentID',
+            'title',
+            'description:ntext',
+            'goal:ntext',
+            'prerequisite_knowledge:ntext',
+            'max_students',
+            'comments:ntext',
+            'status',
+            'committee1',
+            'committee2',
+            'committee3',
+        ],
+    ]) ?>
+
+</div>

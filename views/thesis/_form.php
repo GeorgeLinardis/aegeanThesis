@@ -1,100 +1,45 @@
 <?php
-/* @var $this ThesisController */
-/* @var $model Thesis */
-/* @var $form CActiveForm */
+
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
+/* @var $this yii\web\View */
+/* @var $model app\models\Thesis */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="form">
+<div class="thesis-form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'thesis-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <?= $form->field($model, 'professorID')->textInput() ?>
 
-	<?php echo $form->errorSummary($model); ?>
+    <?= $form->field($model, 'studentID')->textInput() ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'professorID'); ?>
-		<?php echo $form->textField($model,'professorID'); ?>
-		<?php echo $form->error($model,'professorID'); ?>
-	</div>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'studentID'); ?>
-		<?php echo $form->textField($model,'studentID'); ?>
-		<?php echo $form->error($model,'studentID'); ?>
-	</div>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'title'); ?>
-		<?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'title'); ?>
-	</div>
+    <?= $form->field($model, 'goal')->textarea(['rows' => 6]) ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'description'); ?>
-		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'description'); ?>
-	</div>
+    <?= $form->field($model, 'prerequisite_knowledge')->textarea(['rows' => 6]) ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'goal'); ?>
-		<?php echo $form->textArea($model,'goal',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'goal'); ?>
-	</div>
+    <?= $form->field($model, 'max_students')->textInput() ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'prerequisite_knowledge'); ?>
-		<?php echo $form->textArea($model,'prerequisite_knowledge',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'prerequisite_knowledge'); ?>
-	</div>
+    <?= $form->field($model, 'comments')->textarea(['rows' => 6]) ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'max_students'); ?>
-		<?php echo $form->textField($model,'max_students'); ?>
-		<?php echo $form->error($model,'max_students'); ?>
-	</div>
+    <?= $form->field($model, 'status')->dropDownList([ 'υπο έγκριση' => 'υπο έγκριση', 'έχει ανατεθεί' => 'έχει ανατεθεί', 'δεν έχει ανατεθεί' => 'δεν έχει ανατεθεί', ], ['prompt' => '']) ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'comments'); ?>
-		<?php echo $form->textArea($model,'comments',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'comments'); ?>
-	</div>
+    <?= $form->field($model, 'committee1')->textInput() ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status',array('size'=>32,'maxlength'=>32)); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
+    <?= $form->field($model, 'committee2')->textInput() ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'committee1'); ?>
-		<?php echo $form->textField($model,'committee1'); ?>
-		<?php echo $form->error($model,'committee1'); ?>
-	</div>
+    <?= $form->field($model, 'committee3')->textInput() ?>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'committee2'); ?>
-		<?php echo $form->textField($model,'committee2'); ?>
-		<?php echo $form->error($model,'committee2'); ?>
-	</div>
+    <div class="form-group">
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+    </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'committee3'); ?>
-		<?php echo $form->textField($model,'committee3'); ?>
-		<?php echo $form->error($model,'committee3'); ?>
-	</div>
+    <?php ActiveForm::end(); ?>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
-
-</div><!-- form -->
+</div>

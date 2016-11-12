@@ -1,21 +1,21 @@
 <?php
-/* @var $this ThesisController */
-/* @var $model Thesis */
 
-$this->breadcrumbs=array(
-	'Thesises'=>array('index'),
-	$model->title=>array('view','id'=>$model->ID),
-	'Update',
-);
+use yii\helpers\Html;
 
-$this->menu=array(
-	array('label'=>'List Thesis', 'url'=>array('index')),
-	array('label'=>'Create Thesis', 'url'=>array('create')),
-	array('label'=>'View Thesis', 'url'=>array('view', 'id'=>$model->ID)),
-	array('label'=>'Manage Thesis', 'url'=>array('admin')),
-);
+/* @var $this yii\web\View */
+/* @var $model app\models\Thesis */
+
+$this->title = 'Update Thesis: ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Theses', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->ID]];
+$this->params['breadcrumbs'][] = 'Update';
 ?>
+<div class="thesis-update">
 
-<h1>Update Thesis <?php echo $model->ID; ?></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+    <?= $this->render('_form', [
+        'model' => $model,
+    ]) ?>
+
+</div>
