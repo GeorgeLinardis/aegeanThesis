@@ -8,7 +8,7 @@ use yii\helpers\Html;
         <div class="col-sm-6" >
 
         <h3 class="text-center">Hello Professor </h3>
-            <a href = "<?= Url::to('accounts/newUser/new-professor')?>">
+            <a href = "<?= Url::to('accounts/new-professor')?>">
                 <img class="center-block" src = "<?= Url::to('@web/images/professor.jpg')?>" alt = "Professor" style="height: 333px ;width: 400px">
             </a>
 
@@ -18,7 +18,7 @@ use yii\helpers\Html;
 <!--New student form-->
         <div class="col-sm-6" >
         <h3 class="text-center">Hello student</h3>
-         <a href = "<?= Url::to('accounts/newUser/new-student')?>">
+         <a href = "<?= Url::to('accounts/new-student')?>">
             <img class="center-block" src = "<?= Url::to('@web/images/student.jpg')?>" alt = "Student" style="height: 333px ;width: 400px" >
         </a>
 

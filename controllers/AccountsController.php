@@ -23,7 +23,7 @@ class AccountsController extends Controller
         $model_users = new User();
         $model_professor = new Professor();
 
-        /*
+
         if (isset($_POST['User']))
         {
             $model_users->Username = $_POST['User']['Username'];
@@ -44,15 +44,15 @@ class AccountsController extends Controller
                 Yii::app()->user->login($ID);
                 $this->redirect(Yii::app()->user->returnUrl);
             }
-        }*/
+        }
 
 
 
 
-        return $this->render('new-professor' , array(
+        return $this->render('new-professor' , [
                                 'model_users'=>$model_users,
                                 'model_professor'=>$model_professor,
-            ));
+            ]);
     }
 
     public function actionNewStudent() // directs to form for new student
