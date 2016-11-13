@@ -1,13 +1,18 @@
 <?php
 
 /* @var $this yii\web\View */
+use yii\helpers\Url;
 
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron" >
-        <h2>Σύστημα διαχείρισης διπλωματικών του Πανεπιστημίου Αιγαίου</h2>
+
+        <h2><?php echo Yii::$app->user->getIdentity()->username;?>Σύστημα διαχείρισης διπλωματικών του Πανεπιστημίου Αιγαίου</h2>
+
+
+    <div style='background-image: url("<?= Url::to('@web/images/main_page_image.jpg')?>");background-size: cover;
+			background-position: center center ; min-height:400px ;max-width: 100%;' class="jumbotron">
 
     </div>
 
