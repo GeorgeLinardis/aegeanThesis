@@ -34,7 +34,7 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email'], 'required'],
+            [['firstname','lastname'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['userUsername', 'firstname', 'lastname'], 'string', 'max' => 50],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],

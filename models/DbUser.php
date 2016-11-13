@@ -32,6 +32,7 @@ class DbUser extends \yii\db\ActiveRecord
     {
         return [
             [['Username', 'Password'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
+            ['Username','unique','message'=>(Yii::$app->params['uniqueMsg'])],
             [['Role'], 'string'],
             [['Username'], 'string', 'max' => 50],
             [['Password'], 'string', 'max' => 64],
@@ -45,8 +46,8 @@ class DbUser extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'Username' => 'Username',
-            'Password' => 'Password',
+            'Username' => 'Όνομα Χρήστη',
+            'Password' => 'Κωδικός',
             'Role' => 'Role',
         ];
     }

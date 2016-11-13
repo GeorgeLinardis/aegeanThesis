@@ -38,12 +38,15 @@ class Professor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['url'], 'string'],
+            [['firstname','lastname','email'],'required','message'=>(Yii::$app->params['requiredMsg'])],
+            [['url'],'url'],
             [['userUsername', 'firstname', 'lastname'], 'string', 'max' => 50],
+            ['email','unique','message'=>(Yii::$app->params['uniqueMsg'])],
+
+            ['email','email'],
             [['telephone'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],
-            [['email'], 'unique'],
-            [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userUsername' => 'Username']],
+            [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => DbUser::className(), 'targetAttribute' => ['userUsername' => 'Username']],
         ];
     }
 
@@ -55,11 +58,11 @@ class Professor extends \yii\db\ActiveRecord
         return [
             'ID' => 'ID',
             'userUsername' => 'User Username',
-            'firstname' => 'Firstname',
-            'lastname' => 'Lastname',
-            'telephone' => 'Telephone',
+            'firstname' => 'Όνομα',
+            'lastname' => 'Επώνυμο',
+            'telephone' => 'Τηλέφωνο',
             'email' => 'Email',
-            'url' => 'Url',
+            'url' => 'Διεύθυνση URL',
         ];
     }
 

@@ -32,6 +32,13 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             'authKey' => 'test102key',
             'accessToken' => '102-token',
         ],
+        '103' => [
+            'id' => '102',
+            'username' => 'drososdimitrios',
+            'password' => 'professor',
+            'authKey' => 'test103key',
+            'accessToken' => '103-token',
+        ],
     ];
 
 
@@ -42,7 +49,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     {
         return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
     }
-
     /**
      * @inheritdoc
      */
@@ -53,10 +59,8 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
                 return new static($user);
             }
         }
-
         return null;
     }
-
     /**
      * Finds user by username
      *
@@ -70,10 +74,8 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
                 return new static($user);
             }
         }
-
         return null;
     }
-
     /**
      * @inheritdoc
      */
@@ -81,7 +83,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     {
         return $this->id;
     }
-
     /**
      * @inheritdoc
      */
@@ -89,7 +90,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     {
         return $this->authKey;
     }
-
     /**
      * @inheritdoc
      */
@@ -97,7 +97,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     {
         return $this->authKey === $authKey;
     }
-
     /**
      * Validates password
      *

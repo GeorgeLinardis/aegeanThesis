@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Thesis */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-
+<?php var_dump($_POST)?>
 <div class="thesis-form">
 
     <?php $form = ActiveForm::begin(); ?>

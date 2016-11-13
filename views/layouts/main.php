@@ -38,7 +38,20 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Αρχική', 'url' => ['/site/index']],
             ['label' => 'Λογαριασμοί', 'url' => ['/accounts/index']],
-            ['label' => 'Καθηγητής', 'url' => ['/professor/index']],
+            ['label' => 'Καθηγητής',
+                'items'=>[
+                    ['label'=>'Αρχική','url'=>['professor/index']],
+                    ['label'=>'Διπλωματικές','url'=>['professor/thesis']],
+                    ['label'=>'Επιτροπές','url'=>['professor/committee']],
+                    ['label'=>'Στατιστικά','url'=>['professor/statistics']],
+                  ],
+            ],
+            ['label' => 'Φοιτητής',
+                'items'=>[
+                    ['label'=>'Αρχική','url'=>['student/index']],
+
+                ],
+            ],
 
         ],
     ]);
