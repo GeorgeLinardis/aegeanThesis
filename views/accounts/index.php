@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Url;
 use yii\helpers\Html;
+use app\models\Professor;
+use app\models\DbUser;
 ?>
 <?php?>
 
@@ -8,14 +10,12 @@ use yii\helpers\Html;
 
      <h2 class="text-center">Επιλέξτε είδος χρήστη:</h2><br />
 
-        <?php $name=\app\models\Professor::findOne(['userUsername'=>'maragkoudakis'])  ;
-        echo $name->userUsername; var_dump($name);?>
 
 <!--New professor form-->
         <div class="col-sm-6" >
 
         <h3 class="text-center">Hello Professor </h3>
-            <a href = "<?= Url::to('new-professor')?>">
+            <a href = "<?= Url::to('newuser')?>">
                 <img class="center-block" src = "<?= Url::to('@web/images/newuser/professor.jpg')?>" alt = "Professor" style="height: 333px ;width: 400px">
             </a>
 

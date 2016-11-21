@@ -1,10 +1,20 @@
-<?php use yii\widgets\DetailView ;
+<?php
+use yii\widgets\DetailView ;
+use yii\helpers\url;
 ?>
 
 <div class="row">
 
     <div class="col-sm-8">
-        <h3 class="text-center">Προφίλ Χρήστη</h3><br />
+        <div class="col-sm-6"><h3 class="text-center">Προφίλ Χρήστη</h3></div>
+        <div class="col-sm-6">
+        <?php if ($Role == 'professor'):?>
+            <img src = "<?=Url::to('@web/images/professor/Professor-default-user-icon(Icon-Archive)')?>" alt = "Professor" style="height: 66px ;width: 80px">
+            <?php elseif ($Role == 'student'):?>
+            <img src = "<?=Url::to('@web/images/student/Student-default-user-icon(Icon-Archive)')?>" alt = "Student" style="height: 76px ;width: 90px">
+            <?php endif ;?>
+        </div>
+
         <?php
             echo DetailView::widget([
             'model' => $model,
@@ -14,15 +24,21 @@
                 ],
                 'firstname',
                 'lastname',
-                'telephone',
+                'telephone1',
+                'telephone2',
                 'email',
-                'url'
+                'skypeUsername',
+                'url',
+                'comments',
                 ],
 
-             'options'=>['class'=>'table table-striped'],
+             'options'=>['class'=>'table table-striped text-left'],
 
             ]);
 
     ?>
     </div>
+
 </div>
+
+

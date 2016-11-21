@@ -13,11 +13,30 @@ use yii\web\Controller;
 class AccountsController extends Controller
 {
 
+
 //VALIDATION NEEDS FIXING AND REDIRECTING BASED ON LOGIN
     public function actionIndex() //direction to type of user: Professor or student
     {
         return $this->render('index');
     }
+
+    public function actionNewUser()
+    { $Role = DbUser::find()->where(['username'=>(Yii::$app->user->identity->username)])->one();
+        $modelUsers = new DbUser();
+        $modelProfessor = new Professor();
+        $modelStudents = new Student();
+
+      return $this->render('new-user',[
+                'Role'=>$Role->Role,
+                'modelUsers'=>$modelUsers,
+                'modelProfessor'=>$modelProfessor,
+                'modelStudents'=>$modelStudents,
+
+          ]
+      );
+    }
+
+
 
     public function actionNewProfessor() // directs to form for new professor
     {
@@ -78,12 +97,21 @@ class AccountsController extends Controller
     }
 
     public function actionProfile()
-    {
-        $model = Professor::findOne(['userUsername'=>'maragkoudakis']);
-        return $this->render('profile',[
-            'model'=>$model,
-            ]
+    {   $Role = DbUser::find()->where(['username'=>(Yii::$app->user->identity->username)])->one();
+
+        if ($Role->Role == 'professor') {
+            $model = Professor::findOne(['userUsername' => Yii::$app->user->identity->username]);
+        }
+        elseif ($Role->Role == 'student') {
+            $model = Student::findOne(['userUsername' => Yii::$app->user->identity->username]);
+        }
+        return $this->render('profile', [
+                    'model' => $model,
+                    'Role'=>$Role->Role,
+                ]
             );
+
+
 
     }
 

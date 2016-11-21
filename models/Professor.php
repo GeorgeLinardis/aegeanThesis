@@ -40,11 +40,12 @@ class Professor extends \yii\db\ActiveRecord
         return [
             [['firstname','lastname','email'],'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['userUsername', 'firstname', 'lastname'], 'string', 'max' => 50],
-            ['email','unique','message'=>(Yii::$app->params['uniqueMsg'])],
+            [['email','skypeUsername'],'unique','message'=>(Yii::$app->params['uniqueMsg'])],
             ['email','email'],
             [['email'], 'string', 'max' => 200],
-            [['telephone'], 'string', 'max' => 30],
+            [['telephone1','telephone2'], 'string', 'max' => 30],
             [['url'],'url'],
+            [['url','comments'],'string','max'=>500],
             [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => DbUser::className(), 'targetAttribute' => ['userUsername' => 'Username']],
         ];
     }
@@ -59,9 +60,12 @@ class Professor extends \yii\db\ActiveRecord
             'userUsername' => 'User Username',
             'firstname' => 'Όνομα',
             'lastname' => 'Επώνυμο',
-            'telephone' => 'Τηλέφωνο',
+            'telephone1' => 'Τηλέφωνο 1',
             'email' => 'Email',
             'url' => 'Διεύθυνση URL',
+            'telephone2'=>'Τηλέφωνο 2',
+            'skypeUsername'=>'skype',
+            'comments'=>'comments'
         ];
     }
 

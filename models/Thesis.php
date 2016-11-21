@@ -17,6 +17,8 @@ use Yii;
  * @property integer $max_students
  * @property string $comments
  * @property string $status
+ * @property string $dateCreated
+ * @property string $datePresented
  * @property integer $committee1
  * @property integer $committee2
  * @property integer $committee3
@@ -46,8 +48,9 @@ class Thesis extends \yii\db\ActiveRecord
     {
         return [
             [['professorID', 'studentID', 'max_students', 'committee1', 'committee2', 'committee3'], 'integer'],
-            [['title', 'description', 'status'], 'required'],
+            [['title', 'description', 'status', 'dateCreated', 'datePresented'], 'required'],
             [['description', 'goal', 'prerequisite_knowledge', 'comments', 'status'], 'string'],
+            [['dateCreated', 'datePresented'], 'safe'],
             [['title'], 'string', 'max' => 200],
             [['professorID'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['professorID' => 'ID']],
             [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['studentID' => 'ID']],
@@ -63,19 +66,21 @@ class Thesis extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'Κωδικός διπλωματικής',
-            'professorID' => 'Κωδικός καθηγητή',
-            'studentID' => 'Κωδικός Φοιτητή',
-            'title' => 'Τίτλος',
-            'description' => 'Περιγραφή',
-            'goal' => 'Στόχος',
-            'prerequisite_knowledge' => 'Προαπαιτούμενη γνώση',
-            'max_students' => 'Μέγιστος Αριθμός Φοιτητών',
-            'comments' => 'Σχόλια',
-            'status' => 'Κατάσταση',
-            'committee1' => '1ο Μέλος Επιτροπής',
-            'committee2' => '2ο Μέλος Επιτροπής',
-            'committee3' => '3ο Μέλος Επιτροπής',
+            'ID' => 'ID',
+            'professorID' => 'Professor ID',
+            'studentID' => 'Student ID',
+            'title' => 'Title',
+            'description' => 'Description',
+            'goal' => 'Goal',
+            'prerequisite_knowledge' => 'Prerequisite Knowledge',
+            'max_students' => 'Max Students',
+            'comments' => 'Comments',
+            'status' => 'Status',
+            'dateCreated' => 'Date Created',
+            'datePresented' => 'Date Presented',
+            'committee1' => 'Committee1',
+            'committee2' => 'Committee2',
+            'committee3' => 'Committee3',
         ];
     }
 

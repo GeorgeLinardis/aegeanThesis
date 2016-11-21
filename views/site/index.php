@@ -8,7 +8,7 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
 
-        <h2><?php echo Yii::$app->user->getIdentity()->username;?>Σύστημα διαχείρισης διπλωματικών του Πανεπιστημίου Αιγαίου</h2>
+        <h2>Σύστημα διαχείρισης διπλωματικών του Πανεπιστημίου Αιγαίου</h2>
 
 
     <div style='background-image: url("<?= Url::to('@web/images/main_page_image.jpg')?>");background-size: cover;

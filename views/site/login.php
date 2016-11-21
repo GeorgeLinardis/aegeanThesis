@@ -6,11 +6,15 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\url;
 
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
+
 <div class="site-login">
+    <div class="col-md-9">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Please fill out the following fields to login:</p>
@@ -44,4 +48,14 @@ $this->params['breadcrumbs'][] = $this->title;
         You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
         To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
+    </div>
+    <div class="col-md-3">
+        <h2 class="text-center">Dont have an account?</h2><br />
+        <div class="text-center "><h4>Enter to create new one!</h4></div><br>
+        <a href = "<?= Url::to('/accounts/index')?>">
+            <img class="center-block" src = "<?= Url::to('@web/images/loginPage/door.png')?>" alt = "Enter" style="height: 80px ;width: 120px">
+        </a>
+
+    </div>
+
 </div>

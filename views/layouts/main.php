@@ -55,21 +55,32 @@ AppAsset::register($this);
 
         ],
     ]);
+/*
+
+        : ('<li>'. Html::beginForm(['/site/logout'], 'post'). Html::submitButton('Έξοδος (' . Yii::$app->user->identity->username . ')',
+            ['class' => 'btn btn-link logout']). Html::endForm().
+        '</li>'
+    ),
+
+
+*/
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' =>
         [
-            Yii::$app->user->isGuest ? ( ['label' => 'Είσοδος', 'url' => ['/site/login']])
-                : ('<li>'. Html::beginForm(['/site/logout'], 'post'). Html::submitButton('Έξοδος (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']). Html::endForm().
-                '</li>'
-                  ),
-            ['label' => Yii::$app->user->getIdentity()->username,
-                'items'=>[
-                    ['label'=>'Προφίλ','url'=>'@web/accounts/profile'],
+            Yii::$app->user->isGuest
+                ? ['label' => 'Είσοδος', 'url' => ['/site/login']]
+
+
+                : ['label' => Yii::$app->user->identity->username,
+                    'items' => [
+                        ['label' => 'Προφίλ', 'url' => ['accounts/profile']],
+                        ['label' => 'Έξοδος Χρήστη','url'=>['site/logout'],'linkOptions'=>['data-method'=>'post']],
+                    ],
                 ],
-            ],
-            ['label' => 'Χρήσιμα',
+
+                ['label' => 'Χρήσιμα',
              'items'=>[
                  ['label'=>'Aegean','url'=>'https://www.aegean.gr/'],
                  ['label'=>'Eclass','url'=>'https://eclass.aegean.gr/'],
@@ -78,6 +89,8 @@ AppAsset::register($this);
                  ['label'=>'Github','url'=>'https://github.com/">Github'],
                       ],
             ],
+
+
         ],
     ]);
     NavBar::end();

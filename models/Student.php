@@ -34,11 +34,13 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['firstname','lastname'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
+            [['firstname','lastname','email','masterID'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['userUsername', 'firstname', 'lastname'], 'string', 'max' => 50],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],
-            [['email'], 'unique'],
+            [['email','skypeUsername'], 'unique','message'=>(Yii::$app->params['uniqueMsg'])],
+            [['url'],'url'],
+            [['url,comments'],'string','max'=>500],
             [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userUsername' => 'Username']],
         ];
     }
@@ -56,6 +58,10 @@ class Student extends \yii\db\ActiveRecord
             'telephone1' => 'Τηλέφωνο 1',
             'telephone2' => 'Τηλέφωνο 2',
             'email' => 'Email',
+            'url'=>'Url',
+            'skypeUsername'=>'skype',
+            'comments'=>'comments',
+            'masterID'=>'Μεταπτυχιακό'
         ];
     }
 
