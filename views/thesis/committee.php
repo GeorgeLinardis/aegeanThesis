@@ -17,8 +17,9 @@ GridView::widget([
         'ID',
         'title',
         'status',
-        ['class' => 'yii\grid\ActionColumn'],
-    ],
+        ['class' => 'yii\grid\ActionColumn',
+         'template'=>'{view}'], //{delete} {update}
+        ],
 ]); ?>
 
 

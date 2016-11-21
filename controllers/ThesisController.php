@@ -11,8 +11,12 @@ class ThesisController extends \yii\web\Controller
         return $this->render('index');
     }
 
-    public function actionView(){
-        return $this->render('view');
+    public function actionView($id){
+        $model = Thesis::find()->where(['id'=> $id])->one();
+
+        return $this->render('view',
+            ['model'=>$model]);
+
     }
 
 

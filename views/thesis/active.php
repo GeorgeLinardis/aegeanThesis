@@ -1,5 +1,7 @@
 <?php
 use yii\grid\GridView;
+use yii\helpers\url;
+use yii\helpers\Html;
 
 /* @var $dataProvider \app\controllers\ThesisController*/
 ?>
@@ -15,8 +17,8 @@ use yii\grid\GridView;
     'ID',
     'title',
     'status',
-    ['class' => 'yii\grid\ActionColumn'],
-
+    ['class' => 'yii\grid\ActionColumn',
+     'template'=>'{view}'], //{delete} {update}
     ],
     ]); ?>
 
