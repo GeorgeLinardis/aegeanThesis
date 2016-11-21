@@ -32,26 +32,5 @@ class ProfessorController extends Controller
         return $this->render('thesis');
     }
 
-    public function actionThesisCreate()
-    {
-        return $this->render('thesis-create');
-    }
-
-
-    public function actionThesisView()
-    {
-        return $this->render('thesis-view');
-    }
-
-    public function actionThesisCommittee()
-    {
-        return $this->render('thesis-committee');
-    }
-
-
-    public function actionThesisPast()
-    {
-        return $this->render('thesis-past');
-    }
 
 }

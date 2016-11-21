@@ -7,6 +7,8 @@ use Yii;
 /**
  * This is the model class for table "student".
  *
+ * @property string $masterID
+ * @property integer $thesisID
  * @property integer $ID
  * @property string $userUsername
  * @property string $firstname
@@ -14,9 +16,14 @@ use Yii;
  * @property string $telephone1
  * @property string $telephone2
  * @property string $email
+ * @property string $skypeUsername
+ * @property string $url
+ * @property string $comments
+ * @property string $photo
  *
  * @property User $userUsername0
- * @property Thesis[] $theses
+ * @property Master $master
+ * @property Thesis $thesis
  */
 class Student extends \yii\db\ActiveRecord
 {
@@ -34,14 +41,17 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['firstname','lastname','email','masterID'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
-            [['userUsername', 'firstname', 'lastname'], 'string', 'max' => 50],
+            [['thesisID'], 'integer'],
+            [['email', 'photo'], 'required'],
+            [['url', 'comments'], 'string'],
+            [['masterID', 'userUsername', 'firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],
-            [['email','skypeUsername'], 'unique','message'=>(Yii::$app->params['uniqueMsg'])],
-            [['url'],'url'],
-            [['url,comments'],'string','max'=>500],
+            [['photo'], 'string', 'max' => 256],
+            [['email'], 'unique'],
             [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userUsername' => 'Username']],
+            [['masterID'], 'exist', 'skipOnError' => true, 'targetClass' => Master::className(), 'targetAttribute' => ['masterID' => 'ID']],
+            [['thesisID'], 'exist', 'skipOnError' => true, 'targetClass' => Thesis::className(), 'targetAttribute' => ['thesisID' => 'ID']],
         ];
     }
 
@@ -51,17 +61,19 @@ class Student extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'masterID' => 'Master ID',
+            'thesisID' => 'Thesis ID',
             'ID' => 'ID',
-            'userUsername' => 'Όνομα Χρήστη',
-            'firstname' => 'Όνομα',
-            'lastname' => 'Επώνυμο',
-            'telephone1' => 'Τηλέφωνο 1',
-            'telephone2' => 'Τηλέφωνο 2',
+            'userUsername' => 'User Username',
+            'firstname' => 'Firstname',
+            'lastname' => 'Lastname',
+            'telephone1' => 'Telephone1',
+            'telephone2' => 'Telephone2',
             'email' => 'Email',
-            'url'=>'Url',
-            'skypeUsername'=>'skype',
-            'comments'=>'comments',
-            'masterID'=>'Μεταπτυχιακό'
+            'skypeUsername' => 'Skype Username',
+            'url' => 'Url',
+            'comments' => 'Comments',
+            'photo' => 'Photo',
         ];
     }
 
@@ -76,8 +88,16 @@ class Student extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTheses()
+    public function getMaster()
     {
-        return $this->hasMany(Thesis::className(), ['studentID' => 'ID']);
+        return $this->hasOne(Master::className(), ['ID' => 'masterID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getThesis()
+    {
+        return $this->hasOne(Thesis::className(), ['ID' => 'thesisID']);
     }
 }
