@@ -56,7 +56,7 @@ AppAsset::register($this);
         ],
     ]);
 /*
-
+        DEFAULT MENU FOR LOGIN LOGOUT BY YII
         : ('<li>'. Html::beginForm(['/site/logout'], 'post'). Html::submitButton('Έξοδος (' . Yii::$app->user->identity->username . ')',
             ['class' => 'btn btn-link logout']). Html::endForm().
         '</li>'

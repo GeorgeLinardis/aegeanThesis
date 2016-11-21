@@ -23,7 +23,6 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model, 'professorID') ?>
-        <?= $form->field($model, 'studentID') ?>
         <?= $form->field($model, 'max_students') ?>
         <?= $form->field($model, 'committee1') ?>
         <?= $form->field($model, 'committee2') ?>
