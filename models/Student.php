@@ -50,11 +50,11 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'userUsername' => 'User Username',
-            'firstname' => 'Firstname',
-            'lastname' => 'Lastname',
-            'telephone1' => 'Telephone1',
-            'telephone2' => 'Telephone2',
+            'userUsername' => 'Όνομα Χρήστη',
+            'firstname' => 'Όνομα',
+            'lastname' => 'Επώνυμο',
+            'telephone1' => 'Τηλέφωνο 1',
+            'telephone2' => 'Τηλέφωνο 2',
             'email' => 'Email',
         ];
     }

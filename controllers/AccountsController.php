@@ -38,8 +38,11 @@ class AccountsController extends Controller
             $modelProfessor->url=$_POST['Professor']['url'];
 
         if ($modelUsers->save() && $modelProfessor->save()){
-                return $this->redirect('site/index');
+
+            return $this->goBack();
             }
+
+
         }
         return $this->render('new-professor' , [
                                 'modelUsers'=>$modelUsers,
@@ -73,20 +76,20 @@ class AccountsController extends Controller
                 'modelUsers'=>$modelUsers,
                 'modelStudents'=>$modelStudents));
     }
-/*
+
     public function actionProfile()
-    {   $model = Professor::model()->find('userUsername=:user',array(':user'=>(Yii::app()->user->name)));
-        $username = Yii::app()->user->name;
-        $this->render('profile',array(
+    {
+        $model = Professor::findOne(['userUsername'=>'maragkoudakis']);
+        return $this->render('profile',[
             'model'=>$model,
-            'username'=>$username,)
-        );
+            ]
+            );
+
     }
 
 
 
 
 
-*/
 
 }

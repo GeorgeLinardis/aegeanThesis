@@ -39,13 +39,12 @@ class Professor extends \yii\db\ActiveRecord
     {
         return [
             [['firstname','lastname','email'],'required','message'=>(Yii::$app->params['requiredMsg'])],
-            [['url'],'url'],
             [['userUsername', 'firstname', 'lastname'], 'string', 'max' => 50],
             ['email','unique','message'=>(Yii::$app->params['uniqueMsg'])],
-
             ['email','email'],
-            [['telephone'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],
+            [['telephone'], 'string', 'max' => 30],
+            [['url'],'url'],
             [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => DbUser::className(), 'targetAttribute' => ['userUsername' => 'Username']],
         ];
     }
@@ -85,7 +84,7 @@ class Professor extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTheses()
+    public function getTheses()// this is a conjunction table
     {
         return $this->hasMany(Thesis::className(), ['professorID' => 'ID']);
     }
