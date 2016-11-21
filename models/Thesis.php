@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $ID
  * @property integer $professorID
- * @property integer $studentID
  * @property string $title
  * @property string $description
  * @property string $goal
@@ -22,9 +21,10 @@ use Yii;
  * @property integer $committee1
  * @property integer $committee2
  * @property integer $committee3
+ * @property string $RequestPDf
  *
+ * @property Student[] $students
  * @property Professor $professor
- * @property Student $student
  * @property Professor $committee10
  * @property Professor $committee20
  * @property Professor $committee30
@@ -47,13 +47,13 @@ class Thesis extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['professorID', 'studentID', 'max_students', 'committee1', 'committee2', 'committee3'], 'integer'],
-            [['title', 'description', 'status', 'dateCreated', 'datePresented'], 'required'],
+            [['professorID', 'max_students', 'committee1', 'committee2', 'committee3'], 'integer'],
+            [['title', 'description', 'dateCreated', 'datePresented', 'RequestPDf'], 'required'],
             [['description', 'goal', 'prerequisite_knowledge', 'comments', 'status'], 'string'],
             [['dateCreated', 'datePresented'], 'safe'],
             [['title'], 'string', 'max' => 200],
+            [['RequestPDf'], 'string', 'max' => 256],
             [['professorID'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['professorID' => 'ID']],
-            [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['studentID' => 'ID']],
             [['committee1'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['committee1' => 'ID']],
             [['committee2'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['committee2' => 'ID']],
             [['committee3'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['committee3' => 'ID']],
@@ -66,22 +66,30 @@ class Thesis extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'professorID' => 'Professor ID',
-            'studentID' => 'Student ID',
-            'title' => 'Title',
-            'description' => 'Description',
-            'goal' => 'Goal',
-            'prerequisite_knowledge' => 'Prerequisite Knowledge',
-            'max_students' => 'Max Students',
-            'comments' => 'Comments',
-            'status' => 'Status',
-            'dateCreated' => 'Date Created',
-            'datePresented' => 'Date Presented',
-            'committee1' => 'Committee1',
-            'committee2' => 'Committee2',
-            'committee3' => 'Committee3',
+            'ID' => 'Κωδικός',
+            'professorID' => 'Κωδικός Καθηγητή',
+            'title' => 'Τιτλος',
+            'description' => 'Περιγραφή',
+            'goal' => 'Στόχος',
+            'prerequisite_knowledge' => 'Προαπαιτούμενη γννώση',
+            'max_students' => 'Μέγιστος Αριθμός Φοιτητών',
+            'comments' => 'Σχόλια',
+            'status' => 'Κατάσταση',
+            'dateCreated' => 'Ημ/νια δημιουργίας',
+            'datePresented' => 'Ημ/νια παρουσίασης',
+            'committee1' => '1ο Μέλος Επιτροπής',
+            'committee2' => '2ο Μέλος Επιτροπής',
+            'committee3' => '3ο Μέλος Επιτροπής',
+            'RequestPDf' => 'Αίτηση (pdf)',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStudents()
+    {
+        return $this->hasMany(Student::className(), ['thesisID' => 'ID']);
     }
 
     /**
@@ -90,14 +98,6 @@ class Thesis extends \yii\db\ActiveRecord
     public function getProfessor()
     {
         return $this->hasOne(Professor::className(), ['ID' => 'professorID']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getStudent()
-    {
-        return $this->hasOne(Student::className(), ['ID' => 'studentID']);
     }
 
     /**
