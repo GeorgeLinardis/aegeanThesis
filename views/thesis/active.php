@@ -17,6 +17,7 @@ use yii\helpers\Html;
     'ID',
     'title',
     'status',
+    'dateCreated',
     ['class' => 'yii\grid\ActionColumn',
      'template'=>'{view}'], //{delete} {update}
     ],
