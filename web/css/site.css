@@ -113,3 +113,10 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.pdfForm
+{
+    titles-color: #141210;
+    text-color:#4a433e;
+
+}

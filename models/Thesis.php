@@ -66,11 +66,11 @@ class Thesis extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'Κωδικός',
+            'ID' => 'Κωδικός διπλωματικής',
             'professorID' => 'Κωδικός Καθηγητή',
-            'title' => 'Τιτλος',
+            'title' => 'Τιτλος διπλωματικής',
             'description' => 'Περιγραφή',
-            'goal' => 'Στόχος',
+            'goal' => 'Επιθυμητός στόχος',
             'prerequisite_knowledge' => 'Προαπαιτούμενη γννώση',
             'max_students' => 'Μέγιστος Αριθμός Φοιτητών',
             'comments' => 'Σχόλια',
