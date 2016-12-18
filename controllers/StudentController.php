@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use app\models\Master;
+use app\models\ThesisHasReferences;
 use Yii;
 use yii\web\Controller;
 use app\models\Thesis;
 use app\models\Student;
+use app\models\References;
 use yii\data\ActiveDataProvider;
 
 
@@ -39,9 +41,7 @@ class StudentController extends Controller
         return $this->render('my-thesis');
     }
 
-    public function actionMyReferences()
-    {
-        return $this->render('my-references');
-    }
+
+
 
 }

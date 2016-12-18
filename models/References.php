@@ -47,14 +47,15 @@ class References extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'title' => 'Title',
-            'type' => 'Type',
+            'ID' => 'Κωδικός αναφοράς',
+            'author'=>'Συγγραφέας',
+            'title' => 'Τίτλος',
+            'type' => 'Τύπος',
             'URL' => 'Url',
-            'date_created_by_author' => 'Date Created By Author',
-            'date_created_by_student' => 'Date Created By Student',
-            'date_updated_by_student' => 'Date Updated By Student',
-            'file' => 'File',
+            'date_created_by_author' => 'Ημ/νια δημιουργίας απο τον συγγραφέα',
+            'date_created_by_student' => 'Ημ/νια καταχώρησης',
+            'date_updated_by_student' => 'Ημ/νια ανανέωσης',
+            'file' => 'Αρχείο',
         ];
     }
 

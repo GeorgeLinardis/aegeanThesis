@@ -37,7 +37,8 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => [
             ['label' => 'Αρχική', 'url' => ['/site/index']],
-            ['label' => 'Λογαριασμοί', 'url' => ['/accounts/index']],
+            ['label' => 'Λογαριασμοί', 'url' => ['/accounts/new-user']],
+            ['label' => 'Πηγές', 'url' => ['/references/index']],
             ['label' => 'Καθηγητής',
                 'items'=>[
                     ['label'=>'Αρχική','url'=>['professor/index']],
@@ -50,7 +51,7 @@ AppAsset::register($this);
                 'items'=>[
                     ['label'=>'Αρχική','url'=>['student/index']],
                     ['label'=>'Η διπλωματική μου','url'=>['student/my-thesis']],
-                    ['label'=>'Οι πηγές μου','url'=>['student/my-references']],
+                    ['label'=>'Οι πηγές μου','url'=>['student-references/index']],
                     ['label'=>'Θέματα διπλωματικών','url'=>['student/all-theses']],
 
                 ],
