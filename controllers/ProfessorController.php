@@ -4,7 +4,10 @@ namespace app\controllers;
 
 
 use yii\web\Controller;
-
+use yii\data\ActiveDataProvider;
+use app\models\Thesis;
+use app\models\Professor;
+use yii;
 
 
 class ProfessorController extends Controller
@@ -16,8 +19,22 @@ class ProfessorController extends Controller
     }
 
     public function actionCommittee()
-    {
-        return $this->render('committee');
+    {   $professorID = Professor::find()->where(['userUsername'=>(Yii::$app->user->identity->username)])->one();
+
+        $dataProvider = new ActiveDataProvider(
+            ['query'=>(Thesis::find()->where([
+                                'or',
+                                ['committee1'=>[$professorID->ID]],
+                                ['committee2'=>[$professorID->ID]],
+                                ['committee3'=>[$professorID->ID]]
+
+            ])),
+                'pagination'=>['pageSize'=>10]]
+        );
+
+        return $this->render('committee',
+            ['dataProvider'=>$dataProvider,
+             'professorID'=>$professorID ]);
     }
 
     public function actionStatistics()

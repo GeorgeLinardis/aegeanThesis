@@ -14,9 +14,11 @@ GridView::widget([
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
         'ID',
+        'masterID',
         'title',
+        'status',
         ['class' => 'yii\grid\ActionColumn',
-            'template'=>'{view}'], //{delete} {update}
+        'template'=>'{view}'], //{delete} {update}
         ],
 
 ]); ?>

@@ -7,7 +7,6 @@ use yii\grid\GridView;
 
 <h2> Διπλωματικές προς Επιτροπή </h2><br>
 
-
 <?=
 
 GridView::widget([
@@ -15,7 +14,9 @@ GridView::widget([
     'columns' => [
         ['class' => 'yii\grid\SerialColumn'],
         'ID',
+        'masterID',
         'title',
+        'status',
         ['class' => 'yii\grid\ActionColumn',
          'template'=>'{view}'], //{delete} {update}
         ],

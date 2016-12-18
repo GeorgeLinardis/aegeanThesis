@@ -48,7 +48,7 @@ class Thesis extends \yii\db\ActiveRecord
     {
         return [
             [['professorID', 'max_students', 'committee1', 'committee2', 'committee3'], 'integer'],
-            [['title', 'description', 'dateCreated', 'datePresented', 'RequestPDf'], 'required'],
+            [['title','masterID', 'description', 'dateCreated', 'datePresented', 'RequestPDf'], 'required'],
             [['description', 'goal', 'prerequisite_knowledge', 'comments', 'status'], 'string'],
             [['dateCreated', 'datePresented'], 'safe'],
             [['title'], 'string', 'max' => 200],
@@ -68,6 +68,7 @@ class Thesis extends \yii\db\ActiveRecord
         return [
             'ID' => 'Κωδικός διπλωματικής',
             'professorID' => 'Κωδικός Καθηγητή',
+            'masterID'=>'Μεταπτυχιακό',
             'title' => 'Τιτλος διπλωματικής',
             'description' => 'Περιγραφή',
             'goal' => 'Επιθυμητός στόχος',

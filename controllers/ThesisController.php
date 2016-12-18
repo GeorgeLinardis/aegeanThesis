@@ -34,7 +34,7 @@ class ThesisController extends \yii\web\Controller
     public function actionActive(){
 
         $dataProvider = new ActiveDataProvider(
-            ['query'=>(Thesis::find()->where(['status'=>['δεν έχει ανατεθεί','υπο έγκριση'] ])),
+            ['query'=>(Thesis::find()->where(['status'=>['έχει ανατεθεί','δεν έχει ανατεθεί','υπο έγκριση'] ])),
              'pagination'=>['pageSize'=>10]]
         );
 

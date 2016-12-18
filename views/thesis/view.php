@@ -16,6 +16,7 @@ use yii\helpers\Html;
         'attributes' => [
             'ID' ,
             'professorID' ,
+            'masterID',
             'title' ,
             'description' ,
             'goal',
@@ -33,9 +34,9 @@ use yii\helpers\Html;
         ],
     ]); ?>
 </div>
-<div class="col-sm-4">
-    <h4>Δημιουργία Αίτησης σε pdf μορφή:<h4><br />
-    <?= Html::a('Click me', [\yii\helpers\Url::toRoute(['thesis/pdf','id'=>($model->getAttribute('ID'))])], ['class'=>'btn btn-primary']) ; ?>
+<div class="col-sm-4" style="text-align: center">
+    <h4>Δημιουργία αίτησης διπλωματικής σε pdf μορφή:<h4><br />
+    <?= Html::a('Δημιουργία PDF', [\yii\helpers\Url::toRoute(['thesis/pdf','id'=>($model->getAttribute('ID'))])], ['class'=>'btn btn-primary']) ; ?>
 </div>
 
 
