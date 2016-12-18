@@ -15,30 +15,12 @@ class AccountsController extends Controller
 
 
 //VALIDATION NEEDS FIXING AND REDIRECTING BASED ON LOGIN
-    public function actionIndex() //direction to type of user: Professor or student
+    public function actionNewUser() //direction to type of user: Professor or student
     {
-        return $this->render('index');
+        return $this->render('new-user');
     }
 
-    public function actionNewUser()
-    { $Role = DbUser::find()->where(['username'=>(Yii::$app->user->identity->username)])->one();
-        $modelUsers = new DbUser();
-        $modelProfessor = new Professor();
-        $modelStudents = new Student();
-
-      return $this->render('new-user',[
-                'Role'=>$Role->Role,
-                'modelUsers'=>$modelUsers,
-                'modelProfessor'=>$modelProfessor,
-                'modelStudents'=>$modelStudents,
-
-          ]
-      );
-    }
-
-
-
-    public function actionNewProfessor() // directs to form for new professor
+    public function actionNewUserProfessor() // directs to form for new professor
     {
         $modelUsers = new DbUser();
         $modelProfessor = new Professor();
@@ -63,13 +45,13 @@ class AccountsController extends Controller
 
 
         }
-        return $this->render('new-professor' , [
+        return $this->render('new-user-professor' , [
                                 'modelUsers'=>$modelUsers,
                                 'modelProfessor'=>$modelProfessor
         ]);
     }
 
-    public function actionNewStudent() // directs to form for new student
+    public function actionNewUserStudent() // directs to form for new student
     {
         $modelUsers = new DbUser();
         $modelStudents = new Student();
@@ -79,19 +61,19 @@ class AccountsController extends Controller
             $modelUsers->Username = $_POST['DbUser']['Username'];
             $modelUsers->Password= $_POST['DbUser']['Password'];
             $modelUsers->Role='student';
-            //$modelStudents->userUsername=$_POST['DbUser']['Username'];
-            //$modelStudents->firstname=$_POST['Student']['firstname'];
-            //$modelStudents->lastname=$_POST['Student']['lastname'];
-            //$modelStudents->telephone1=$_POST['Student']['telephone1'];
-            //$modelStudents->telephone2=$_POST['Student']['telephone2'];
-            //$modelStudents->email=$_POST['Student']['email'];
+            $modelStudents->userUsername=$_POST['DbUser']['Username'];
+            $modelStudents->firstname=$_POST['Student']['firstname'];
+            $modelStudents->lastname=$_POST['Student']['lastname'];
+            $modelStudents->telephone1=$_POST['Student']['telephone1'];
+            $modelStudents->telephone2=$_POST['Student']['telephone2'];
+            $modelStudents->email=$_POST['Student']['email'];
 
 
             if ($modelUsers->save() && $modelStudents->save()){
                 return $this->render('site/index');
             }
         }
-        return $this->render('new-student',array(
+        return $this->render('new-user-student',array(
                 'modelUsers'=>$modelUsers,
                 'modelStudents'=>$modelStudents));
     }

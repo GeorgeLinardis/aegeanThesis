@@ -9,9 +9,9 @@ use yii\helpers\url;
         <div class="col-sm-6"><h3 class="text-center">Προφίλ Χρήστη</h3></div>
         <div class="col-sm-6">
         <?php if ($Role == 'professor'):?>
-            <img src = "<?=Url::to('@web/images/professor/Professor-default-user-icon(Icon-Archive)')?>" alt = "Professor" style="height: 66px ;width: 80px">
+            <img src = "<?=Url::to('@web/images/professor/Professore-default-user-icon(Icon-Archive)')?>" alt = "Professor" style="height: 86px ;width: 90px">
             <?php elseif ($Role == 'student'):?>
-            <img src = "<?=Url::to('@web/images/student/Student-default-user-icon(Icon-Archive)')?>" alt = "Student" style="height: 76px ;width: 90px">
+            <img src = "<?=Url::to('@web/images/student/Students-default-user-icon(Icon-Archive)')?>" alt = "Student" style="height: 76px ;width: 90px">
             <?php endif ;?>
         </div>
 
@@ -30,6 +30,7 @@ use yii\helpers\url;
                 'skypeUsername',
                 'url',
                 'comments',
+                'photo',
                 ],
 
              'options'=>['class'=>'table table-striped text-left'],

@@ -1,64 +1,41 @@
-
 <?php
+use yii\helpers\Url;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use app\models\Professor;
+use app\models\DbUser;
 ?>
+<?php?>
 
-<div class="row">
-    <div class="col-sm-6">
-        <h3 class="text-center">
-        <?php if ($Role == 'professor'):?>
-            <span class="glyphicon glyphicon-blackboard"></span> Νεός Χρήστης Καθηγητής</h3>
+    <div class="row" >
 
-        <?php elseif ($Role == 'student') :?>
-        <span class="glyphicon glyphicon-blackboard"></span> Νεός Χρήστης Φοιτητής</h3>
-        <?php endif?>
-        <div class = "text-center">Παρακαλώ συμπληρώστε τα στοιχεία σας στην παρακάτω φόρμα:</div>
-        <hr>
+     <h2 class="text-center">Επιλέξτε είδος χρήστη:</h2><br />
 
-        <div class="thesis-form">
 
-            <?php $form = ActiveForm::begin([
-                'options' => [
-                    'enableAjaxValidation' => true]
-            ]); ?>
+<!--New professor form-->
+        <div class="col-sm-6" >
 
-            <?= $form->field($modelUsers, 'Username')->textInput() ?>
-            <?= $form->field($modelUsers, 'Password')->passwordInput() ?>
-            <hr>
-                                <!--ΣΤΟΙΧΕΙΑ ΚΑΘΗΓΗΤΗ-->
-            <?php if ($Role == 'professor'):?>
+        <h3 class="text-center">Είστε καθηγητής;</h3>
+            <a href = "<?= Url::to('new-user-professor')?>">
+                <img class="center-block" src = "<?= Url::to('@web/images/newuser/professor(Pixabay).jpg')?>" alt = "Professor" style="height: 313px ;width: 420px">
+            </a>
 
-                <?= $form->field($modelProfessor, 'firstname')->textInput() ?>
-                <?= $form->field($modelProfessor, 'lastname')->textInput() ?>
-                <?= $form->field($modelProfessor, 'telephone1')->textInput() ?>
-                <?= $form->field($modelProfessor, 'telephone2')->textInput() ?>
-                <?= $form->field($modelProfessor, 'email')->textInput() ?>
-                <?= $form->field($modelProfessor, 'skypeUsername')->textInput() ?>
-                <?= $form->field($modelProfessor, 'comments')->textInput() ?>
-                <?= $form->field($modelProfessor, 'url')->textInput() ?>
 
-                                    <!--ΣΤΟΙΧΕΙΑ ΦΟΙΤΗΤΗ-->
-            <?php elseif ($Role == 'student') :?>
-
-                <?= $form->field($modelStudents, 'firstname')->textInput() ;?>
-                <?= $form->field($modelStudents, 'lastname')->textInput() ;?>
-                <?= $form->field($modelStudents, 'telephone1')->textInput() ;?>
-                <?= $form->field($modelStudents, 'telephone2')->textInput() ;?>
-                <?= $form->field($modelStudents, 'email')->textInput() ;?>
-                <?= $form->field($modelStudents, 'comments')->textInput() ?>
-                <?= $form->field($modelStudents, 'url')->textInput() ?>
-                <?= $form->field($modelStudents, 'masterID')->textInput() ?>
-
-            <?php endif?>
-
-            <?= Html::submitButton('Εγγραφή',['class'=>'btn btn-success']) ?>
-            <?php ActiveForm::end(); ?>
 
         </div>
+<!--New student form-->
+        <div class="col-sm-6" >
+        <h3 class="text-center">Είστε φοιτητής;</h3>
+         <a href = "<?= Url::to('new-user-student')?>">
+            <img class="center-block" src = "<?= Url::to('@web/images/newuser/student(Pixabay).jpg')?>" alt = "Student" style="height: 313px ;width: 420px" >
+        </a>
+
+
+        </div>
+
+
+
+
     </div>
-    <div class="col-sm-offset-1 col-sm-5">
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-        <img src="<?= \yii\helpers\Url::to('@web/images/newUser/keyboard(Pixabay).jpg') ?>" alt="keyboard photo" class="img-rounded" style="max-width: 100%; max-height: 100%">
-    </div>
-</div>
+
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
