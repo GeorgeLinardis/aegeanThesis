@@ -49,6 +49,9 @@ AppAsset::register($this);
             ['label' => 'Φοιτητής',
                 'items'=>[
                     ['label'=>'Αρχική','url'=>['student/index']],
+                    ['label'=>'Η διπλωματική μου','url'=>['student/my-thesis']],
+                    ['label'=>'Οι πηγές μου','url'=>['student/my-references']],
+                    ['label'=>'Θέματα διπλωματικών','url'=>['student/all-theses']],
 
                 ],
             ],
