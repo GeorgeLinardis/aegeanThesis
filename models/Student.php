@@ -42,7 +42,7 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['thesisID'], 'integer'],
-            [['email', 'photo'], 'required'],
+            [['firstname','lastname','email', 'photo'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['url', 'comments'], 'string'],
             [['masterID', 'userUsername', 'firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
@@ -61,19 +61,19 @@ class Student extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'masterID' => 'Master ID',
+            'masterID' => 'Μεταπτυχιακό',
             'thesisID' => 'Thesis ID',
             'ID' => 'ID',
             'userUsername' => 'User Username',
-            'firstname' => 'Firstname',
-            'lastname' => 'Lastname',
-            'telephone1' => 'Telephone1',
-            'telephone2' => 'Telephone2',
+            'firstname' => 'Όνομα',
+            'lastname' => 'Επώνυμο',
+            'telephone1' => 'Τηλέφωνο 1',
+            'telephone2' => 'Τηλέφωνο 2',
             'email' => 'Email',
-            'skypeUsername' => 'Skype Username',
+            'skypeUsername' => 'Skype',
             'url' => 'Url',
-            'comments' => 'Comments',
-            'photo' => 'Photo',
+            'comments' => 'Σχόλια',
+            'photo' => 'Φωτογραφία',
         ];
     }
 

@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'author',
             'type',
-            'URL:ntext',
+            'URL:url',
             // 'date_created_by_author',
             // 'date_created_by_student',
             // 'date_updated_by_student',

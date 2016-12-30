@@ -45,7 +45,7 @@ class Professor extends \yii\db\ActiveRecord
             [['email'], 'string', 'max' => 200],
             [['telephone1','telephone2'], 'string', 'max' => 30],
             [['url'],'url'],
-            [['url','comments'],'string','max'=>500],
+            [['url','comments','skypeUsername'],'string','max'=>500],
             [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => DbUser::className(), 'targetAttribute' => ['userUsername' => 'Username']],
         ];
     }
@@ -64,8 +64,9 @@ class Professor extends \yii\db\ActiveRecord
             'email' => 'Email',
             'url' => 'Διεύθυνση URL',
             'telephone2'=>'Τηλέφωνο 2',
-            'skypeUsername'=>'skype',
-            'comments'=>'comments'
+            'skypeUsername'=>'Skype',
+            'comments'=>'Σχόλια',
+            'photo'=>'Φωτογραφία'
         ];
     }
 

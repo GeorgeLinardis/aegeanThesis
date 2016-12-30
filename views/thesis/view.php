@@ -34,7 +34,7 @@ use yii\helpers\Html;
         ],
     ]); ?>
 </div>
-<div class="col-sm-4" style="text-align: center">
+<div class="col-sm-4">
     <h4>Δημιουργία αίτησης διπλωματικής σε pdf μορφή:<h4><br />
     <?= Html::a('Δημιουργία PDF', [\yii\helpers\Url::toRoute(['thesis/pdf','id'=>($model->getAttribute('ID'))])], ['class'=>'btn btn-primary']) ; ?>
 </div>

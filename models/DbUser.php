@@ -47,7 +47,7 @@ class DbUser extends \yii\db\ActiveRecord
         return [
             'ID' => 'ID',
             'Username' => 'Όνομα Χρήστη',
-            'Password' => 'Κωδικός',
+            'Password' => 'Password',
             'Role' => 'Role',
         ];
     }

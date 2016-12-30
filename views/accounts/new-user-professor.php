@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
         <h3 class="text-center">
             <span class="glyphicon glyphicon-blackboard"></span> Νεός Χρήστης Καθηγητής</h3>
 
-        <div class = "text-center">Παρακαλώ συμπληρώστε τα στοιχεία σας στην παρακάτω φόρμα:</div>
+        <div>Παρακαλώ συμπληρώστε τα στοιχεία σας στην παρακάτω φόρμα:</div>
         <hr>
 
         <div class="thesis-form">
@@ -33,15 +33,15 @@ use yii\widgets\ActiveForm;
                 <?= $form->field($modelProfessor, 'skypeUsername')->textInput() ?>
                 <?= $form->field($modelProfessor, 'comments')->textInput() ?>
                 <?= $form->field($modelProfessor, 'url')->textInput() ?>
+                <?= $form->field($modelProfessor, 'photo')->textInput() ?>
+            <br />
 
-                <!--ΣΤΟΙΧΕΙΑ ΦΟΙΤΗΤΗ-->
 
             <?= Html::submitButton('Εγγραφή',['class'=>'btn btn-success']) ?>
-            <?php ActiveForm::end(); ?>
+            <?php ActiveForm::end(); ?><br />
 
         </div>
     </div>
     <div class="col-sm-offset-1 col-sm-5">
-        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <img src="<?= \yii\helpers\Url::to('@web/images/newUser/keyboard(Pixabay).jpg') ?>" alt="keyboard photo" class="img-rounded" style="max-width: 100%; max-height: 100%">
     </div>

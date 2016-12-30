@@ -46,15 +46,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="col-lg-offset-1" style="color:#999;">
 
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
     </div>
     <div class="col-md-3">
         <h2 class="text-center">Δεν έχετε λογαριασμό ; </h2><br />
-        <div class="text-center "><h4>Δημιουργία νέου!</h4></div><br>
+
         <a href = "<?= Url::to('/accounts/new-user')?>">
-            <img class="center-block" src = "<?= Url::to('@web/images/loginPage/new-user-logo.png')?>" alt = "Enter" style="height: 80px ;width: 90px">
+            <img class="center-block" src = "<?= Url::to('@web/images/loginPage/newuser-logo.png')?>" alt = "Enter" style="height: 90px ;width: 90px">
         </a>
+        <div class="text-center "><h4>Δημιουργία νέου!</h4></div><br>
 
     </div>
 

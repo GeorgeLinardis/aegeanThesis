@@ -20,8 +20,10 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <link type="text/css" href="/css/custom-css.css" rel="stylesheet">
 </head>
-<body style="background-color: #f2f2f2">
+<body id="main-body">
+
 <?php $this->beginBody() ?>
 
 <div class="wrap">
@@ -111,7 +113,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">George Linardis - Aegean University <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

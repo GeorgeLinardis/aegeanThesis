@@ -8,13 +8,13 @@ use app\models\DbUser;
 
     <div class="row" >
 
-     <h2 class="text-center">Επιλέξτε είδος χρήστη:</h2><br />
+     <h2>Επιλέξτε είδος χρήστη:</h2><br />
 
 
 <!--New professor form-->
         <div class="col-sm-6" >
 
-        <h3 class="text-center">Είστε καθηγητής;</h3>
+        <h3 >Είστε καθηγητής;</h3>
             <a href = "<?= Url::to('new-user-professor')?>">
                 <img class="center-block" src = "<?= Url::to('@web/images/newuser/professor(Pixabay).jpg')?>" alt = "Professor" style="height: 313px ;width: 420px">
             </a>
@@ -24,7 +24,7 @@ use app\models\DbUser;
         </div>
 <!--New student form-->
         <div class="col-sm-6" >
-        <h3 class="text-center">Είστε φοιτητής;</h3>
+        <h3>Είστε φοιτητής;</h3>
          <a href = "<?= Url::to('new-user-student')?>">
             <img class="center-block" src = "<?= Url::to('@web/images/newuser/student(Pixabay).jpg')?>" alt = "Student" style="height: 313px ;width: 420px" >
         </a>
