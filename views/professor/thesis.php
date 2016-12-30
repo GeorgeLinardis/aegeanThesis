@@ -2,7 +2,7 @@
 use yii\helpers\url;
 
 ?>
-
+<div class="professor-thesis">
     <div class="text-center"><h1>Οι διπλωματικές σας </h1></div><br>
 
     <div class="row">
@@ -41,4 +41,4 @@ use yii\helpers\url;
 
     </div>
 
-
+</div>

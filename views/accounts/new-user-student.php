@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
 
+<div class="accounts-new-user-student">
 <div class="row">
     <div class="col-sm-6">
         <h3><span class="glyphicon glyphicon-education"></span> Νεός Χρήστης Φοιτητής</h3>
@@ -42,4 +43,5 @@ use yii\widgets\ActiveForm;
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <img src="<?= \yii\helpers\Url::to('@web/images/newUser/keyboard(Pixabay).jpg') ?>" alt="keyboard photo" class="img-rounded" style="max-width: 100%; max-height: 100%">
     </div>
+</div>
 </div>

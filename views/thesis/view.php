@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 
 ?>
-
+<div class="thesis-view">
 <h2>Αναλυτική εικόνα Διπλωματικής</h2><br />
     <div class="col-sm-8">
     <?=
@@ -38,6 +38,6 @@ use yii\helpers\Html;
     <h4>Δημιουργία αίτησης διπλωματικής σε pdf μορφή:<h4><br />
     <?= Html::a('Δημιουργία PDF', [\yii\helpers\Url::toRoute(['thesis/pdf','id'=>($model->getAttribute('ID'))])], ['class'=>'btn btn-primary']) ; ?>
 </div>
-
+</div>
 
 

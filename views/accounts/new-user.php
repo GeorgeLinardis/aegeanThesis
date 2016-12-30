@@ -6,8 +6,8 @@ use app\models\DbUser;
 ?>
 <?php?>
 
-    <div class="row" >
-
+<div class="accounts-new-user">
+<div class="row" >
      <h2>Επιλέξτε είδος χρήστη:</h2><br />
 
 
@@ -35,7 +35,8 @@ use app\models\DbUser;
 
 
 
-    </div>
+</div>
 
+</div>
 
 <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

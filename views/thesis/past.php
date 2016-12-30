@@ -4,7 +4,7 @@ use yii\grid\GridView;
 /* @var $dataProvider \app\controllers\ThesisController*/
 ?>
 
-
+<div class="thesis-past">
 <h2> Διπλωματικές που έχουν ολοκληρωθεί</h2><br>
 
 <?=
@@ -23,3 +23,4 @@ GridView::widget([
 
 ]); ?>
 
+</div>

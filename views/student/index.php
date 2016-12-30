@@ -2,8 +2,8 @@
 use yii\helpers\url;
 
 ?>
-
-<div class="text-center"><h3>Αρχική σελίδα</h3></div>
+<div class="student-all-theses">
+<h3>Αρχική σελίδα</h3>
 <div class="row">
     <div class="col-sm-6">
         <a href= "<?= url::to('/student/my-thesis')?>" class="thumbnail">
@@ -34,4 +34,5 @@ use yii\helpers\url;
         </a>
         <h3> Κάτι άλλο</h3>
     </div>
+</div>
 </div>

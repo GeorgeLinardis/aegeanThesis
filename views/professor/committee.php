@@ -4,7 +4,7 @@ use yii\grid\GridView;
 /* @var $dataProvider \app\controllers\ThesisController*/
 ?>
 
-
+<div class="professor-committee">
 <h1> Οι τρέχουσες Επιτροπές</h1>
 Οι Επιτροπές στις οποίες λαμβάνετε μέρος την τρέχουσα περίοδο είναι οι εξής:<br><br>
 
@@ -25,3 +25,4 @@ GridView::widget([
             'template'=>'{view}'], //{delete} {update}
     ],
 ]); ?>
+</div>

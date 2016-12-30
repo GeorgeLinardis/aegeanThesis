@@ -2,7 +2,7 @@
 use yii\widgets\DetailView ;
 use yii\helpers\url;
 ?>
-
+<div class="accounts-profile">
 <div class="row">
 
     <div class="col-sm-8">
@@ -41,5 +41,5 @@ use yii\helpers\url;
     </div>
 
 </div>
-
+</div>
 

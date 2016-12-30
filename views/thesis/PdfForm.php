@@ -2,7 +2,7 @@
 use app\models\Professor;
 
 ?>
-
+<div class="thesis-past-form">
 <?php $professor = Professor::find()->where(['ID'=> ($model->professorID)])->one();?>
 <div class="pdfForm">
     <br />
@@ -46,7 +46,7 @@ use app\models\Professor;
 
 
 
-
+</div>
 
 
 

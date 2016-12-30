@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\thesis */
 /* @var $form ActiveForm */
 ?>
-
+<div class="thesis-create">
 
 <div class="row">
     <div class="col-sm-6">
@@ -49,4 +49,5 @@ use yii\widgets\ActiveForm;
         <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
         <img src="<?= \yii\helpers\Url::to('@web/images/professor/professor-create-thesis(pexels).jpg') ?>" alt="new thesis photo" class="img-rounded" style="max-width: 100%; max-height: 100%">
     </div>
+</div>
 </div>

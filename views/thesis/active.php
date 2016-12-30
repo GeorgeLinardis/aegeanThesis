@@ -3,7 +3,7 @@ use yii\grid\GridView;
 
 /* @var $dataProvider \app\controllers\ThesisController*/
 ?>
-
+<div class="thesis-active">
 <h2> Τρέχουσες Διπλωματικές </h2><br>
 <?=
 
@@ -25,3 +25,4 @@ GridView::widget([
 
 
 
+</div>

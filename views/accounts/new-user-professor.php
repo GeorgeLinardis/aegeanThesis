@@ -3,6 +3,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
 
+<div class="accounts-new-user-professor">
 <div class="row">
     <div class="col-sm-6">
         <h3 class="text-center">
@@ -45,3 +46,4 @@ use yii\widgets\ActiveForm;
     <div class="col-sm-offset-1 col-sm-5">
         <img src="<?= \yii\helpers\Url::to('@web/images/newUser/keyboard(Pixabay).jpg') ?>" alt="keyboard photo" class="img-rounded" style="max-width: 100%; max-height: 100%">
     </div>
+</div>
