@@ -19,3 +19,13 @@ footer .list-group-item:hover{
 h1,h2,h3 {
     text-align: center;
 }
+#main-photo{
+    height:100%;
+    width: 100%;
+
+}
+
+.professor-thesis a:hover,.student-all-theses a:hover{
+    opacity: 0.4;
+
+}

@@ -88,11 +88,11 @@ AppAsset::register($this);
 
                 ['label' => 'Χρήσιμα',
              'items'=>[
-                 ['label'=>'Aegean','url'=>'https://www.aegean.gr/'],
-                 ['label'=>'Eclass','url'=>'https://eclass.aegean.gr/'],
-                 ['label'=>'Webmail','url'=>'http://webmail.aegean.gr/'],
-                 ['label'=>'Icarus','url'=>'https://icarus-icsd.aegean.gr/'],
-                 ['label'=>'Github','url'=>'https://github.com/">Github'],
+                 ['label'=>'Aegean','url'=>'https://www.aegean.gr/','linkOptions'=>['target'=>'_blank']],
+                 ['label'=>'Eclass','url'=>'https://eclass.aegean.gr/','linkOptions'=>['target'=>'_blank']],
+                 ['label'=>'Webmail','url'=>'http://webmail.aegean.gr/','linkOptions'=>['target'=>'_blank']],
+                 ['label'=>'Icarus','url'=>'https://icarus-icsd.aegean.gr/','linkOptions'=>['target'=>'_blank']],
+                 ['label'=>'Github','url'=>'https://github.com/Github','linkOptions'=>['target'=>'_blank']],
                       ],
             ],
 

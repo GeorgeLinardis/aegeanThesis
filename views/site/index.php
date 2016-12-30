@@ -12,10 +12,9 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών �
         <h1><?= Html::encode($this->title) ?></h1>
 
 
-    <div style='background-image: url("<?= Url::to('@web/images/main_page_image.jpg')?>");background-size: cover;
-			background-position: center center ; min-height:400px ;max-width: 100%;' class="jumbotron">
+    <img src="images/main_page_image.jpg" id="main-photo">
 
-    </div>
+
 
     <div class="body-content">
 
