@@ -113,6 +113,13 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
+        <ul>
+            <li><a href="/site/about">Σχετικά</li>
+            <li><a href="/site/contact">Επικοινωνία</li>
+        </ul>
+        <hr>
+    </div>
+    <div class="container">
         <p class="pull-left">George Linardis - Aegean University <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
