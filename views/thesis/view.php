@@ -3,8 +3,10 @@
 use yii\widgets\DetailView;
 use yii\helpers\Html;
 
-
-
+?>
+<?php
+$this->title = 'Ανάλυση διπλωματικής';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="thesis-view">
 <h2>Αναλυτική εικόνα Διπλωματικής</h2><br />

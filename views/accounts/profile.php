@@ -2,6 +2,11 @@
 use yii\widgets\DetailView ;
 use yii\helpers\url;
 ?>
+<?php
+$this->title = 'Προφίλ Χρήστη';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+
 <div class="accounts-profile">
 <div class="row">
 

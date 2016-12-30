@@ -4,7 +4,10 @@ use yii\helpers\Html;
 use app\models\Professor;
 use app\models\DbUser;
 ?>
-<?php?>
+<?php
+$this->title = 'Νέος Χρήστης';
+$this->params['breadcrumbs'][] = $this->title;
+?>
 
 <div class="accounts-new-user">
 <div class="row" >

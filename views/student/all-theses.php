@@ -4,6 +4,11 @@ use yii\grid\GridView;
 /* @var $dataProvider \app\controllers\StudentController*/
 
 ?>
+<?php
+$this->title = 'Διπλωματικές Μεταπτυχιακού';
+$this->params['breadcrumbs'][] = ['label' => 'Φοιτητής', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+?>
 <div class="student-all-theses">
 <h2> Διπλωματικές Μεταπτυχιακού Προγράμματος Σπουδών </h2>
 <h2> "<?php echo $Master->title?> " </h2><br />

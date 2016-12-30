@@ -3,12 +3,12 @@
 /* @var $this yii\web\View */
 use yii\helpers\Url;
 
-$this->title = 'My Yii Application';
+$this->title = 'Σύστημα διαχείρισης διπλωματικών του Πανεπιστημίου Αιγαίου';
 ?>
 <div class="site-index">
 
 
-        <h2>Σύστημα διαχείρισης διπλωματικών του Πανεπιστημίου Αιγαίου</h2>
+        <h2><?php echo $this->title;?></h2>
 
 
     <div style='background-image: url("<?= Url::to('@web/images/main_page_image.jpg')?>");background-size: cover;

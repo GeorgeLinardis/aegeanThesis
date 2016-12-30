@@ -2,6 +2,12 @@
 use yii\helpers\url;
 
 ?>
+<?php
+$this->title = 'Διπλωματικές';
+$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'index'];
+$this->params['breadcrumbs'][] = $this->title;
+?>
+
 <div class="professor-thesis">
     <div class="text-center"><h1>Οι διπλωματικές σας </h1></div><br>
 

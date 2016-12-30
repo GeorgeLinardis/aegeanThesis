@@ -7,6 +7,12 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\thesis */
 /* @var $form ActiveForm */
 ?>
+<?php
+$this->title = 'Δημιουργία Διπλωματικής';
+$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'professor/thesis'];
+$this->params['breadcrumbs'][] = ['label'=>'Διπλωματικές','url'=>'../professor/thesis'];
+$this->params['breadcrumbs'][] = $this->title;
+?>
 <div class="thesis-create">
 
 <div class="row">

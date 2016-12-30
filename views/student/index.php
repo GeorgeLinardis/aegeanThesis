@@ -2,6 +2,11 @@
 use yii\helpers\url;
 
 ?>
+<?php
+$this->title = 'Φοιτητής';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+
 <div class="student-all-theses">
 <h3>Αρχική σελίδα</h3>
 <div class="row">

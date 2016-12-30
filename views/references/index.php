@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ReferencesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Πηγές';
+$this->title = 'Αναφορές';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="references-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create References', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Δημιουργία Αναφοράς', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

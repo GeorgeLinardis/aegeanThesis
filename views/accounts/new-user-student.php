@@ -2,7 +2,11 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
-
+<?php
+$this->title = 'Φοιτητής';
+$this->params['breadcrumbs'][]=['label'=>'Νέος Χρήστης','url'=>'new-user'];
+$this->params['breadcrumbs'][] = $this->title;
+?>
 <div class="accounts-new-user-student">
 <div class="row">
     <div class="col-sm-6">
@@ -35,6 +39,7 @@ use yii\widgets\ActiveForm;
                 <?= $form->field($modelStudents, 'photo')->textInput() ?>
 
             <?= Html::submitButton('Εγγραφή',['class'=>'btn btn-success']) ?>
+            <?= Html::a('Επιστροφή', ['new-user'], ['class' => 'btn btn-default']) ?>
             <?php ActiveForm::end(); ?>
 
         </div>

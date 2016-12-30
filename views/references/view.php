@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\References */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'References', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Αναφορές', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="references-view">
@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->ID], [
+        <?= Html::a('Ανανέωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Διαγραφή', ['delete', 'id' => $model->ID], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -39,5 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'file:ntext',
         ],
     ]) ?>
+    <?= Html::a('Επιστροφή', ['index'], ['class' => 'btn btn-default']) ?>
 
 </div>
