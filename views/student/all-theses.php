@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Φοιτητής', 'url' => ['inde
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="student-all-theses">
-<h2> Διπλωματικές Μεταπτυχιακού Προγράμματος Σπουδών </h2>
+<h1> Διπλωματικές Μεταπτυχιακού Προγράμματος Σπουδών </h1>
 <h2> "<?php echo $Master->title?> " </h2><br />
 <?=
 

@@ -8,7 +8,6 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="student-all-theses">
-<h3>Αρχική σελίδα</h3>
 <div class="row">
     <div class="col-sm-6">
         <a href= "<?= url::to('/student/my-thesis')?>" class="thumbnail">

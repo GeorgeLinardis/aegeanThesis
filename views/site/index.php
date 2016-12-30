@@ -2,13 +2,14 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 $this->title = 'Σύστημα διαχείρισης διπλωματικών του Πανεπιστημίου Αιγαίου';
 ?>
 <div class="site-index">
 
 
-        <h2><?php echo $this->title;?></h2>
+        <h1><?= Html::encode($this->title) ?></h1>
 
 
     <div style='background-image: url("<?= Url::to('@web/images/main_page_image.jpg')?>");background-size: cover;

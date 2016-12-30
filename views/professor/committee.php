@@ -1,5 +1,6 @@
 <?php
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $dataProvider \app\controllers\ThesisController*/
 ?>
@@ -9,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'index'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="professor-committee">
-<h1> Οι τρέχουσες Επιτροπές</h1>
+<h1> <?= Html::encode($this->title) ?></h1>
 Οι Επιτροπές στις οποίες λαμβάνετε μέρος την τρέχουσα περίοδο είναι οι εξής:<br><br>
 
 

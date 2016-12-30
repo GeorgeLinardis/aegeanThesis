@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\url;
+use yii\helpers\Html;
 
 ?>
 <?php
@@ -9,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="professor-thesis">
-    <div class="text-center"><h1>Οι διπλωματικές σας </h1></div><br>
+    <div class="text-center"><h1>Οι <?= Html::encode($this->title) ?> σας </h1></div><br>
 
     <div class="row">
         <div class="col-sm-3">

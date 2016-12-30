@@ -9,7 +9,7 @@ $this->title = 'Ανάλυση διπλωματικής';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="thesis-view">
-<h2>Αναλυτική εικόνα Διπλωματικής</h2><br />
+<h1><?= Html::encode($this->title) ?></h1><br />
     <div class="col-sm-8">
     <?=
 

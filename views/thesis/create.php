@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 ?>
 <?php
 $this->title = 'Δημιουργία Διπλωματικής';
-$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'professor/thesis'];
+$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'../professor'];
 $this->params['breadcrumbs'][] = ['label'=>'Διπλωματικές','url'=>'../professor/thesis'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <div class="col-sm-6">
         <h3>
-            <span class="glyphicon glyphicon-blackboard"></span> Δημιουργία νέας διπλωματικής</h3>
+            <span class="glyphicon glyphicon-blackboard"></span><?= ' '.Html::encode($this->title) ?></h3>
 
         <div>Παρακαλώ συμπληρώστε τα στοιχεία σας στην παρακάτω φόρμα:</div><br />
 

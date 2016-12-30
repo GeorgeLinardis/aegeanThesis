@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="accounts-new-user">
 <div class="row" >
-     <h2>Επιλέξτε είδος χρήστη:</h2><br />
+     <h1><?= Html::encode($this->title) ?></h1><br />
 
 
 <!--New professor form-->
