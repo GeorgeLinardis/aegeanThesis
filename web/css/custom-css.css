@@ -1,7 +1,3 @@
-#main-body{
-    background-color: #f2f2f2
-
-}
 
 footer , footer .list-group-item{
     background-color: #222;
@@ -16,16 +12,36 @@ footer .list-group-item:hover{
 }
 
 
-h1,h2,h3 {
+h1,h2,h3,h4,h5 {
     text-align: center;
-}
-#main-photo{
-    height:100%;
-    width: 100%;
 
+}
+p {
+    text-align: justify;
+}
+
+
+.accounts-new-user img{
+    height: 313px ;
+    width: 420px
 }
 
 .professor-thesis a:hover,.student-all-theses a:hover{
     opacity: 0.4;
+
+}
+
+.accounts-new-user-professor img, .accounts-new-user-student img{
+    padding-top: 50%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#main-photo{
+    height:70%;
+    width: 70%;
+}
+#main-body{
+    background-color: #f2f2f2
 
 }

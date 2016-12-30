@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <h3 >Είστε καθηγητής;</h3>
             <a href = "<?= Url::to('new-user-professor')?>">
-                <img class="center-block" src = "<?= Url::to('@web/images/newuser/professor(Pixabay).jpg')?>" alt = "Professor" style="height: 313px ;width: 420px">
+                <img class="center-block" src = "<?= Url::to('@web/images/newuser/professor(Pixabay).jpg')?>" alt = "Professor">
             </a>
 
 
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-6" >
         <h3>Είστε φοιτητής;</h3>
          <a href = "<?= Url::to('new-user-student')?>">
-            <img class="center-block" src = "<?= Url::to('@web/images/newuser/student(Pixabay).jpg')?>" alt = "Student" style="height: 313px ;width: 420px" >
+            <img class="center-block" src = "<?= Url::to('@web/images/newuser/student(Pixabay).jpg')?>" alt = "Student">
         </a>
 
 
@@ -42,4 +42,3 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

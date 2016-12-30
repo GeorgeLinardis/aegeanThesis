@@ -17,21 +17,21 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href= "<?= url::to('/thesis/create')?>" class="thumbnail">
                 <img src="/images/professor/professor-thesis-creation(bluediamondgallery).jpg" alt="Create NEW Thesis">
             </a>
-            <div> Δημιουργία νέας διπλωματικής</div>
+            <h5> Δημιουργία νέας διπλωματικής</h5>
         </div>
 
         <div class="col-sm-3 text-center">
             <a href="<?= url::to('/thesis/active')?>" class="thumbnail">
                 <img src="/images/professor/professor-thesis-under-construction(pexels).jpeg" alt="Manage Thesis">
             </a>
-            <div> Τρέχουσες διπλωματικές</div>
+            <h5> Τρέχουσες διπλωματικές</h5>
         </div>
 
         <div class="col-sm-3 text-center">
             <a href="<?= url::to('/thesis/committee')?>" class="thumbnail">
                 <img src="/images/professor/professor-thesis-committee(bluediamondgallery).jpg" alt="Committee Thesis">
             </a>
-            <div> Προς την Επιτροπή</div>
+            <h5> Προς την Επιτροπή</h5>
         </div>
 
         <div class="col-sm-3 text-center">
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="<?= url::to('/thesis/past')?>" class="thumbnail">
                 <img src="/images/professor/professor-thesis-past-thesis(pixabay).jpg" alt="OLD Thesis">
             </a>
-            <div> Διπλωματικές στο παρελθόν</div>
+            <h5> Διπλωματικές στο παρελθόν</h5>
 
         </div>
 

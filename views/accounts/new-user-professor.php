@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <h3 class="text-center">
             <span class="glyphicon glyphicon-blackboard"></span> Νεός Χρήστης Καθηγητής</h3>
 
-        <div>Παρακαλώ συμπληρώστε τα στοιχεία σας στην παρακάτω φόρμα:</div>
+        <p>Παρακαλώ συμπληρώστε τα στοιχεία σας στην παρακάτω φόρμα:</p>
         <hr>
 
         <div class="thesis-form">
@@ -49,6 +49,6 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <div class="col-sm-offset-1 col-sm-5">
-        <img src="<?= \yii\helpers\Url::to('@web/images/newUser/keyboard(Pixabay).jpg') ?>" alt="keyboard photo" class="img-rounded" style="max-width: 100%; max-height: 100%">
+        <img src="<?= \yii\helpers\Url::to('@web/images/newUser/keyboard(Pixabay).jpg') ?>" alt="keyboard photo" class="img-rounded">
     </div>
 </div>
