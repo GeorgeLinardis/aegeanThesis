@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="col-sm-6">
-        <a href="<?= url::to('/student-references/index')?>" class="thumbnail">
+        <a href="<?= url::to('/student/my-references')?>" class="thumbnail">
             <img src="/images/student/student-myreferences(pexels).jpg" alt="My References">
         </a>
         <h3> Οι πηγές μου</h3>

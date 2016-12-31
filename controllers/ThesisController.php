@@ -45,7 +45,7 @@ class ThesisController extends \yii\web\Controller
 
     public function actionCommittee(){
         $dataProvider = new ActiveDataProvider(
-            ['query'=>(Thesis::find()->where(['status'=>['για Επιτροπή'] ])),
+            ['query'=>(Theses::find()->where(['status'=>['για Επιτροπή'] ])),
                 'pagination'=>['pageSize'=>10]]
         );
 

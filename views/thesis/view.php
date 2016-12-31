@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::a('Δημιουργία PDF', [Url::toRoute(['thesis/pdf','id'=>($model->getAttribute('ID'))])], ['class'=>'btn btn-primary']) ; ?>
     <br><br>
     <h4>Αποστολή αιτήματος προς Μέλος Επιτροπής:<h4><br />
-    <?= Html::a('Αποστολή email', [Url::toRoute('mail/committee-email')], ['class'=>'btn btn-primary']) ; ?>
+    <?= Html::a('Αποστολή email', [Url::toRoute('email/committee-email')], ['class'=>'btn btn-primary']) ; ?>
 
 
 

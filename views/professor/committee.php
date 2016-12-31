@@ -30,4 +30,5 @@ GridView::widget([
             'template'=>'{view}'], //{delete} {update}
     ],
 ]); ?>
+
 </div>

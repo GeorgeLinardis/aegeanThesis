@@ -41,6 +41,7 @@ AppAsset::register($this);
             ['label' => 'Αρχική', 'url' => ['/site/index']],
             ['label' => 'Λογαριασμοί', 'url' => ['/accounts/new-user']],
             ['label' => 'Πηγές', 'url' => ['/references/index']],
+            ['label' => 'NEW THESES', 'url' => ['/theses/index']],
             ['label' => 'Καθηγητής',
                 'items'=>[
                     ['label'=>'Αρχική','url'=>['professor/index']],

@@ -9,6 +9,7 @@ use yii\web\Controller;
 use app\models\Thesis;
 use app\models\Student;
 use app\models\References;
+use app\models\ReferencesSearch;
 use yii\data\ActiveDataProvider;
 
 
@@ -39,6 +40,18 @@ class StudentController extends Controller
     public function actionMyThesis()
     {
         return $this->render('my-thesis');
+    }
+
+
+    public function actionMyReferences()
+    {   $searchModel = new ReferencesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('my-references',[
+            'searchModel'=>$searchModel,
+            'dataProvider'=>$dataProvider,
+
+        ]);
     }
 
 
