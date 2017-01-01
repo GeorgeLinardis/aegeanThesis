@@ -2,103 +2,123 @@
 
 namespace app\controllers;
 
+use Yii;
 use app\models\Thesis;
-use kartik\mpdf\Pdf;
-use yii\data\ActiveDataProvider;
+use app\models\ThesisSearch;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
-class ThesisController extends \yii\web\Controller
+/**
+ * ThesisController implements the CRUD actions for Thesis model.
+ */
+class ThesisController extends Controller
 {
-     public function actionIndex(){
-        return $this->render('index');
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
     }
 
-    public function actionView($id){
-        $model = Thesis::find()->where(['id'=> $id])->one();
+    /**
+     * Lists all Thesis models.
+     * @return mixed
+     */
+    public function actionIndex()
+    {
+        $searchModel = new ThesisSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('view',
-            ['model'=>$model]);
-
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
+    /**
+     * Displays a single Thesis model.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => $this->findModel($id),
+        ]);
+    }
 
-    public function actionCreate(){
+    /**
+     * Creates a new Thesis model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
         $model = new Thesis();
 
-        return $this->render('create',
-                      ['model'=>$model]
-                        );
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->ID]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
+    /**
+     * Updates an existing Thesis model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
 
-
-    public function actionActive(){
-
-        $dataProvider = new ActiveDataProvider(
-            ['query'=>(Thesis::find()->where(['status'=>['έχει ανατεθεί','δεν έχει ανατεθεί','υπο έγκριση'] ])),
-             'pagination'=>['pageSize'=>10]]
-        );
-
-        return $this->render('active',
-            ['dataProvider'=>$dataProvider]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->ID]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
 
+    /**
+     * Deletes an existing Thesis model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
 
-    public function actionCommittee(){
-        $dataProvider = new ActiveDataProvider(
-            ['query'=>(Theses::find()->where(['status'=>['για Επιτροπή'] ])),
-                'pagination'=>['pageSize'=>10]]
-        );
-
-        return $this->render('committee',
-            ['dataProvider'=>$dataProvider]);
+        return $this->redirect(['index']);
     }
 
-
-
-    public function actionPast(){
-        $dataProvider = new ActiveDataProvider(
-            ['query'=>(Thesis::find()->where(['status'=>['ολοκληρώθηκε'] ])),
-                'pagination'=>['pageSize'=>10]]
-        );
-
-        return $this->render('past',
-            ['dataProvider'=>$dataProvider]);
+    /**
+     * Finds the Thesis model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Thesis the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Thesis::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
-
-    public function actionPdf($id){
-        $model = Thesis::find()->where(['id'=> $id])->one();
-        $content = $this->renderPartial('pdfForm',array('id'=>$id,'model'=>$model));
-        $pdf = new Pdf([
-            // set to use core fonts only
-            'mode' => Pdf::MODE_UTF8,
-            'orientation' => Pdf::ORIENT_PORTRAIT,
-            // stream to browser inline
-            'destination' => Pdf::DEST_BROWSER,
-            // your html content input
-            'content' => $content,
-            // format content from your own css file if needed or use the
-            // enhanced bootstrap css built by Krajee for mPDF formatting
-            'cssFile' => '@vendor/kartik-v/yii2-mpdf/assets/kv-mpdf-bootstrap.min.css',
-            // any css to be embedded if required
-            'cssInline' => '.kv-heading-1{font-size:18px}',
-            // set mPDF properties on the fly
-            'options' => ['title' => 'Thesis Report Title'],
-            // call mPDF methods on the fly
-            'methods' => [
-                'SetHeader'=>[$model->getAttributeLabel('ID').": ".$id ],
-                'SetFooter'=>['Σελίδα : {PAGENO}'],
-            ]
-        ]);
-
-        // return the pdf output as per the destination setting
-        return $pdf->render();
-
-
-
-    }
-
-
-
-
-
 }

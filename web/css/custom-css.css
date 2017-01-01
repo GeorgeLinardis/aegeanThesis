@@ -31,7 +31,7 @@ p {
 
 }
 
-.accounts-new-user-professor img, .accounts-new-user-student img{
+.accounts-new-user-professor img, .accounts-new-user-student img ,.professor-thesis-create-new img{
     padding-top: 50%;
     max-width: 100%;
     max-height: 100%;

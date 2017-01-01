@@ -12,24 +12,15 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="thesis-active">
-<h1> <?= Html::encode($this->title) ?></h1><br>
-<?=
+    <h1> <?= Html::encode($this->title) ?></h1><br>
 
+    <?php
+    echo $this->render('//thesis/index', [
 
-
-GridView::widget([
-    'dataProvider' => $dataProvider,
-    'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
-        'ID',
-        'masterID',
-        'title',
-        'status',
-        'dateCreated',
-        ['class' => 'yii\grid\ActionColumn',
-         'template'=>'{view}'], //{delete} {update}
-        ],
-    ]); ?>
+        'dataProvider'=>$dataProvider,
+        'searchModel' => $searchModel
+    ])
+    ?>
 
 
 

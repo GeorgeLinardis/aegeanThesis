@@ -2,12 +2,15 @@
 
 namespace app\controllers;
 
+use app\models\Professor;
 use Yii;
+use yii\data\ActiveDataProvider;
+use yii\data\SqlDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+
 
 class SiteController extends Controller
 {
@@ -100,17 +103,15 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
+    public function actionContact(){
+        $query = Professor::find();
+        $dataProvider = new ActiveDataProvider(
+            ['query'=>$query,
         ]);
+
+        return $this->render('contact',
+            ['dataProvider'=>$dataProvider]
+        );
     }
 
     /**

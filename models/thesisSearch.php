@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\thesis;
+use app\models\Thesis;
 
 /**
- * thesisSearch represents the model behind the search form about `app\models\thesis`.
+ * ThesisSearch represents the model behind the search form about `app\models\Thesis`.
  */
-class thesisSearch extends thesis
+class ThesisSearch extends Thesis
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class thesisSearch extends thesis
      */
     public function search($params)
     {
-        $query = thesis::find();
+        $query = Thesis::find();
 
         // add conditions that should always apply here
 
