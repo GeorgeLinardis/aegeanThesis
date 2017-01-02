@@ -44,9 +44,9 @@ class Master extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'ID',
-            'title' => 'Title',
-            'departmentID' => 'Department ID',
+            'ID' => 'Κωδικός',
+            'title' => 'Τίτλος',
+            'departmentID' => 'Κωδικός Τμήματος',
         ];
     }
 

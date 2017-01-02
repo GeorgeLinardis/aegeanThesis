@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($modelStudents, 'comments')->textInput() ?>
                 <?= $form->field($modelStudents, 'url')->textInput() ?>
                 <?= $form->field($modelStudents, 'masterID')->textInput() ?>
-                <?= $form->field($modelStudents, 'photo')->textInput() ?>
+                <?= $form->field($modelStudents, 'photo')->fileInput() ?>
 
             <?= Html::submitButton('Εγγραφή',['class'=>'btn btn-success']) ?>
             <?= Html::a('Επιστροφή', ['new-user'], ['class' => 'btn btn-default']) ?>

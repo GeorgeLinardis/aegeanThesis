@@ -30,6 +30,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'ID',
             'professorID',
+            [   'label'=>'Επιβλέπων Καθηγητής',
+                'value'=>$model->professor->firstname.' '.$model->professor->lastname ,
+
+            ],
             'title',
             'description:ntext',
             'goal:ntext',
@@ -37,13 +41,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'max_students',
             'comments:ntext',
             'status',
-            'dateCreated',
-            'datePresented',
-            'committee1',
-            'committee2',
-            'committee3',
+            'dateCreated:date',
+            'datePresented:date',
+            [   'attribute'=>'committee1',
+                'value'=>$model->committee10->lastname.' '.$model->committee10->firstname
+            ],
+            [   'attribute'=>'committee2',
+                'value'=>$model->committee20->lastname.' '.$model->committee20->firstname
+            ],
+            [   'attribute'=>'committee3',
+                'value'=>$model->committee30->lastname.' '.$model->committee30->firstname
+            ],
             'RequestPDf',
-            'masterID',
+            [   'attribute'=>'masterID',
+                'value'=>$model->master->title
+            ],
+
         ],
     ]) ?>
 

@@ -42,6 +42,13 @@ AppAsset::register($this);
             ['label' => 'Λογαριασμοί', 'url' => ['/accounts/new-user']],
             ['label' => 'Πηγές', 'url' => ['/references/index']],
             ['label' => 'Admin', 'url' => ['/admin/index']],
+            ['label' => 'Extra',
+                'items'=>[
+                    ['label'=>'Email','url'=>['email/committee']],
+                    ['label'=>'Chat','url'=>['chat/chat']],
+                    ['label'=>'ChatRoom','url'=>['chat/chat-room']],
+                ],
+            ],
             ['label' => 'Καθηγητής',
                 'items'=>[
                     ['label'=>'Αρχική','url'=>['professor/index']],

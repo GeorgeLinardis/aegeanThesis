@@ -22,7 +22,7 @@ use Yii;
  * @property integer $committee2
  * @property integer $committee3
  * @property string $RequestPDf
- *
+ * @property string $masterID
  * @property Student[] $students
  * @property Professor $professor
  * @property Professor $committee10
@@ -53,10 +53,12 @@ class Thesis extends \yii\db\ActiveRecord
             [['dateCreated', 'datePresented'], 'safe'],
             [['title'], 'string', 'max' => 200],
             [['RequestPDf'], 'string', 'max' => 256],
+            [['masterID'], 'string', 'max' => 50],
             [['professorID'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['professorID' => 'ID']],
             [['committee1'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['committee1' => 'ID']],
             [['committee2'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['committee2' => 'ID']],
             [['committee3'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['committee3' => 'ID']],
+            [['masterID'], 'exist', 'skipOnError' => true, 'targetClass' => Master::className(), 'targetAttribute' => ['masterID' => 'ID']],
         ];
     }
 
@@ -123,6 +125,11 @@ class Thesis extends \yii\db\ActiveRecord
     public function getCommittee30()
     {
         return $this->hasOne(Professor::className(), ['ID' => 'committee3']);
+    }
+
+    public function getMaster()
+    {
+        return $this->hasOne(Master::className(), ['ID' => 'masterID']);
     }
 
     /**

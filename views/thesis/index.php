@@ -20,8 +20,7 @@ $this->title = 'Theses';
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
 
-            'ID',
-            'professorID',
+            //'professorID',
             'title',
             //'description:ntext',
             //'goal:ntext',
@@ -29,13 +28,14 @@ $this->title = 'Theses';
             // 'max_students',
             // 'comments:ntext',
              'status',
-             'dateCreated',
+             'dateCreated:date',
             // 'datePresented',
             // 'committee1',
             // 'committee2',
             // 'committee3',
             // 'RequestPDf',
              'masterID',
+             'ID',
 
             ['class' => 'yii\grid\ActionColumn',
              'template'=>'{view}{update}{delete}',

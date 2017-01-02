@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($modelProfessor, 'skypeUsername')->textInput() ?>
                 <?= $form->field($modelProfessor, 'comments')->textInput() ?>
                 <?= $form->field($modelProfessor, 'url')->textInput() ?>
-                <?= $form->field($modelProfessor, 'photo')->textInput() ?>
+                <?= $form->field($modelProfessor, 'photo')->fileInput() ?>
             <br />
 
 
