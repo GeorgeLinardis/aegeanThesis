@@ -5,6 +5,7 @@ namespace app\controllers;
 use yii;
 use yii\web\Controller;
 use app\models\Chat;
+use app\models\Comment;
 
 class ChatController extends Controller
 {
@@ -43,6 +44,12 @@ class ChatController extends Controller
         }
     }
 
+    public function actionChat(){
+        $model = new Comment();
+        $this-> render('chat',
+            ['model'=>$model]
+        );
+    }
 
 
 

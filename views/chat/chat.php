@@ -1,6 +1,9 @@
-<pre>
+<?php
 
-    <?php print_r($messages);?>
+?>
 
+// the model to which are added comments, for example:
 
-</pre>
+<?php echo yii2mod\comments\widgets\Comment::widget([
+    'model' => $model,
+]); ?>
