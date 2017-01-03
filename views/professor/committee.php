@@ -6,7 +6,7 @@ use yii\helpers\Html;
 ?>
 <?php
 $this->title = 'Τρέχουσες Επιτροπές';
-$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'index'];
+$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'main'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="professor-committee">

@@ -27,6 +27,8 @@ use Yii;
  */
 class Student extends \yii\db\ActiveRecord
 {
+
+
     /**
      * @inheritdoc
      */
@@ -42,16 +44,17 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['thesisID'], 'integer'],
-            [['firstname','lastname','email', 'photo'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
+            [['firstname','lastname','email'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['url', 'comments'], 'string'],
             [['masterID', 'userUsername', 'firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],
             [['photo'], 'string', 'max' => 256],
             [['email'], 'unique'],
-            [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userUsername' => 'Username']],
+            [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => DbUser::className(), 'targetAttribute' => ['userUsername' => 'Username']],
             [['masterID'], 'exist', 'skipOnError' => true, 'targetClass' => Master::className(), 'targetAttribute' => ['masterID' => 'ID']],
             [['thesisID'], 'exist', 'skipOnError' => true, 'targetClass' => Thesis::className(), 'targetAttribute' => ['thesisID' => 'ID']],
+            [['photo'],'file','extensions'=>'png,jpg,gif','message'=>'Αποδεκτές μορφές φωτογραφίας: .png .jpg .gif']
         ];
     }
 
@@ -73,7 +76,9 @@ class Student extends \yii\db\ActiveRecord
             'skypeUsername' => 'Skype',
             'url' => 'Url',
             'comments' => 'Σχόλια',
-            'photo' => 'Φωτογραφία',
+            'photo'=>'Φωτογραφία',
+
+
         ];
     }
 

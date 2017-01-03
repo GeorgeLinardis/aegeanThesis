@@ -5,7 +5,7 @@ use yii\helpers\Html;
 ?>
 <?php
 $this->title = 'Διπλωματικές';
-$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'index'];
+$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'main'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

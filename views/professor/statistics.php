@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 <?php
 $this->title = 'Στατιστικά στοιχεία';
-$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'index'];
+$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'main'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

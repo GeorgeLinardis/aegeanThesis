@@ -6,7 +6,7 @@ use yii\grid\GridView;
 ?>
 <?php
 $this->title = 'Διπλωματικές Μεταπτυχιακού';
-$this->params['breadcrumbs'][] = ['label' => 'Φοιτητής', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Φοιτητής', 'url' => ['main']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="student-all-theses">

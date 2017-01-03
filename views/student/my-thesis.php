@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 <?php
 $this->title = 'Η διπλωματική μου';
-$this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'index'];
+$this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'main'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

@@ -1,7 +1,7 @@
 <?php
 
 $this->title = 'Οι Αναφορές μου';
-$this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/index'];
+$this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/main'];
 
 
 

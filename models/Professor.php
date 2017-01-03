@@ -24,9 +24,12 @@ use Yii;
  */
 class Professor extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
+
+
     public static function tableName()
     {
         return 'professor';
@@ -47,6 +50,8 @@ class Professor extends \yii\db\ActiveRecord
             [['url'],'url'],
             [['url','comments','skypeUsername'],'string','max'=>500],
             [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => DbUser::className(), 'targetAttribute' => ['userUsername' => 'Username']],
+            [['photo'],'file','extensions'=>'png,jpg,gif','message'=>'Αποδεκτές μορφές φωτογραφίας: .png .jpg .gif']
+
         ];
     }
 
@@ -66,7 +71,7 @@ class Professor extends \yii\db\ActiveRecord
             'telephone2'=>'Τηλέφωνο 2',
             'skypeUsername'=>'Skype',
             'comments'=>'Σχόλια',
-            'photo'=>'Φωτογραφία'
+            'photo'=>'Φωτογραφία',
         ];
     }
 

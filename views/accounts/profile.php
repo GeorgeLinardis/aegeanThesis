@@ -4,47 +4,50 @@ use yii\helpers\url;
 ?>
 <?php
 $this->title = 'Προφίλ Χρήστη';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="accounts-profile">
 <div class="row">
 
     <div class="col-sm-8">
-        <div class="col-sm-6"><h3 class="text-center">Προφίλ Χρήστη</h3></div>
-        <div class="col-sm-6">
-        <?php if ($Role == 'professor'):?>
-            <img src = "<?=Url::to('@web/images/professor/Professore-default-user-icon(Icon-Archive)')?>" alt = "Professor" style="height: 86px ;width: 90px">
-            <?php elseif ($Role == 'student'):?>
-            <img src = "<?=Url::to('@web/images/student/Students-default-user-icon(Icon-Archive)')?>" alt = "Student" style="height: 76px ;width: 90px">
-            <?php endif ;?>
-        </div>
+        <h3 class="text-center">Προφίλ Χρήστη</h3>
+            <?php if ($Role == 'professor'):?>
 
-        <?php
-            echo DetailView::widget([
-            'model' => $model,
-            'attributes'=>[
-                ['label'=>'Όνομα Χρήστη',
-                 'value'=>$model->userUsername,
-                ],
-                'firstname',
-                'lastname',
-                'telephone1',
-                'telephone2',
-                'email:email',
-                'skypeUsername',
-                'url:url',
-                'comments',
-                'photo',
-                ],
+                    <?= $this->render('//professor/view', [
+                        'model' => $model,
+                            ])
+                    ?>
 
-             'options'=>['class'=>'table table-striped text-left'],
+        <?php elseif ($Role == 'student'):?>
 
-            ]);
+                <?= $this->render('//student/view', [
+                'model' => $model,
 
-    ?>
+                ])
+                ?>
+
+            <?php endif;?>
     </div>
+    <div class="col-sm-4 ">
+        <?php if ($Role == 'professor'):{?>
+            <?php if ($model->photo):?>
+                <img src = "<?=Url::to('@web/images/UserPhotos/'.$model->photo)?>" alt = "User photo" style="height: 106px ;width: 110px">
+            <?php else:?>
+                <img src = "<?=Url::to('@web/images/professor/Professors-default-user-icon(Icon-Archive)')?>" alt = "Professor" style="height: 86px ;width: 90px">
+
+            <?php endif;?>
+
+        <?php } elseif ($Role == 'student'):{?>
+            <?php if ($model->photo):?>
+                <img src = "<?=Url::to('@web/images/UserPhotos/'.$model->photo)?>" alt = "User photo" style="height: 86px ;width: 90px">
+            <?php else:?>
+                <img src = "<?=Url::to('@web/images/student/Students-default-user-icon(Icon-Archive)')?>" alt = "Student" style="height: 76px ;width: 90px">
+            <?php endif ;?>
+
+
+        <?php }endif;?></div>
+
+
 
 </div>
 </div>
-
