@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-sm-3">
             <a href= "<?= url::to('all-professors')?>" class="thumbnail">
-                <img src="/images/admin/admin-professors(Pexels)" alt="All Professors">
+                <img src="/images/admin/admin-professors(Pixabay)" alt="All Professors">
             </a>
             <h5> Καθηγητές</h5>
         </div>

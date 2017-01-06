@@ -247,16 +247,22 @@ class ProfessorController extends Controller
 
 
         //---------- 1st Pie chart ---------------------
-        $ReferencesBefore90Count = count(References::find()->where(['<=','date_created_by_author','1990'])->all() ) ;
-        $ReferencesBefore2000Count = count(References::find()->where(['>','date_created_by_author','1990'])
+        $ReferencesBefore90Count = count(References::find()->where(['professorID'=>($user->ID)])
+                                                             ->andwhere(['<=','date_created_by_author','1990'])->all() ) ;
+        $ReferencesBefore2000Count = count(References::find()->where(['professorID'=>($user->ID)])
+                                                             ->andwhere(['>','date_created_by_author','1990'])
                                                              ->andWhere(['<=','date_created_by_author','2000'])->all() ) ;
-        $ReferencesBefore2005Count = count(References::find()->where(['>','date_created_by_author','2000'])
+        $ReferencesBefore2005Count = count(References::find()->where(['professorID'=>($user->ID)])
+                                                             ->where(['>','date_created_by_author','2000'])
                                                              ->andWhere(['<=','date_created_by_author','2005'])->all() ) ;
-        $ReferencesBefore2010Count = count(References::find()->where(['>','date_created_by_author','2005'])
+        $ReferencesBefore2010Count = count(References::find()->where(['professorID'=>($user->ID)])
+                                                            ->where(['>','date_created_by_author','2005'])
                                                             ->andWhere(['<=','date_created_by_author','2010'])->all() ) ;
-        $ReferencesBefore2015Count = count(References::find()->where(['>','date_created_by_author','2010'])
+        $ReferencesBefore2015Count = count(References::find()->where(['professorID'=>($user->ID)])
+                                                             ->where(['>','date_created_by_author','2010'])
                                                             ->andWhere(['<=','date_created_by_author','2015'])->all() ) ;
-        $ReferencesBefore2020Count = count(References::find()->where(['>','date_created_by_author','2015'])
+        $ReferencesBefore2020Count = count(References::find()->where(['professorID'=>($user->ID)])
+                                                             ->where(['>','date_created_by_author','2015'])
                                                              ->andWhere(['<=','date_created_by_author','2020'])->all() ) ;
 
         $ReferencesBefore90Avg = round(($ReferencesBefore90Count/ $TotalReferencesCount),2);
