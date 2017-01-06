@@ -8,7 +8,10 @@ use Yii;
  * This is the model class for table "references".
  *
  * @property integer $ID
+ * @property integer $professorID
+ * @property integer $studentID
  * @property string $title
+ * @property string $author
  * @property string $type
  * @property string $URL
  * @property string $date_created_by_author
@@ -16,6 +19,8 @@ use Yii;
  * @property string $date_updated_by_student
  * @property string $file
  *
+ * @property Student $student
+ * @property Professor $professor
  * @property ThesisHasReferences[] $thesisHasReferences
  */
 class References extends \yii\db\ActiveRecord
@@ -34,10 +39,14 @@ class References extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['professorID', 'studentID', 'title', 'author'], 'required'],
+            [['professorID', 'studentID'], 'integer'],
             [['type', 'URL', 'file'], 'string'],
             [['date_created_by_author', 'date_created_by_student', 'date_updated_by_student'], 'safe'],
             [['title'], 'string', 'max' => 200],
+            [['author'], 'string', 'max' => 256],
+            [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['studentID' => 'ID']],
+            [['professorID'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['professorID' => 'ID']],
         ];
     }
 
@@ -47,16 +56,34 @@ class References extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ID' => 'Κωδικός αναφοράς',
-            'author'=>'Συγγραφέας',
-            'title' => 'Τίτλος',
-            'type' => 'Τύπος',
+            'ID' => 'ID',
+            'professorID' => 'Professor ID',
+            'studentID' => 'Student ID',
+            'title' => 'Title',
+            'author' => 'Author',
+            'type' => 'Type',
             'URL' => 'Url',
-            'date_created_by_author' => 'Ημ/νια δημιουργίας απο τον συγγραφέα',
-            'date_created_by_student' => 'Ημ/νια καταχώρησης',
-            'date_updated_by_student' => 'Ημ/νια ανανέωσης',
-            'file' => 'Αρχείο',
+            'date_created_by_author' => 'Date Created By Author',
+            'date_created_by_student' => 'Date Created By Student',
+            'date_updated_by_student' => 'Date Updated By Student',
+            'file' => 'File',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStudent()
+    {
+        return $this->hasOne(Student::className(), ['ID' => 'studentID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfessor()
+    {
+        return $this->hasOne(Professor::className(), ['ID' => 'professorID']);
     }
 
     /**

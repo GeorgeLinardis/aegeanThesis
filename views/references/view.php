@@ -29,6 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'ID',
+            'professorID',
+            'studentID',
             'title',
             'author',
             'type',

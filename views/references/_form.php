@@ -11,6 +11,11 @@ use yii\widgets\ActiveForm;
 <div class="references-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <?= $form->field($model, 'professorID')->textInput() ?>
+
+    <?= $form->field($model, 'studentID')->textInput() ?>
+
+    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

@@ -18,7 +18,7 @@ class ReferencesSearch extends References
     public function rules()
     {
         return [
-            [['ID'], 'integer'],
+            [['ID', 'professorID', 'studentID'], 'integer'],
             [['title', 'author', 'type', 'URL', 'date_created_by_author', 'date_created_by_student', 'date_updated_by_student', 'file'], 'safe'],
         ];
     }
@@ -60,6 +60,8 @@ class ReferencesSearch extends References
         // grid filtering conditions
         $query->andFilterWhere([
             'ID' => $this->ID,
+            'professorID' => $this->professorID,
+            'studentID' => $this->studentID,
             'date_created_by_author' => $this->date_created_by_author,
             'date_created_by_student' => $this->date_created_by_student,
             'date_updated_by_student' => $this->date_updated_by_student,

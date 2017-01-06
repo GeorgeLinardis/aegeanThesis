@@ -15,11 +15,13 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 
+
 class StudentController extends Controller
 {
 
     public function behaviors()
     {
+
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -137,6 +139,7 @@ class StudentController extends Controller
 
     public function actionMain()
     {
+
         return $this->render('main');
     }
 

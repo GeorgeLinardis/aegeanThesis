@@ -67,4 +67,6 @@ class DbUser extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Student::className(), ['userUsername' => 'Username']);
     }
+
+
 }

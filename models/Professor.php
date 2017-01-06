@@ -122,4 +122,12 @@ class Professor extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Thesis::className(), ['committee3' => 'ID']);
     }
+
+    public static function UserFullName(){
+        $username = Yii::$app->user->identity->username;
+        $User = self::find()->where('UserUsername'==$username)->one();
+        return $User->firstname.' '.$User->lastname;
+
+    }
+
 }
