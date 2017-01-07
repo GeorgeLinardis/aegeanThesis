@@ -61,20 +61,17 @@ class StudentController extends Controller
      */
     public function actionCreate()
     {
-        $model = new student();
-       if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //$photo = UploadedFile::getInstance($model,'photo');
-            //$model->photo = Yii::$app->user->identity->username.'.'.$photo->extension;
-              //  $photo->saveAs('images/userPhotos/' . $model->photo);
-                return $this->redirect(['view', 'id' => $model->ID]);
-            
-        } else 
-        {
-         return $this->render('create', [
+        $model = new Student();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->ID]);
+        } else {
+            return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
+
+
     /**
      * Updates an existing Student model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -84,29 +81,15 @@ class StudentController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $currentImage = $model->photo;
-
-        if ($model->load(Yii::$app->request->post()) ){//&& $model->save()) {
-            if (UploadedFile::getInstance($model,'photo'))
-            {
-                $photo = UploadedFile::getInstance($model,'photo');
-                $model->photo = Yii::$app->user->identity->username.'.'.$photo->extension;
-            }
-
-            if ($model->save()) {
-                if (!isset($photo)){
-                    $model->photo = $currentImage;
-                }else {
-                    $photo->saveAs('images/userPhotos/' . $model->photo);
-                }
-                return $this->redirect('/accounts/profile'/*['view', 'id' => $model->ID]*/);
-            }
-        } {
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['site/profile']);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
-    }
+
     /**
      * Deletes an existing Student model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

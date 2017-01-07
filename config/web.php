@@ -4,8 +4,15 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+    'name'=>'AegeanThesis',
     'basePath' => dirname(__DIR__),
+    'language'=>'gr',
     'bootstrap' => ['log'],
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+        ],
+    ],
     'components' => [
    
         'request' => [
@@ -15,10 +22,10 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
+        /*'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-        ],
+        ],*/
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -56,6 +63,7 @@ $config = [
                 '<controller>s'=>'<controller>/<index>',
             ],
         ],
+
 
     ],
 

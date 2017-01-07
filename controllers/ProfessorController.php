@@ -76,20 +76,15 @@ class ProfessorController extends Controller
     {
         $model = new Professor();
 
-        if ($model->load(Yii::$app->request->post()) ){//&& $model->save()) {
-            $photo = UploadedFile::getInstance($model,'photo');
-            $model->photo = Yii::$app->user->identity->username.'.'.$photo->extension;
-            if ($model->save()) {
-                $photo->saveAs('images/userPhotos/' . $model->photo);
-                return $this->redirect(['view', 'id' => $model->ID]);
-            }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->ID]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+                'model' => $model
             ]);
+
         }
     }
-
     /**
      * Updates an existing professor model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -99,29 +94,15 @@ class ProfessorController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $currentImage = $model->photo;
-
-        if ($model->load(Yii::$app->request->post()) ){//&& $model->save()) {
-            if (UploadedFile::getInstance($model,'photo'))
-            {
-            $photo = UploadedFile::getInstance($model,'photo');
-            $model->photo = Yii::$app->user->identity->username.'.'.$photo->extension;
-            }
-
-            if ($model->save()) {
-                    if (!isset($photo)){
-                        $model->photo = $currentImage;
-                    }else {
-                        $photo->saveAs('images/userPhotos/' . $model->photo);
-                    }
-                return $this->redirect('/accounts/profile'/*['view', 'id' => $model->ID]*/);
-            }
-        } {
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->ID]);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
-    }
+
 
 
     /**

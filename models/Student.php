@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use dektrium\user\models\User;
 
 /**
  * This is the model class for table "student".
@@ -21,14 +22,13 @@ use Yii;
  * @property string $comments
  * @property string $photo
  *
- * @property User $userUsername0
+ * @property References[] $references
  * @property Master $master
  * @property Thesis $thesis
- */
+ * @property User $userUsername0
+  */
 class Student extends \yii\db\ActiveRecord
 {
-
-
     /**
      * @inheritdoc
      */
@@ -44,17 +44,16 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['thesisID'], 'integer'],
-            [['firstname','lastname','email'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['url', 'comments'], 'string'],
-            [['masterID', 'userUsername', 'firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
+            [['masterID', 'firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
+            [['userUsername'], 'string', 'max' => 255],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],
-            [['photo'], 'string', 'max' => 256],
+            //[['photo'], 'string', 'max' => 256],
             [['email'], 'unique'],
-            [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => DbUser::className(), 'targetAttribute' => ['userUsername' => 'Username']],
             [['masterID'], 'exist', 'skipOnError' => true, 'targetClass' => Master::className(), 'targetAttribute' => ['masterID' => 'ID']],
             [['thesisID'], 'exist', 'skipOnError' => true, 'targetClass' => Thesis::className(), 'targetAttribute' => ['thesisID' => 'ID']],
-            [['photo'],'file','extensions'=>'png,jpg,gif','message'=>'Αποδεκτές μορφές φωτογραφίας: .png .jpg .gif']
+            //[['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userUsername' => 'username']],
         ];
     }
 
@@ -64,30 +63,28 @@ class Student extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'masterID' => 'Μεταπτυχιακό',
-            'thesisID' => 'Thesis ID',
+            'masterID' => 'Κωδικός Μεταπτυχιακού',
+            'thesisID' => 'Κωδικός διπλωματικής',
             'ID' => 'ID',
-            'userUsername' => 'User Username',
+            'userUsername' => 'Username',
             'firstname' => 'Όνομα',
             'lastname' => 'Επώνυμο',
             'telephone1' => 'Τηλέφωνο 1',
             'telephone2' => 'Τηλέφωνο 2',
             'email' => 'Email',
-            'skypeUsername' => 'Skype',
+            'skypeUsername' => 'Skype Username',
             'url' => 'Url',
             'comments' => 'Σχόλια',
-            'photo'=>'Φωτογραφία',
-
-
+            //'photo' => 'Photo',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUserUsername0()
+    public function getReferences()
     {
-        return $this->hasOne(User::className(), ['Username' => 'userUsername']);
+        return $this->hasMany(References::className(), ['studentID' => 'ID']);
     }
 
     /**
@@ -104,5 +101,13 @@ class Student extends \yii\db\ActiveRecord
     public function getThesis()
     {
         return $this->hasOne(Thesis::className(), ['ID' => 'thesisID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserUsername0()
+    {
+        return $this->hasOne(User::className(), ['username' => 'userUsername']);
     }
 }

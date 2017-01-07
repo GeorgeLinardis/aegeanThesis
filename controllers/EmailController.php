@@ -18,7 +18,8 @@ class EmailController extends Controller
 
     public function actionCreateCommitteeEmail()
     {
-        Yii::$app->mailer->compose('committee-approval-email')
+        Yii::$app->mailer
+            ->compose('committee-approval-email')
             ->setFrom('glinardis@gmail.com')
             ->setTo('glinardis@gmail.com')
             ->setSubject('Συμμετοχή σε Επιτροπή')

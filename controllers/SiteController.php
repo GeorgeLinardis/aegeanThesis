@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+
+use app\CustomHelpers\UserHelpers;
 use app\models\Professor;
+use app\models\Student;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\data\SqlDataProvider;
@@ -14,6 +17,7 @@ use app\models\LoginForm;
 
 class SiteController extends Controller
 {
+
     /**
      * @inheritdoc
      */
@@ -73,17 +77,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        return $this->render('login');
     }
 
     /**
@@ -122,5 +116,29 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionNewUser()
+    {
+        return $this->render('new-user');
+    }
+
+    public function actionProfile()
+    {
+        $role = UserHelpers::UserRole();
+        if (UserHelpers::UserRole() == 'professor') {
+            $model = Professor::findOne(['userUsername' => \Yii::$app->user->identity->username]);
+        }
+        elseif (UserHelpers::UserRole()== 'student') {
+            $model = Student::findOne(['userUsername' => \Yii::$app->user->identity->username]);
+        }
+        return $this->render('profile', [
+                'model' => $model,
+                'role'=>$role,
+            ]
+        );
+
+
+
     }
 }

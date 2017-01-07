@@ -17,10 +17,10 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?= $form->field($model, 'masterID')->textInput(['maxlength' => true]) ?>
-    sasasa
+
     <?= $form->field($model, 'thesisID')->textInput() ?>
 
-    <?= $form->field($model, 'userUsername')->textInput(['maxlength' => true]) ?>
+    <?php // echo $form->field($model, 'userUsername')->textInput(['value'=>(\Yii::$app->user->identity->username) ,'readonly'=>true])?>
 
     <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
 
@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telephone2')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?php // echo $form->field($model, 'userUsername')->textInput(['value'=>(\Yii::$app->user->identity->email) ,'readonly'=>true])?>
 
     <?= $form->field($model, 'skypeUsername')->textInput(['maxlength' => true]) ?>
 

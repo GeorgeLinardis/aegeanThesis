@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-Καλησπέρα σας <?= $name; ?>
+Καλησπέρα σας <?= \app\CustomHelpers\UserHelpers::UserFullName(); ?>
 
 
 </div>

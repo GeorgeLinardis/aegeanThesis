@@ -5,7 +5,7 @@ namespace app\CustomHelpers;
 ?>
 
 <?php
-use app\models\DbUser;
+use dektrium\user\models\User;
 use app\models\Professor;
 use app\models\Student;
 use Yii;
@@ -20,8 +20,8 @@ class UserHelpers{
     }
 
     public static function UserRole(){
-        $user = DbUser::find()->where(['username'=>self::Username()])->one();
-        return $user->Role;
+        $user = User::find()->where(['username'=>self::Username()])->one();
+        return $user->role;
     }
 
     public static function Username(){

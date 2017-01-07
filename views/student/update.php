@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Student */
 
-$this->title = 'Τροποποίηση χρήστη: ' . $model->firstname.' '.$model->lastname;
-$this->params['breadcrumbs'][] = ['label' => 'Προφίλ', 'url' => ['accounts/profile']];
+$this->title = 'Τροποποίηση χρήστη';
+$this->params['breadcrumbs'][] = ['label' => 'Προφίλ', 'url' => ['site/profile']];
 $this->params['breadcrumbs'][] = 'Τροποποίηση';
 ?>
 <div class="student-update">

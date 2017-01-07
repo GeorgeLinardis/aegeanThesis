@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use dektrium\user\models\User;
 
 /**
  * This is the model class for table "professor".
@@ -11,12 +12,16 @@ use Yii;
  * @property string $userUsername
  * @property string $firstname
  * @property string $lastname
- * @property string $telephone
+ * @property string $telephone1
+ * @property string $telephone2
  * @property string $email
+ * @property string $skypeUsername
+ * @property string $comments
  * @property string $url
+ * @property string $photo
  *
- * @property User $userUsername0
  * @property ProfessorHasMasters[] $professorHasMasters
+ * @property References[] $references
  * @property Thesis[] $theses
  * @property Thesis[] $theses0
  * @property Thesis[] $theses1
@@ -24,12 +29,9 @@ use Yii;
  */
 class Professor extends \yii\db\ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
-
-
     public static function tableName()
     {
         return 'professor';
@@ -41,17 +43,14 @@ class Professor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['firstname','lastname','email'],'required','message'=>(Yii::$app->params['requiredMsg'])],
-            [['userUsername', 'firstname', 'lastname'], 'string', 'max' => 50],
-            [['email','skypeUsername'],'unique','message'=>(Yii::$app->params['uniqueMsg'])],
-            ['email','email'],
+            [['comments', 'url'], 'string'],
+            [['userUsername'], 'string', 'max' => 255],
+            [['firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
+            [['telephone1', 'telephone2'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],
-            [['telephone1','telephone2'], 'string', 'max' => 30],
-            [['url'],'url'],
-            [['url','comments','skypeUsername'],'string','max'=>500],
-            [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => DbUser::className(), 'targetAttribute' => ['userUsername' => 'Username']],
-            [['photo'],'file','extensions'=>'png,jpg,gif','message'=>'Αποδεκτές μορφές φωτογραφίας: .png .jpg .gif']
-
+            [['photo'], 'string', 'max' => 256],
+            [['email'], 'unique'],
+            [['userUsername'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['userUsername' => 'username']],
         ];
     }
 
@@ -62,16 +61,16 @@ class Professor extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'userUsername' => 'User Username',
+            'userUsername' => 'Username',
             'firstname' => 'Όνομα',
             'lastname' => 'Επώνυμο',
             'telephone1' => 'Τηλέφωνο 1',
+            'telephone2' => 'Τηλέφωνο 2',
             'email' => 'Email',
-            'url' => 'Διεύθυνση URL',
-            'telephone2'=>'Τηλέφωνο 2',
-            'skypeUsername'=>'Skype',
-            'comments'=>'Σχόλια',
-            'photo'=>'Φωτογραφία',
+            'skypeUsername' => 'Skype Username',
+            'comments' => 'Σχόλια',
+            'url' => 'Url',
+            'photo' => 'Photo',
         ];
     }
 
@@ -80,7 +79,7 @@ class Professor extends \yii\db\ActiveRecord
      */
     public function getUserUsername0()
     {
-        return $this->hasOne(User::className(), ['Username' => 'userUsername']);
+        return $this->hasOne(User::className(), ['username' => 'userUsername']);
     }
 
     /**
@@ -94,7 +93,15 @@ class Professor extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTheses()// this is a conjunction table
+    public function getReferences()
+    {
+        return $this->hasMany(References::className(), ['professorID' => 'ID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTheses()
     {
         return $this->hasMany(Thesis::className(), ['professorID' => 'ID']);
     }
@@ -122,12 +129,4 @@ class Professor extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Thesis::className(), ['committee3' => 'ID']);
     }
-
-    public static function UserFullName(){
-        $username = Yii::$app->user->identity->username;
-        $User = self::find()->where('UserUsername'==$username)->one();
-        return $User->firstname.' '.$User->lastname;
-
-    }
-
 }

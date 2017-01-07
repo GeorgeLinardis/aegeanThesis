@@ -40,7 +40,6 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => [
             ['label' => 'Αρχική', 'url' => ['/site/index']],
-            ['label' => 'Λογαριασμοί', 'url' => ['/accounts/new-user']],
             ['label' => 'Πηγές', 'url' => ['/references/index']],
            
             ['label' => 'Admin', 'url' => ['/admin/index']],
@@ -76,27 +75,19 @@ AppAsset::register($this);
             
         ],
     ]);
-/*
-        DEFAULT MENU FOR LOGIN LOGOUT BY YII
-        : ('<li>'. Html::beginForm(['/site/logout'], 'post'). Html::submitButton('Έξοδος (' . Yii::$app->user->identity->username . ')',
-            ['class' => 'btn btn-link logout']). Html::endForm().
-        '</li>'
-    ),
 
-
-*/
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' =>
         [
             Yii::$app->user->isGuest
-                ? ['label' => 'Είσοδος', 'url' => ['/site/login']]
+                ? ['label' => 'Είσοδος', 'url' => ['site/login']]
 
 
                 : ['label' => Yii::$app->user->identity->username,
                     'items' => [
-                        ['label' => 'Προφίλ', 'url' => ['accounts/profile']],
+                        ['label' => 'Προφίλ', 'url' => ['profile']],
                         ['label' => 'Έξοδος Χρήστη','url'=>['site/logout'],'linkOptions'=>['data-method'=>'post']],
                     ],
                 ],

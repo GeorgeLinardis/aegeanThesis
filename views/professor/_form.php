@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
             'enctype'=>'multipart/form-data'],
     ]); ?>
 
-    <?= $form->field($model, 'userUsername')->textInput(['maxlength' => true]) ?>
+    <?php //echo $form->field($model, 'userUsername')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
 
@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telephone2')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+    <?php // echo $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'skypeUsername')->textInput(['maxlength' => true]) ?>
 
@@ -38,7 +38,7 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Τροποποίηση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        <?= Html::a('Επιστροφή', ['//accounts/new-user'], ['class' => 'btn btn-primary']) ?>
+
     </div>
 
     <?php ActiveForm::end(); ?>
