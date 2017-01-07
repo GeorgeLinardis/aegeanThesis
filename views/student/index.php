@@ -7,35 +7,34 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Students';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="student-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+   
     <p>
-        <?= Html::a('Create Student', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Νέος Φοιτητής', ['student/create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
             'masterID',
-            'thesisID',
+            //'thesisID',
             'ID',
-            'userUsername',
+            //'userUsername',
             'firstname',
-            // 'lastname',
-            // 'telephone1',
-            // 'telephone2',
-            // 'email:email',
-            // 'skypeUsername',
-            // 'url:ntext',
-            // 'comments:ntext',
-            // 'photo',
+             'lastname',
+            'telephone1',
+            'telephone2',
+            'email:email',
+            'skypeUsername',
+            //'url:ntext',
+            //'comments:ntext',
+            //'photo',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+             'controller'=>'student'],
         ],
     ]); ?>
 </div>

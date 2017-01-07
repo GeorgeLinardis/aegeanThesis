@@ -30,30 +30,23 @@ use yii\widgets\ActiveForm;
 
             <div class="thesis-form">
 
-                <?php $form = ActiveForm::begin([
-                    'options' => [
-                        'enableAjaxValidation' => true,
-                        'enctype'=>'multipart/form-data'],
-                ]); ?>
                 <!--ΣΤΟΙΧΕΙΑ ΚΑΘΗΓΗΤΗ-->
                 <?php if ($role == 'professor'):?>
 
-                <?= $this->render('//professor/create', [
-                    'model' => $modelProfessor,
+                <?= $this->render('_form', [
+                    'model' => $model,
 
                 ])
                 ?>
                     <!--ΣΤΟΙΧΕΙΑ ΦΟΙΤΗΤΗ-->
                 <?php elseif ($role == 'student'):?>
 
-                <?= $this->render('//student/create', [
-                    'model' => $modelStudent,
+                <?= $this->render('_form', [
+                    'model' => $model,
                 ])?>
                 <?php endif ;?>
 
 
-
-                <?php ActiveForm::end(); ?><br />
 
             </div>
         </div>

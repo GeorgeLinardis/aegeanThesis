@@ -10,7 +10,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="text-center"><h1><?= Html::encode($this->title) ?> </h1></div><br>
 
 
+	<?= $this->render('//student/index', [
+        'dataProvider' => $dataProvider,
+    ]) ?>
+
 
 
 
 </div>
+

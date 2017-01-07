@@ -61,16 +61,16 @@ class StudentController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Student();
-        if ($model->load(Yii::$app->request->post()) ){ //&& $model->save()) {
-            $photo = UploadedFile::getInstance($model,'photo');
-            $model->photo = Yii::$app->user->identity->username.'.'.$photo->extension;
-            if ($model->save()) {
-                $photo->saveAs('images/userPhotos/' . $model->photo);
+        $model = new student();
+       if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            //$photo = UploadedFile::getInstance($model,'photo');
+            //$model->photo = Yii::$app->user->identity->username.'.'.$photo->extension;
+              //  $photo->saveAs('images/userPhotos/' . $model->photo);
                 return $this->redirect(['view', 'id' => $model->ID]);
-            }
-        } else {
-            return $this->render('create', [
+            
+        } else 
+        {
+         return $this->render('create', [
                 'model' => $model,
             ]);
         }

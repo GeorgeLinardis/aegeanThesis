@@ -17,6 +17,8 @@ use Yii;
  */
 class DbUser extends \yii\db\ActiveRecord
 {
+    public $Password_Repeat ; // Only needed for password verification
+
     /**
      * @inheritdoc
      */
@@ -36,6 +38,7 @@ class DbUser extends \yii\db\ActiveRecord
             [['Role'], 'string'],
             [['Username'], 'string', 'max' => 50],
             [['Password'], 'string', 'max' => 64],
+            ['Password_Repeat','compare','compareAttribute'=>'Password','message'=>'Τα Password δεν ταιριάζουν']
         ];
     }
 
@@ -49,6 +52,7 @@ class DbUser extends \yii\db\ActiveRecord
             'Username' => 'Όνομα Χρήστη',
             'Password' => 'Password',
             'Role' => 'Role',
+            'Password_Repeat'=>'Επαλήθευση Password'
         ];
     }
 

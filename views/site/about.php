@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
+use app\CustomHelpers\UserHelpers;
 
 $this->title = 'Σχετικά';
 $this->params['breadcrumbs'][] = $this->title;
@@ -10,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
+    <p> 
         Το συγκεκριμένο σύστημα διαχείρισης διπλωματικών αποτελεί μέρος της διπλωματικής του <b>Γεώργιου Λιναρδή</b> μεταπτυχιακού φοιτητή στο Πανεπιστήμιο Αιγαίου.<br></p>
         Το ΠΜΣ ανήκει στο Τμήμα Μηχανικών Πληροφοριακών και Επικοινωνιακών συστημάτων και έχει τίτλο
         <a href="http://msc.icsd.aegean.gr/academics/pms4-2016/" title="Msc Website" target="_blank">"Πληροφοριακά και Επικοινωνιακά Συστήματα"</a>

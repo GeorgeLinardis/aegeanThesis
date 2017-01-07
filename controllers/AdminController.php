@@ -8,7 +8,10 @@ use yii;
 use app\models\ThesisSearch;
 use app\models\Thesis;
 use app\models\References;
+use app\models\Student;
+use app\models\Professor;
 use app\CustomHelpers\UserHelpers;
+use yii\data\ActiveDataProvider;
 
 
 class AdminController extends Controller
@@ -30,13 +33,20 @@ class AdminController extends Controller
     }
 
     public function actionAllStudents()
-    {
-        return $this->render('all-students');
+    {       $dataProvider = new ActiveDataProvider([
+            'query' => Student::find(),
+        ]);
+        return $this->render('all-students',
+            ['dataProvider' => $dataProvider]);
     }
-
+     
     public function actionAllProfessors()
-    {
-        return $this->render('all-Professors');
+    {   
+         $dataProvider = new ActiveDataProvider([
+            'query' => Professor::find(),
+        ]);
+        return $this->render('all-Professors',
+            ['dataProvider' => $dataProvider]);
     }
 
     public function actionStatistics()

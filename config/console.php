@@ -9,7 +9,7 @@ $config = [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
     'components' => [
-        'cache' => [
+            'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'log' => [

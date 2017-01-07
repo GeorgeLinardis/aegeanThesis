@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?= $form->field($model, 'masterID')->textInput(['maxlength' => true]) ?>
-
+    sasasa
     <?= $form->field($model, 'thesisID')->textInput() ?>
 
     <?= $form->field($model, 'userUsername')->textInput(['maxlength' => true]) ?>
@@ -41,8 +41,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'photo')->fileInput()  ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Τροποποίηση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        <?= Html::a('Επιστροφή', ['//accounts/new-user'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Τροποποίηση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',]) ?>
+
     </div>
 
     <?php ActiveForm::end(); ?>

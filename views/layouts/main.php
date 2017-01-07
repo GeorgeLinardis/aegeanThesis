@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\CustomHelpers\UserHelpers;
 
 AppAsset::register($this);
 ?>
@@ -41,7 +42,9 @@ AppAsset::register($this);
             ['label' => 'Αρχική', 'url' => ['/site/index']],
             ['label' => 'Λογαριασμοί', 'url' => ['/accounts/new-user']],
             ['label' => 'Πηγές', 'url' => ['/references/index']],
+           
             ['label' => 'Admin', 'url' => ['/admin/index']],
+           
             ['label' => 'Extra',
                 'items'=>[
                     ['label'=>'Email','url'=>['email/committee']],
@@ -49,6 +52,8 @@ AppAsset::register($this);
                     ['label'=>'ChatRoom','url'=>['chat/chat-room']],
                 ],
             ],
+             
+            
             ['label' => 'Καθηγητής',
                 'items'=>[
                     ['label'=>'Αρχική','url'=>['professor/main']],
@@ -56,7 +61,9 @@ AppAsset::register($this);
                     ['label'=>'Επιτροπές','url'=>['professor/committee']],
                     ['label'=>'Στατιστικά','url'=>['professor/statistics']],
                   ],
+                  
             ],
+            //UserHelpers::UserRole()=='professor' 
             ['label' => 'Φοιτητής',
                 'items'=>[
                     ['label'=>'Αρχική','url'=>['student/main']],
@@ -65,8 +72,8 @@ AppAsset::register($this);
                     ['label'=>'Θέματα διπλωματικών','url'=>['student/all-theses']],
 
                 ],
-            ],
-
+            ]
+            
         ],
     ]);
 /*

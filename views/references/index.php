@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'author',
             'type',
             'URL:url',
-            // 'date_created_by_author',
-            // 'date_created_by_student',
-            // 'date_updated_by_student',
+             'date_created_by_author:date',
+            // 'date_created_by_student:date',
+            // 'date_updated_by_student:date',
             // 'file:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
