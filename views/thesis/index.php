@@ -2,14 +2,16 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\CustomHelpers\UserHelpers;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ThesisSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Theses';
+$this->title = 'Διπλωματικές';
 ?>
 <div class="thesis-index">
+
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -19,8 +21,14 @@ $this->title = 'Theses';
         'filterModel' => $searchModel,
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
-
+            'ID',
+            'masterID',
             //'professorID',
+            [
+                'attribute' => 'professorID',
+                'value' => ('professor.lastname')
+            ],
+
             'title',
             //'description:ntext',
             //'goal:ntext',
@@ -29,17 +37,17 @@ $this->title = 'Theses';
             // 'comments:ntext',
              'status',
              'dateCreated:date',
-            // 'datePresented',
+             //'datePresented:date',
             // 'committee1',
             // 'committee2',
             // 'committee3',
             // 'RequestPDf',
-             'masterID',
-             'ID',
+
+
 
             ['class' => 'yii\grid\ActionColumn',
-             'template'=>'{view}{update}{delete}',
-             'controller'=>'thesis'
+                'template'=> UserHelpers::UserRole()== 'student'? '{view}':'{view}{update}{delete}',
+
 
             ],
         ],

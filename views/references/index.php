@@ -16,22 +16,24 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Δημιουργία Αναφοράς', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+        if (Yii::$app->controller->id == 'student'){
+        echo Html::a('Δημιουργία Αναφοράς', ['references/create'], ['class' => 'btn btn-success']);
+        }; ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
+            //['class' => 'yii\grid\SerialColumn'],
             'ID',
             'title',
             'author',
             'type',
             'URL:url',
              'date_created_by_author:date',
-            // 'date_created_by_student:date',
-            // 'date_updated_by_student:date',
+             'date_created_by_student:date',
+             'date_updated_by_student:date',
             // 'file:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],

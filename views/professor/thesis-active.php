@@ -1,6 +1,8 @@
 <?php
 use yii\grid\GridView;
 use yii\helpers\Html;
+use app\CustomHelpers\UserHelpers;
+use dektrium\user\models\User;
 
 /* @var $dataProvider \app\controllers\ThesisController*/
 ?>
@@ -22,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
     ])
     ?>
 
+<?php $name = User::find()->where(['username'=>'maragkoudakis'])->one();
 
+?>
 
 </div>

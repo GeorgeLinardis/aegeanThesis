@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\CustomHelpers\UserHelpers;
 use app\models\Master;
 use app\models\ThesisHasReferences;
+use app\models\ThesisSearch;
 use Yii;
 use yii\web\Controller;
 use app\models\Thesis;
@@ -126,38 +128,46 @@ class StudentController extends Controller
         return $this->render('main');
     }
 
-    public function actionAllTheses()
-    {
-        $Student = Student::find()->where(['userUsername'=>(Yii::$app->user->identity->username)])->one();
-        $Master = Master::find()->where(['ID'=>($Student->masterID)])->one();
-        $dataProvider = new ActiveDataProvider(
-            ['query'=>(Thesis::find()->where(['masterID'=>($Student->masterID) ])),
-                'pagination'=>['pageSize'=>10]]
-        );
 
-        return $this->render('all-theses',
-            ['dataProvider'=>$dataProvider,
-            'Student'=>$Student,
-            'Master'=>$Master]
-        );
-
-    }
 
     public function actionMyThesis()
     {
-        return $this->render('my-thesis');
+        $model=Thesis::find()->where(['ID'=>UserHelpers::User()->thesisID])->one();
+        $message = "Δεν έχει αναλάβει διπλωματική ακόμα.";
+        if (isset($model)){
+        return $this->render('my-thesis',[
+                    'model'=>$model]);
+        }
+        else{
+            return $this->render('my-thesis',[
+                    'message'=>$message]);
+        }
     }
 
 
     public function actionMyReferences()
-    {   $searchModel = new ReferencesSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+      {   $message = "Δεν έχει αναλάβει διπλωματική ακόμα οπότε δεν μπορείτε να δημιουργήσετε κάποια αναφορά.";
+          $model=Thesis::find()->where(['ID'=>UserHelpers::User()->thesisID])->one();
+          $Student = UserHelpers::User();
+          $searchModel = new ReferencesSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+          if (isset($model)) {
 
-        return $this->render('my-references',[
-            'searchModel'=>$searchModel,
-            'dataProvider'=>$dataProvider,
+              return $this->render('my-references',[
+                  'searchModel' => $searchModel,
+                  'dataProvider'=> $dataProvider,
+                  'Student'=>$Student,
 
-        ]);
+              ]);}
+          else{
+              return $this->render('my-references',[
+                  'message'=>$message,
+
+
+              ]);}
+
+
+
     }
 
 

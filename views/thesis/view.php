@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\CustomHelpers\UserHelpers;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Thesis */
@@ -15,14 +16,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->ID], [
+        <?php if (UserHelpers::UserRole()!= 'student') :?>
+        <?= Html::a('Ανανέωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Διαγραφή', ['delete', 'id' => $model->ID], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
+        <?php endif;?>
     </p>
 
     <?= DetailView::widget([
@@ -44,15 +47,16 @@ $this->params['breadcrumbs'][] = $this->title;
             'dateCreated:date',
             'datePresented:date',
             [   'attribute'=>'committee1',
-                'value'=>$model->committee10->lastname.' '.$model->committee10->firstname
+                'value'=>(isset($model->committee10)?$model->committee10->lastname.' '.$model->committee10->firstname:" "),
             ],
             [   'attribute'=>'committee2',
-                'value'=>$model->committee20->lastname.' '.$model->committee20->firstname
+                'value'=>(isset($model->committee20)?$model->committee20->lastname.' '.$model->committee20->firstname:" "),
             ],
             [   'attribute'=>'committee3',
-                'value'=>$model->committee30->lastname.' '.$model->committee30->firstname
+                'value'=>(isset($model->committee30)?$model->committee30->lastname.' '.$model->committee30->firstname:" "),
             ],
             'RequestPDf',
+
             [   'attribute'=>'masterID',
                 'value'=>$model->master->title
             ],

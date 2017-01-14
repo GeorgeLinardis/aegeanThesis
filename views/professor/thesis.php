@@ -10,11 +10,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="professor-thesis">
-    <div class="text-center"><h1>Οι <?= Html::encode($this->title) ?> σας </h1></div><br>
+    <h1>Οι <?= Html::encode($this->title) ?> σας </h1>
 
     <div class="row">
         <div class="col-sm-3">
-            <a href= "<?= url::to('thesis-create-new')?>" class="thumbnail">
+            <a href= "<?= url::to('/thesis/create')?>" class="thumbnail">
                 <img src="/images/professor/professor-thesis-creation(bluediamondgallery).jpg" alt="Create NEW Thesis">
             </a>
             <h5> Δημιουργία νέας διπλωματικής</h5>

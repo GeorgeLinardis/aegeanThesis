@@ -42,11 +42,11 @@ class References extends \yii\db\ActiveRecord
             [['professorID', 'studentID', 'title', 'author'], 'required'],
             [['professorID', 'studentID'], 'integer'],
             [['type', 'URL', 'file'], 'string'],
-            [['date_created_by_author', 'date_created_by_student', 'date_updated_by_student'], 'safe'],
             [['title'], 'string', 'max' => 200],
             [['author'], 'string', 'max' => 256],
             [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['studentID' => 'ID']],
             [['professorID'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['professorID' => 'ID']],
+            [['date_created_by_author', 'date_created_by_student', 'date_updated_by_student'], 'safe'],
         ];
     }
 

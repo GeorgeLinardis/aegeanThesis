@@ -3,16 +3,21 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
+use app\CustomHelpers\UserHelpers;
+use yii\helpers\ArrayHelper;
+use app\models\ProfessorHasMasters;
+use app\models\Professor;
 /* @var $this yii\web\View */
 /* @var $model app\models\Thesis */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="thesis-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model,'professorID')->textInput() ?>
+    <?= $form->field($model,'professorID')->hiddenInput(['readonly'=>'true','value'=>UserHelpers::User()->ID])->label(('Καθηγητής: '.UserHelpers::UserFullName()))?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -26,9 +31,13 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'comments')->textarea(['rows' => 3]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList([ 'υπο έγκριση' => 'υπο έγκριση', 'έχει ανατεθεί' => 'έχει ανατεθεί', 'δεν έχει ανατεθεί' => 'δεν έχει ανατεθεί', 'για Επιτροπή' => 'για Επιτροπή', 'ολοκληρώθηκε' => 'ολοκληρώθηκε', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'status')->dropDownList([ 'υπο έγκριση' => 'υπο έγκριση',
+                                                       'δεν έχει ανατεθεί' => 'δεν έχει ανατεθεί',
+                                                       'έχει ανατεθεί' => 'έχει ανατεθεί',
+                                                        'για Επιτροπή' => 'για Επιτροπή',
+                                                        'ολοκληρώθηκε' => 'ολοκληρώθηκε', ], ['prompt' => 'Επιλογή κατάστασης']) ?>
 
-    <?= $form->field($model, 'dateCreated')->textarea() ?>
+    <?php // echo $form->field($model, 'dateCreated')->textarea() ?>
 
     <?= $form->field($model, 'datePresented')->widget(
                         DatePicker::className(), [
@@ -42,15 +51,19 @@ use dosamigos\datepicker\DatePicker;
                         ]
     ]);?>
 
-    <?= $form->field($model, 'committee1')->textInput() ?>
+    <?= $form->field($model, 'committee1')->dropDownList(
+                                     ArrayHelper::map(Professor::find()->asArray()->all(),'professor',['lastname']),['prompt' => 'Επιλέξτε καθηγητή']) ?>
 
-    <?= $form->field($model, 'committee2')->textInput() ?>
+    <?= $form->field($model, 'committee2')->dropDownList(
+        ArrayHelper::map(Professor::find()->asArray()->all(),'professor',['lastname']),['prompt' => 'Επιλέξτε καθηγητή']) ?>
 
-    <?= $form->field($model, 'committee3')->textInput() ?>
+    <?= $form->field($model, 'committee3')->dropDownList(
+        ArrayHelper::map(Professor::find()->asArray()->all(),'professor',['lastname']),['prompt' => 'Επιλέξτε καθηγητή']) ?>
 
     <?= $form->field($model, 'RequestPDf')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'masterID')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'masterID')->dropDownList(
+                        ArrayHelper::map(ProfessorHasMasters::find()->asArray()->all(),'masterID','masterID'),['prompt' => 'Επιλέξτε ένα απο τα προγράμματα σας']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

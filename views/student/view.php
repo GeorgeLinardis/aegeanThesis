@@ -15,9 +15,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'masterID',
-            'thesisID',
             'ID',
+            //'masterID',
+            //'thesisID',
+            [   'label'=>'Διπλωματική',
+                'value'=>$model->thesis ? $model->thesis->title : "Δεν έχει τεθεί",
+            ],
+
+            [   'label'=>'Μεταπτυχιακό',
+                'value'=>$model->master->title,
+            ],
             'userUsername',
             'firstname',
             'lastname',
@@ -25,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'telephone2',
             'email:email',
             'skypeUsername',
-            'url:ntext',
+            'url:url',
             'comments:ntext',
             'photo',
         ],

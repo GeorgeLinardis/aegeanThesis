@@ -11,11 +11,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="admin-statistics">
     <div class="text-center"><h1><?= Html::encode($this->title) ?> </h1></div><br>
 
-
-
     <div class="row">
         <div class="col-sm-6" style="align-items: center">
             <h3>Συνοπτική παρουσίαση</h3><br>
+
         <ul class="list-group">
             <li class="list-group-item">Διπλωματικές υπο εξέλιξη<span class="badge"> <?=$AssignedThesesCount?></span></li>
             <li class="list-group-item list-group-item-success"">Διπλωματικές που πρέπει να παρουσιασθούν αυτόν τον μήνα<span class="badge"> <?=$TotalThesesPresentedThisMonth?></span></li>
@@ -25,7 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <li class="list-group-item">Σύνολο πηγών μέχρι σήμερα<span class="badge"><?=$TotalReferencesCount?></span></li>
 
         </ul>
-        </div> 
+
+        </div>
         <div class="col-sm-6">
         <?php
         echo Highcharts::widget([
@@ -121,3 +121,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         </div>
     </div>
+
+
+
+
+</div>

@@ -16,6 +16,8 @@ $this->params['breadcrumbs'][] = 'Διόρθωση';
 
     <?= $this->render('_form', [
         'model' => $model,
+        'Student'=>$Student,
+        'Professor'=>$Professor,
     ]) ?>
 
 </div>

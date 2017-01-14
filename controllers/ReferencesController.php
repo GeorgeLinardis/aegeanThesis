@@ -2,6 +2,9 @@
 
 namespace app\controllers;
 
+use app\CustomHelpers\UserHelpers;
+use app\models\Professor;
+use app\models\Thesis;
 use Yii;
 use app\models\References;
 use app\models\ReferencesSearch;
@@ -63,6 +66,9 @@ class ReferencesController extends Controller
      */
     public function actionCreate()
     {
+        $Student = UserHelpers::User();
+        $ProfessorID = (Thesis::find()->where(['ID'=>($Student->thesisID)])->one())->professorID;
+        $Professor=Professor::find()->where(['ID'=>$ProfessorID])->one();
         $model = new References();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -70,6 +76,8 @@ class ReferencesController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'Student'=>$Student,
+                'Professor'=>$Professor,
             ]);
         }
     }
@@ -83,12 +91,17 @@ class ReferencesController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $Student = UserHelpers::User();
+        $ProfessorID = (Thesis::find()->where(['ID'=>($Student->thesisID)])->one())->professorID;
+        $Professor=Professor::find()->where(['ID'=>$ProfessorID])->one();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->ID]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'Student'=>$Student,
+                'Professor'=>$Professor,
             ]);
         }
     }

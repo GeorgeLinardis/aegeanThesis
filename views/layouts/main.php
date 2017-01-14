@@ -43,6 +43,8 @@ AppAsset::register($this);
             ['label' => 'Πηγές', 'url' => ['/references/index']],
            
             ['label' => 'Admin', 'url' => ['/admin/index']],
+            ['label' => 'Διπλωματικές', 'url' => ['/thesis/index']],
+
            
             ['label' => 'Extra',
                 'items'=>[
@@ -67,8 +69,12 @@ AppAsset::register($this);
                 'items'=>[
                     ['label'=>'Αρχική','url'=>['student/main']],
                     ['label'=>'Η διπλωματική μου','url'=>['student/my-thesis']],
-                    ['label'=>'Οι πηγές μου','url'=>['student-references/index']],
-                    ['label'=>'Θέματα διπλωματικών','url'=>['student/all-theses']],
+                    ['label'=>'Οι πηγές μου','url'=>['student/my-references']],
+                    ['label'=>'Λίστα διπλωματικών','url'=>['thesis/index']],
+                    ['label'=>'Επικοινωνια με καθηγητή','url'=>['student/student-chat']],
+
+
+
 
                 ],
             ]
@@ -87,7 +93,7 @@ AppAsset::register($this);
 
                 : ['label' => Yii::$app->user->identity->username,
                     'items' => [
-                        ['label' => 'Προφίλ', 'url' => ['profile']],
+                        ['label' => 'Προφίλ', 'url' => ['site/profile']],
                         ['label' => 'Έξοδος Χρήστη','url'=>['site/logout'],'linkOptions'=>['data-method'=>'post']],
                     ],
                 ],

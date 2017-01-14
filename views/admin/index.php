@@ -9,36 +9,36 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="professor-thesis">
-    <div class="text-center"><h1><?= Html::encode($this->title) ?> </h1></div><br>
+    <h1> Αρχική σελίδα <?= rtrim(Html::encode($this->title),"ς") ?></h1><br>
 
     <div class="row">
         <div class="col-sm-3">
             <a href= "<?= url::to('all-professors')?>" class="thumbnail">
                 <img src="/images/admin/admin-professors(Pixabay)" alt="All Professors">
             </a>
-            <h5> Καθηγητές</h5>
+            <h4> Καθηγητές</h4>
         </div>
 
-        <div class="col-sm-3 text-center">
+        <div class="col-sm-3">
             <a href="<?= url::to('all-students')?>" class="thumbnail">
                 <img src="/images/admin/admin-students(Pexels)" alt="All-students">
             </a>
-            <h5> Φοιτητές</h5>
+            <h4> Φοιτητές</h4>
         </div>
 
-        <div class="col-sm-3 text-center">
+        <div class="col-sm-3">
             <a href="<?= url::to('all-theses')?>" class="thumbnail">
                 <img src="/images/admin/admin-theses" alt="All-theses">
             </a>
-            <h5> Διπλωματικές</h5>
+            <h4> Διπλωματικές</h4>
         </div>
 
-        <div class="col-sm-3 text-center">
+        <div class="col-sm-3">
 
             <a href="<?= url::to('statistics')?>" class="thumbnail">
                 <img src="/images/admin/admin-statistics(Pixabay)" alt="Statistics">
             </a>
-            <h5> Σατιστικά</h5>
+            <h4> Σατιστικά</h4>
 
         </div>
 

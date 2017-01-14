@@ -77,7 +77,7 @@ class Professor extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUserUsername0()
+    public function getUserUsername()
     {
         return $this->hasOne(User::className(), ['username' => 'userUsername']);
     }

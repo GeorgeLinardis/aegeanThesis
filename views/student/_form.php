@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'masterID')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'thesisID')->textInput() ?>
+    <?= $form->field($model, 'thesisID')->hiddenInput()->label(false) ?>
 
     <?php // echo $form->field($model, 'userUsername')->textInput(['value'=>(\Yii::$app->user->identity->username) ,'readonly'=>true])?>
 
