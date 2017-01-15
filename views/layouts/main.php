@@ -36,53 +36,50 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-left'],
-        'items' => [
-            ['label' => 'Αρχική', 'url' => ['/site/index']],
-            ['label' => 'Πηγές', 'url' => ['/references/index']],
-           
-            ['label' => 'Admin', 'url' => ['/admin/index']],
-            ['label' => 'Διπλωματικές', 'url' => ['/thesis/index']],
+    if (!(Yii::$app->user->isGuest)) {
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-left'],
+            'items' => [
+                ['label' => 'Αρχική', 'url' => ['/site/index']],
+                ['label' => 'Πηγές', 'url' => ['/references/index']],
 
-           
-            ['label' => 'Extra',
-                'items'=>[
-                    ['label'=>'Email','url'=>['email/committee']],
-                    ['label'=>'Chat','url'=>['chat/chat']],
-                    ['label'=>'ChatRoom','url'=>['chat/chat-room']],
+                ['label' => 'Διπλωματικές', 'url' => ['/thesis/index']],
+
+
+                ['label' => 'Extra',
+                    'items' => [
+                        ['label' => 'Email', 'url' => ['email/committee']],
+                        ['label' => 'Chat', 'url' => ['chat/chat']],
+                        ['label' => 'ChatRoom', 'url' => ['chat/chat-room']],
+                    ],
                 ],
+
+                (UserHelpers::UserRole() == 'professor') ?
+                    ['label' => 'Καθηγητής',
+                        'items' => [
+                            ['label' => 'Αρχική', 'url' => ['professor/main']],
+                            ['label' => 'Διπλωματικές', 'url' => ['professor/thesis']],
+                            ['label' => 'Επιτροπές', 'url' => ['professor/committee']],
+                            ['label' => 'Στατιστικά', 'url' => ['professor/statistics']],
+                        ],
+
+                    ]
+                    : ((UserHelpers::UserRole() == 'student') ?
+                    ['label' => 'Φοιτητής',
+                        'items' => [
+                            ['label' => 'Αρχική', 'url' => ['student/main']],
+                            ['label' => 'Η διπλωματική μου', 'url' => ['student/my-thesis']],
+                            ['label' => 'Οι πηγές μου', 'url' => ['student/my-references']],
+                            ['label' => 'Λίστα διπλωματικών', 'url' => ['thesis/index']],
+                            ['label' => 'Επικοινωνια με καθηγητή', 'url' => ['student/student-chat']],
+                        ],
+                    ]
+                    :
+                    ['label' => 'Admin', 'url' => ['/admin/index']]),
             ],
-             
-            
-            ['label' => 'Καθηγητής',
-                'items'=>[
-                    ['label'=>'Αρχική','url'=>['professor/main']],
-                    ['label'=>'Διπλωματικές','url'=>['professor/thesis']],
-                    ['label'=>'Επιτροπές','url'=>['professor/committee']],
-                    ['label'=>'Στατιστικά','url'=>['professor/statistics']],
-                  ],
-                  
-            ],
-            //UserHelpers::UserRole()=='professor' 
-            ['label' => 'Φοιτητής',
-                'items'=>[
-                    ['label'=>'Αρχική','url'=>['student/main']],
-                    ['label'=>'Η διπλωματική μου','url'=>['student/my-thesis']],
-                    ['label'=>'Οι πηγές μου','url'=>['student/my-references']],
-                    ['label'=>'Λίστα διπλωματικών','url'=>['thesis/index']],
-                    ['label'=>'Επικοινωνια με καθηγητή','url'=>['student/student-chat']],
+        ]);
 
-
-
-
-                ],
-            ]
-            
-        ],
-    ]);
-
-
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' =>

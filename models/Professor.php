@@ -129,4 +129,5 @@ class Professor extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Thesis::className(), ['committee3' => 'ID']);
     }
+
 }

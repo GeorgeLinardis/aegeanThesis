@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\CustomHelpers\UserHelpers;
 use app\models\Master;
+use app\models\StudentAppliesForThesis;
 use app\models\ThesisHasReferences;
 use app\models\ThesisSearch;
 use Yii;
@@ -128,7 +129,29 @@ class StudentController extends Controller
         return $this->render('main');
     }
 
-
+    /**
+     * Render the students application form for showing interest in a new thesis
+     */
+    public function actionThesisApplicationForm()
+    {
+        $Theses = Thesis::find()->where(['masterID' => UserHelpers::User()->masterID])->all();
+        $model = new StudentAppliesForThesis();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect('student/thesis-application-results');
+        }
+        else {
+            return $this->render('thesis-application-form', [
+                'Theses' => $Theses,
+                'model' => $model
+            ]);
+        }
+    }
+    public function actionThesisApplicationResults()
+    {
+        $dataProvider = new ActiveDataProvider(['query' => StudentAppliesForThesis::find()->where(['studentID'=>UserHelpers::User()->ID])]);
+        return $this->render('thesis-application-results',[
+                        'dataProvider'=>$dataProvider]);
+    }
 
     public function actionMyThesis()
     {

@@ -128,11 +128,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 <?php else: ?>
         <div class="row">
-            <div class="col-sm-offset-3 col-sm-9">
-               <img src="/images/broken-link.png" class="thumbnail" alt="broken link" id="broken-link-image-statistics-professor">
-
+            <div class="col-sm-12">
+               <img src="/images/broken-link.png" class="thumbnail" alt="broken link"  style="display: block; margin: 0 auto" id="broken-link-image-statistics-professor">
+                <?= "<h2>".$message."</h2>"?>
             </div>
-            <?= "<h2>".$message."</h2>"?>
+
         </div>
 <?php endif;?>
 

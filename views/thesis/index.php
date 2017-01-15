@@ -22,7 +22,13 @@ $this->title = 'Διπλωματικές';
         'columns' => [
             //['class' => 'yii\grid\SerialColumn'],
             'ID',
-            'masterID',
+
+            //'masterID',
+            [
+                'attribute' => 'masterID',
+                'value' => ('master.title')
+            ],
+
             //'professorID',
             [
                 'attribute' => 'professorID',
@@ -35,7 +41,7 @@ $this->title = 'Διπλωματικές';
             // 'prerequisite_knowledge:ntext',
             // 'max_students',
             // 'comments:ntext',
-             'status',
+            // 'status',
              'dateCreated:date',
              //'datePresented:date',
             // 'committee1',

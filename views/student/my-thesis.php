@@ -13,11 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1><br>
 <?php if(isset($message)): ?>
     <div class="row">
-        <div class="col-sm-offset-3 col-sm-9">
-            <img src="/images/broken-link.png" class="thumbnail" alt="broken link" id="broken-link-image-statistics-professor">
-
+        <div class="col-sm-12">
+            <img src="/images/broken-link.png" class="thumbnail" style="display: block; margin: 0 auto" alt="broken link" id="broken-link-image-statistics-professor">
+            <?= "<h2>".$message."</h2>"?>
         </div>
-        <?= "<h2>".$message."</h2>"?>
+
     </div>
 <?php else: ?>
             <?= DetailView::widget([
