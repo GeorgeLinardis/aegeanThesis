@@ -6,6 +6,7 @@ use app\CustomHelpers\CustomHelpers;
 use app\models\ProfessorHasMasters;
 use app\models\ReferencesSearch;
 use app\models\References;
+use app\models\StudentAppliesForThesis;
 use app\models\User;
 use yii\web\Controller;
 use yii\data\ActiveDataProvider;
@@ -40,20 +41,6 @@ class ProfessorController extends Controller
         ];
     }
 
-    /**
-     * Lists all professor models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Professor::find(),
-        ]);
-
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
-    }
 
     /**
      * Displays a single professor model.
@@ -67,80 +54,70 @@ class ProfessorController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new professor model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Professor();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save() ) {
-            return $this->redirect(['view', 'id' => $model->ID]);
-        } else {
-            return $this->render('create', [
-                'model' => $model
-            ]);
-
-        }
-    }
-    /**
-     * Updates an existing professor model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save() ) {
-            return $this->redirect(['view', 'id' => $model->ID]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
 
 
 
     /**
-     * Deletes an existing professor model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the professor model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return professor the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Professor::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-
-    /**
-     * Render the professor main page
+     * Renders the professor main page
      */
     public function actionThesis()
     {
         return $this->render('thesis');
+    }
+
+    public function CreateCommitteeEmail($SenderID,$ReceiverID,$PostData)
+    {
+        $Sender = Professor::find()->where(['id'=>($SenderID)])->one();
+        $Receiver = Professor::find()->where(['id'=>$ReceiverID])->one();
+
+
+        Yii::$app->mailer
+            ->compose('committee-approval-email',['Sender'=>$Sender,'Receiver'=>$Receiver,'PostData'=>$PostData])
+            ->setFrom($Sender->email)
+            ->setTo('glinardis@gmail.com')//$Receiver->email)
+            ->setSubject('Αίτημα συμμετοχής σε Επιτροπή απο '.' '.$Sender->firstname.' '.$Sender->lastname)
+            ->attachContent('Thesis Document',['fileName'=>'@web/documents/document.html'])
+            ->send();
+
+    }
+    /**
+     * Renders the professor thesis create page
+     */
+    public function actionThesisCreate()
+    {
+        $model = new Thesis() ;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $PostData = $_POST;
+            $ProfessorID=($_POST['Thesis']['professorID']);
+            $Committee1ID=$_POST['Thesis']['committee1'];
+            $Committee2ID=$_POST['Thesis']['committee2'];
+            $Committee3ID=$_POST['Thesis']['committee3'];
+
+
+            if (isset($Committee1ID)&&($Committee1ID!=NULL)){ $this->CreateCommitteeEmail($ProfessorID,$Committee1ID,$PostData);
+            };
+            if (isset($Committee2ID)&&($Committee2ID!=NULL)){ $this->CreateCommitteeEmail($ProfessorID,$Committee2ID,$PostData);};
+           if (isset($Committee3ID)&&($Committee3ID!=NULL)){ $this->CreateCommitteeEmail($ProfessorID,$Committee3ID,$PostData);};
+            //$committee2 = $_POST['Thesis']['committee2'];
+            //$committee3 = $_POST['Thesis']['committee3'];
+            return $this->redirect(['thesis-active']);
+            } else {
+                return $this->render('thesis-create', [
+                    'model' => $model,
+                ]);
+            }
+
+    }
+
+    /**
+     * Render the professor thesis-approval page
+     */
+    public function actionThesisApplicationApprovals()
+    {   $dataProvider = new ActiveDataProvider(['query' => StudentAppliesForThesis::find()->where(['professorID'=>UserHelpers::User()->ID])]);
+
+        return $this->render('thesis-application-approvals',[
+            'dataProvider'=>$dataProvider
+        ]);
     }
 
 

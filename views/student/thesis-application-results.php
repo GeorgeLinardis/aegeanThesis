@@ -12,14 +12,18 @@ use yii\grid\GridView;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             [
+                'attribute'=>'professorID',
+                'value'=>('professor.lastname')
+            ],
+            [
                 'attribute'=>'thesisID',
                 'value'=>('thesis.title')
-            ],
+    ],
             'status',
             [
                 'attribute'=>'studentID',
                 'value'=>('student.lastname')
-            ],
+    ],
             'dateCreated:datetime',
 
 

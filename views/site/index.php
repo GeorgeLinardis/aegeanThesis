@@ -12,6 +12,7 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών �
         <h1><?= Html::encode($this->title) ?></h1>
 
 
+
     <img src="/images/main_page_image.jpg" id="main-photo" alt="Main photo">
 
 

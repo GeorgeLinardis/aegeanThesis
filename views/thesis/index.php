@@ -53,6 +53,7 @@ $this->title = 'Διπλωματικές';
 
             ['class' => 'yii\grid\ActionColumn',
                 'template'=> UserHelpers::UserRole()== 'student'? '{view}':'{view}{update}{delete}',
+                'controller'=>'thesis'
 
 
             ],

@@ -51,14 +51,11 @@ use app\models\Professor;
                         ]
     ]);?>
 
-    <?= $form->field($model, 'committee1')->dropDownList(
-                                     ArrayHelper::map(Professor::find()->asArray()->all(),'professor',['lastname']),['prompt' => 'Επιλέξτε καθηγητή']) ?>
+    <?= $form->field($model, 'committee1')->textarea(['rows' => 3]) ?>
 
-    <?= $form->field($model, 'committee2')->dropDownList(
-        ArrayHelper::map(Professor::find()->asArray()->all(),'professor',['lastname']),['prompt' => 'Επιλέξτε καθηγητή']) ?>
+    <?= $form->field($model, 'committee2')->textarea(['rows' => 3]) ?>
 
-    <?= $form->field($model, 'committee3')->dropDownList(
-        ArrayHelper::map(Professor::find()->asArray()->all(),'professor',['lastname']),['prompt' => 'Επιλέξτε καθηγητή']) ?>
+    <?= $form->field($model, 'committee3')->textarea(['rows' => 3]) ?>
 
     <?= $form->field($model, 'RequestPDf')->textInput(['maxlength' => true]) ?>
 

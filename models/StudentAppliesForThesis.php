@@ -12,9 +12,11 @@ use Yii;
  * @property integer $studentID
  * @property string $dateCreated
  * @property string $status
+ * @property integer $professorID
  *
  * @property Student $student
  * @property Thesis $thesis
+ * @property Professor $professor
  */
 class StudentAppliesForThesis extends \yii\db\ActiveRecord
 {
@@ -32,11 +34,12 @@ class StudentAppliesForThesis extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['thesisID', 'studentID'], 'integer'],
+            [['thesisID', 'studentID', 'professorID'], 'integer'],
             [['dateCreated'], 'safe'],
             [['status'], 'string'],
             [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['studentID' => 'ID']],
             [['thesisID'], 'exist', 'skipOnError' => true, 'targetClass' => Thesis::className(), 'targetAttribute' => ['thesisID' => 'ID']],
+            [['professorID'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['professorID' => 'ID']],
         ];
     }
 
@@ -47,10 +50,11 @@ class StudentAppliesForThesis extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'thesisID' => 'Διπλωματική',
-            'studentID' => 'Φοιτητής',
-            'dateCreated' => 'Ημ/νια αίτησης',
-            'status' => 'Κατάσταση',
+            'thesisID' => 'Thesis ID',
+            'studentID' => 'Student ID',
+            'dateCreated' => 'Date Created',
+            'status' => 'Status',
+            'professorID' => 'Professor ID',
         ];
     }
 
@@ -68,5 +72,13 @@ class StudentAppliesForThesis extends \yii\db\ActiveRecord
     public function getThesis()
     {
         return $this->hasOne(Thesis::className(), ['ID' => 'thesisID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfessor()
+    {
+        return $this->hasOne(Professor::className(), ['ID' => 'professorID']);
     }
 }

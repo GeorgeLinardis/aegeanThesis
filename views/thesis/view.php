@@ -59,7 +59,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'RequestPDf',
 
                     [   'attribute'=>'masterID',
-                        'value'=>$model->master->title
+                        'value'=>$model->master->title,
+                        
                     ],
 
                 ],

@@ -65,13 +65,16 @@ class ThesisController extends Controller
     {
         $model = new Thesis();
 
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->ID]);
+               return $this->redirect(['view', 'id' => $model->ID]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+
+
     }
 
     /**
