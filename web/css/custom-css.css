@@ -26,6 +26,11 @@ p {
     width: 420px
 }
 
+.accounts-profile img {
+    width: 170px;
+    height: 150px;
+}
+
 .professor-thesis a:hover,.student-all-theses a:hover{
     opacity: 0.4;
 
@@ -37,7 +42,10 @@ p {
     max-height: 100%;
 }
 
-
+#main-photo{
+    height:70%;
+    width: 70%;
+}
 #main-body{
     background-color: #f2f2f2
 

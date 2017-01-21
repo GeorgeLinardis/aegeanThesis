@@ -84,7 +84,13 @@ class StudentController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $image = UploadedFile::getInstance($model,'photo');
+            $imageName = 'User_'.$model->userUsername.".".$image->getExtension();
+            $image->saveAs('images\userPhotos'."/".$imageName);
+            $model->photo=$imageName;
+            $model->save();
             return $this->redirect(['site/profile']);
         } else {
             return $this->render('update', [

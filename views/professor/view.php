@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'skypeUsername',
             'comments:ntext',
             'url:url',
-            'photo',
+            //'photo',
         ],
     ]) ?>
     <?= Html::a('Τροποποίηση', ['//professor/update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>

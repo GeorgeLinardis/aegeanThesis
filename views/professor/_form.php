@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Student */
+/* @var $model app\models\Professor */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="student-form">
+<div class="professor-form">
 
     <?php $form = ActiveForm::begin([
         'options' => [
@@ -16,11 +16,7 @@ use yii\widgets\ActiveForm;
             'enctype'=>'multipart/form-data'],
     ]); ?>
 
-    <?= $form->field($model, 'masterID')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'thesisID')->hiddenInput()->label(false) ?>
-
-    <?php // echo $form->field($model, 'userUsername')->textInput(['value'=>(\Yii::$app->user->identity->username) ,'readonly'=>true])?>
+    <?php // echo $form->field($model, 'userUsername')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
 
@@ -30,18 +26,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telephone2')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'skypeUsername')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'url')->textarea(['rows' => 6]) ?>
-
     <?= $form->field($model, 'comments')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'photo')->fileInput()  ?>
+    <?= $form->field($model, 'url')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'photo')->fileInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Τροποποίηση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',]) ?>
-
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Ανανέωση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

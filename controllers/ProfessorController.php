@@ -53,9 +53,45 @@ class ProfessorController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    /**
+     * Updates an existing Professor model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+        //if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $image = UploadedFile::getInstance($model,'photo');
+            $imageName = 'User_'.$model->userUsername.".".$image->getExtension();
+            $image->saveAs('images\userPhotos'."/".$imageName);
+            $model->photo=$imageName;
+            $model->save();
+            return $this->redirect(['site/profile']);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
 
-
-
+    /**
+     * Finds the Professor model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     * @param integer $id
+     * @return Professor the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findModel($id)
+    {
+        if (($model = Professor::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
 
     /**
      * Renders the professor main page

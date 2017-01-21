@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <video autoplay loop class="embed-responsive-item">
                 <source src=/tutorial_videos/tutorial-new-thesis.mp4 type=video/mp4>
             </video>
+            <br>
         </div>
     </div>
 

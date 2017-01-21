@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if(isset($message)): ?>
     <div class="row">
         <div class="col-sm-12">
-            <img src="/images/broken-link.png" class="thumbnail" style="display: block; margin: 0 auto" alt="broken link" id="broken-link-image-statistics-professor">
+            <img src="/images/broken-link.png" class="thumbnail broken-link-image" alt="broken link">
             <?= "<h2>".$message."</h2>"?>
         </div>
 
