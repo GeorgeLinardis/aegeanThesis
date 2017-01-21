@@ -71,6 +71,16 @@ class SiteController extends Controller
     }
 
     /**
+     * Displays tutorials page.
+     *
+     * @return string
+     */
+    public function actionTutorials()
+    {
+        return $this->render('tutorials');
+    }
+
+    /**
      * Login action.
      *
      * @return string
