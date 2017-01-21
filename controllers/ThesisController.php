@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use mPDF;
 use Yii;
 use app\models\Thesis;
 use app\models\ThesisSearch;
@@ -65,7 +66,6 @@ class ThesisController extends Controller
     {
         $model = new Thesis();
 
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
                return $this->redirect(['view', 'id' => $model->ID]);
         } else {
@@ -73,9 +73,23 @@ class ThesisController extends Controller
                 'model' => $model,
             ]);
         }
-
-
     }
+
+    public function actionThesisPdf($id)
+    {
+        $model =Thesis::find()->where(['ID'=>$id])->one();
+        $path = 'Thesis Application ID_'.$model->ID.'.pdf';
+        $document = new mPDF();
+        $document->WriteHTML($this->renderPartial('thesis-pdf',['model'=>$model]));
+        $document->title = "Thesis Application";
+        $document->Output(('documents/'.$path),'F');
+        $document->Output();
+        $model->RequestPDf = $path;
+        $model->save();
+
+        exit();
+    }
+
 
     /**
      * Updates an existing Thesis model.

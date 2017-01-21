@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\CustomHelpers\UserHelpers;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Thesis */
@@ -18,11 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <p>
                 <?php if (UserHelpers::UserRole()!= 'student') :?>
+
+                <?= Html::a('<span class="glyphicon glyphicon-list-alt"></span> Αίτηση PDF', ['thesis-pdf','id'=>($model->ID)], ['class' => 'btn btn-primary' ]) ?>
                 <?= Html::a('Ανανέωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
                 <?= Html::a('Διαγραφή', ['delete', 'id' => $model->ID], [
                     'class' => 'btn btn-danger',
                     'data' => [
-                        'confirm' => 'Are you sure you want to delete this item?',
+                        'confirm' => 'Σίγουρα θέλετε να διαγράψετε την καταχώτηση αυτή;',
                         'method' => 'post',
                     ],
                 ]) ?>
@@ -66,8 +69,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
             ]) ?>
         </div>
-        <?php if(UserHelpers::UserRole()=="student") :?>
+
         <div class="col-sm-3">
+            <?php if(UserHelpers::UserRole()=="student") :?>
             <br><br><h3>Δηλώστε ενδιαφέρον για την διπλωματική:</h3>
             <?= Html::a('Δήλωση', ['//student/thesis-application-form','id'=>$model->ID], ['class' => 'btn btn-primary center-block']) ?>
         </div>
