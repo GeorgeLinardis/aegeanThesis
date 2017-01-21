@@ -18,6 +18,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use app\CustomHelpers\UserHelpers;
+use yii\helpers\ArrayHelper;
 
 
 class ProfessorController extends Controller
@@ -140,6 +141,7 @@ class ProfessorController extends Controller
             } else {
                 return $this->render('thesis-create', [
                     'model' => $model,
+
                 ]);
             }
 

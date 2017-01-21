@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             [   'label'=>'Μεταπτυχιακό',
-                'value'=>$model->master->title,
+                'value'=>$model->master?$model->master->title:"Δεν έχει τεθεί",
             ],
             'userUsername',
             'firstname',

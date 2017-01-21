@@ -51,19 +51,33 @@ use app\models\Professor;
                         ]
     ]);?>
 
-    <?= $form->field($model, 'committee1')->textarea(['rows' => 3]) ?>
+    <?= $form->field($model, 'committee1')->dropDownList(
+                                            ArrayHelper::map(Professor::find()->all(),
+                                                'ID',function($model){return $model->firstname.' '.$model->lastname;}),
+                                            ['prompt'=>'Επιλέξτε καθηγητή']) ?>
 
-    <?= $form->field($model, 'committee2')->textarea(['rows' => 3]) ?>
+    <?= $form->field($model, 'committee2')->dropDownList(
+                                            ArrayHelper::map(Professor::find()->all(),
+                                                'ID',function($model){return $model->firstname.' '.$model->lastname;}),
+                                            ['prompt'=>'Επιλέξτε καθηγητή']) ?>
 
-    <?= $form->field($model, 'committee3')->textarea(['rows' => 3]) ?>
+    <?= $form->field($model, 'committee3')->dropDownList(
+                                            ArrayHelper::map(Professor::find()->all(),
+                                                'ID',function($model){return $model->firstname.' '.$model->lastname;}),
+                                            ['prompt'=>'Επιλέξτε καθηγητή']) ?>
 
     <?= $form->field($model, 'RequestPDf')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'masterID')->dropDownList(
-                        ArrayHelper::map(ProfessorHasMasters::find()->asArray()->all(),'masterID','masterID'),['prompt' => 'Επιλέξτε ένα απο τα προγράμματα σας']) ?>
+                        ArrayHelper::map(ProfessorHasMasters::find()
+                            ->where(['professorID'=>UserHelpers::User()->ID])->all(),
+                            'masterID',function($model){
+                                $data = \app\models\Master::find()->where(['ID'=>($model->masterID)])->one();
+                                return $data->title.' ('.$data->ID.')'  ;}),
+                            ['prompt' => 'Επιλέξτε ένα απο τα προγράμματα σας']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Ανανέωση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
