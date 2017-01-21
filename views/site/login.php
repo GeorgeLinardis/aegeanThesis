@@ -19,7 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= Login::widget()?>
-
+    <br>
+    <a href="/user/forgot">Ξεχάσατε τον κωδικό σας;</a><br>
+    <a href="/user/resend">Δεν έχετε λάβει email επιβεβαίωσης;</a>
     </div>
 
     <div class="col-md-6 col-md-1-offset ">

@@ -85,13 +85,13 @@ AppAsset::register($this);
         'items' =>
         [
             Yii::$app->user->isGuest
-                ? ['label' => 'Είσοδος', 'url' => ['site/login']]
+                ? ['label' => 'Είσοδος', 'url' => ['/site/login']]
 
 
                 : ['label' => Yii::$app->user->identity->username,
                     'items' => [
                         ['label' => 'Προφίλ', 'url' => ['site/profile']],
-                        ['label' => 'Έξοδος Χρήστη','url'=>['site/logout'],'linkOptions'=>['data-method'=>'post']],
+                        ['label' => 'Έξοδος Χρήστη','url'=>['/site/logout'],'linkOptions'=>['data-method'=>'post']],
                     ],
                 ],
 
