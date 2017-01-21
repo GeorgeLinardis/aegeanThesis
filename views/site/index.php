@@ -14,11 +14,12 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών �
 
     <div class="jumbotron">
         <h1><?= Html::encode($this->title) ?></h1>
+        <?= Url::to('/css/custom-css.css')?>
         <p>Είναι πλέον κοινά παραδεκτό ότι ένας αναγνώστης αποσπάται από το περιεχόμενο που διαβάζει,
             όταν εξετάζει τη διαμόρφωση μίας σελίδας. Η ουσία της χρήσης του Lorem Ipsum είναι ότι έχει
             λίγο-πολύ μία ομαλή κατανομή γραμμάτων, αντίθετα με το να βάλει κανείς κείμενο όπως
             'Εδώ θα μπει κείμενο, εδώ θα μπει κείμενο', κάνοντάς το να φαίνεται σαν κανονικό κείμενο. </p>
-        <p><a class="btn btn-primary btn-lg text-center" href="<?= Url::to('/site/tutorials')?>" role="button">Πως λειτουργεί ;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="<?= Url::to('/site/tutorials')?>" role="button">Πως λειτουργεί ;</a></p>
     </div>
 
 

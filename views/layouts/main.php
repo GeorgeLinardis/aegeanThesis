@@ -9,6 +9,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\CustomHelpers\UserHelpers;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -21,7 +22,6 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <link type="text/css" href="css/custom-css.css" rel="stylesheet">
 </head>
 <body id="main-body">
 

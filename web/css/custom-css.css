@@ -51,9 +51,11 @@ p {
 
 }
 
-#broken-link-image-statistics-professor{
-    align-content:center ;
-    max-width: 40%;
+.broken-link-image{
+    width: 50%;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 

@@ -8,8 +8,8 @@ $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/m
 <?php if ($message):?>
 
         <div class="col-sm-12">
-            <img src="/images/broken-link.png" alt="broken link" style="display: block; margin: 0 auto" id="broken-link-image-statistics-professor">
-
+            <img class="broken-link-image" src="/images/broken-link.png" alt="broken link">
+            <br>
         </div>
         <?= "<h2>".$message."</h2>"?>
 
