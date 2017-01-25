@@ -102,21 +102,7 @@ class ProfessorController extends Controller
         return $this->render('thesis');
     }
 
-    public function CreateCommitteeEmail($SenderID,$ReceiverID,$PostData)
-    {
-        $Sender = Professor::find()->where(['id'=>($SenderID)])->one();
-        $Receiver = Professor::find()->where(['id'=>$ReceiverID])->one();
 
-
-        Yii::$app->mailer
-            ->compose('committee-approval-email',['Sender'=>$Sender,'Receiver'=>$Receiver,'PostData'=>$PostData])
-            ->setFrom($Sender->email)
-            ->setTo('glinardis@gmail.com')//$Receiver->email)
-            ->setSubject('Αίτημα συμμετοχής σε Επιτροπή απο '.' '.$Sender->firstname.' '.$Sender->lastname)
-            ->attachContent('Thesis Document',['fileName'=>'@web/documents/document.html'])
-            ->send();
-
-    }
     /**
      * Renders the professor thesis create page
      */
@@ -125,18 +111,22 @@ class ProfessorController extends Controller
         $model = new Thesis() ;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $PostData = $_POST;
+            $ThesisID = $model->ID;
             $ProfessorID=($_POST['Thesis']['professorID']);
             $Committee1ID=$_POST['Thesis']['committee1'];
             $Committee2ID=$_POST['Thesis']['committee2'];
             $Committee3ID=$_POST['Thesis']['committee3'];
 
 
-            if (isset($Committee1ID)&&($Committee1ID!=NULL)){ $this->CreateCommitteeEmail($ProfessorID,$Committee1ID,$PostData);
-            };
-            if (isset($Committee2ID)&&($Committee2ID!=NULL)){ $this->CreateCommitteeEmail($ProfessorID,$Committee2ID,$PostData);};
-           if (isset($Committee3ID)&&($Committee3ID!=NULL)){ $this->CreateCommitteeEmail($ProfessorID,$Committee3ID,$PostData);};
+            if (isset($Committee1ID)&&($Committee1ID!=NULL)){EmailController::CreateCommitteeEmail($ProfessorID,$Committee1ID,$PostData,$ThesisID);};
+            if (isset($Committee2ID)&&($Committee2ID!=NULL)){EmailController::CreateCommitteeEmail($ProfessorID,$Committee2ID,$PostData,$ThesisID);};
+            if (isset($Committee3ID)&&($Committee3ID!=NULL)){EmailController::CreateCommitteeEmail($ProfessorID,$Committee3ID,$PostData,$ThesisID);};
             //$committee2 = $_POST['Thesis']['committee2'];
             //$committee3 = $_POST['Thesis']['committee3'];
+            $model->committee1=null;
+            $model->committee2=null;
+            $model->committee3=null;
+            $model->save();
             return $this->redirect(['thesis-active']);
             } else {
                 return $this->render('thesis-create', [

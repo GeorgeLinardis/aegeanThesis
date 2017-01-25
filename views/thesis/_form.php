@@ -50,23 +50,24 @@ use app\models\Professor;
                             'format' => 'yyyy-mm-dd'
                         ]
     ]);?>
-
+    <!-- The committee fields are not saved in the database because if it will be saved depends on the email response of the professor
+    -->
     <?= $form->field($model, 'committee1')->dropDownList(
                                             ArrayHelper::map(Professor::find()->all(),
-                                                'ID',function($model){return $model->firstname.' '.$model->lastname;}),
+                                                "ID",function($model){return $model->firstname.' '.$model->lastname;}),
                                             ['prompt'=>'Επιλέξτε καθηγητή']) ?>
 
     <?= $form->field($model, 'committee2')->dropDownList(
                                             ArrayHelper::map(Professor::find()->all(),
-                                                'ID',function($model){return $model->firstname.' '.$model->lastname;}),
+                                                "ID",function($model){return $model->firstname.' '.$model->lastname;}),
                                             ['prompt'=>'Επιλέξτε καθηγητή']) ?>
 
     <?= $form->field($model, 'committee3')->dropDownList(
                                             ArrayHelper::map(Professor::find()->all(),
-                                                'ID',function($model){return $model->firstname.' '.$model->lastname;}),
+                                                "ID",function($model){return $model->firstname.' '.$model->lastname;}),
                                             ['prompt'=>'Επιλέξτε καθηγητή']) ?>
 
-    <?= $form->field($model, 'RequestPDf')->textInput(['maxlength' => true]) ?>
+    <?php // echo $form->field($model, 'RequestPDf')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'masterID')->dropDownList(
                         ArrayHelper::map(ProfessorHasMasters::find()
