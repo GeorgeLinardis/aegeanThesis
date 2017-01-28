@@ -71,6 +71,7 @@ AppAsset::register($this);
                             ['label' => 'Η διπλωματική μου', 'url' => ['student/my-thesis']],
                             ['label' => 'Οι πηγές μου', 'url' => ['student/my-references']],
                             ['label' => 'Λίστα διπλωματικών', 'url' => ['student/my-master-theses']],
+                            ['label' => 'Αιτήσεις νέας διπλωματικής', 'url' => ['student/thesis-application-results']],
                             ['label' => 'Επικοινωνια με καθηγητή', 'url' => ['student/student-chat']],
                         ],
                     ]
