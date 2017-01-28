@@ -73,7 +73,7 @@ class DatabaseUsers extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'flags' => 'Flags',
-            'role' => 'Role',
+            'role' => 'role',
         ];
     }
 

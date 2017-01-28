@@ -70,7 +70,7 @@ AppAsset::register($this);
                             ['label' => 'Αρχική', 'url' => ['student/main']],
                             ['label' => 'Η διπλωματική μου', 'url' => ['student/my-thesis']],
                             ['label' => 'Οι πηγές μου', 'url' => ['student/my-references']],
-                            ['label' => 'Λίστα διπλωματικών', 'url' => ['thesis/index']],
+                            ['label' => 'Λίστα διπλωματικών', 'url' => ['student/my-master-theses']],
                             ['label' => 'Επικοινωνια με καθηγητή', 'url' => ['student/student-chat']],
                         ],
                     ]

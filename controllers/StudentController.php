@@ -7,6 +7,7 @@ use app\models\Master;
 use app\models\StudentAppliesForThesis;
 use app\models\ThesisHasReferences;
 use app\models\ThesisSearch;
+use app\models\User;
 use Yii;
 use yii\web\Controller;
 use app\models\Thesis;
@@ -176,29 +177,45 @@ class StudentController extends Controller
 
 
     public function actionMyReferences()
-      {   $message = "Δεν έχει αναλάβει διπλωματική ακόμα οπότε δεν μπορείτε να δημιουργήσετε κάποια αναφορά.";
-          $model=Thesis::find()->where(['ID'=>UserHelpers::User()->thesisID])->one();
-          $Student = UserHelpers::User();
-          $searchModel = new ReferencesSearch();
-          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-          if (isset($model)) {
+    {
+        $message = "Δεν έχει αναλάβει διπλωματική ακόμα οπότε δεν μπορείτε να δημιουργήσετε κάποια αναφορά.";
+        $model = Thesis::find()->where(['ID' => UserHelpers::User()->thesisID])->one();
+        $Student = UserHelpers::User();
+        $searchModel = new ReferencesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        if (isset($model)) {
 
-              return $this->render('my-references',[
-                  'searchModel' => $searchModel,
-                  'dataProvider'=> $dataProvider,
-                  'Student'=>$Student,
+            return $this->render('my-references', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+                'Student' => $Student,
 
-              ]);}
-          else{
-              return $this->render('my-references',[
-                  'message'=>$message,
-
-
-              ]);}
+            ]);
+        } else {
+            return $this->render('my-references', [
+                'message' => $message,
 
 
-
+            ]);
+        }
     }
+          /**
+           * Lists all Thesis models.
+           * @return mixed
+           */
+          public function actionMyMasterTheses()
+      {
+          $searchModel = new ThesisSearch();
+          $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+          $dataProvider->query->andWhere(['masterID' => UserHelpers::User()->masterID]);
+
+          return $this->render('my-master-theses', [
+              'searchModel' => $searchModel,
+              'dataProvider' => $dataProvider,
+          ]);
+      }
+
+
 
 
 }
