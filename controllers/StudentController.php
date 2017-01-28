@@ -86,10 +86,11 @@ class StudentController extends Controller
         $model = $this->findModel($id);
         //if ($model->load(Yii::$app->request->post()) && $model->save()) {
         if ($model->load(Yii::$app->request->post())) {
+            if (UploadedFile::getInstance($model,'photo')){
             $image = UploadedFile::getInstance($model,'photo');
             $imageName = 'User_'.$model->userUsername.".".$image->getExtension();
             $image->saveAs('images\userPhotos'."/".$imageName);
-            $model->photo=$imageName;
+            $model->photo=$imageName;}
             $model->save();
             return $this->redirect(['site/profile']);
         } else {

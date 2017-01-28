@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Master;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Student */
@@ -16,7 +18,11 @@ use yii\widgets\ActiveForm;
             'enctype'=>'multipart/form-data'],
     ]); ?>
 
-    <?= $form->field($model, 'masterID')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'masterID')->dropDownList(
+        ArrayHelper::map(Master::find()->all(),
+            "ID","title"),
+        ['prompt'=>'Επιλέξτε μεταπτυχιακό']) ?>
+
 
     <?= $form->field($model, 'thesisID')->hiddenInput()->label(false) ?>
 
