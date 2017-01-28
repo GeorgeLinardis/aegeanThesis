@@ -13,17 +13,23 @@ use yii\grid\GridView;
             ['class' => 'yii\grid\SerialColumn'],
             [
                 'attribute'=>'professorID',
-                'value'=>('professor.lastname')
+                'value'=>function ($model) {
+                    return $model->professor->lastname.' '. $model->professor->firstname;
+                },
             ],
             [
                 'attribute'=>'thesisID',
                 'value'=>('thesis.title')
-    ],
-            'status',
+            ],
             [
                 'attribute'=>'studentID',
-                'value'=>('student.lastname')
-    ],
+                'value'=>function ($model) {
+                    return $model->student->lastname.' '. $model->student->firstname;
+                },
+
+            ],
+            'status',
+
             'dateCreated:datetime',
 
 

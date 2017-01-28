@@ -32,7 +32,9 @@ $this->title = 'Διπλωματικές';
             //'professorID',
             [
                 'attribute' => 'professorID',
-                'value' => ('professor.lastname')
+                'value'=>function ($model) {
+                    return $model->professor->lastname.' '. $model->professor->firstname;
+                },
             ],
 
             'title',

@@ -9,20 +9,30 @@ use yii\helpers\Html;
 
 <div class="student-form">
 
+
+    <form>
+        <div class="form-group">
+            <label>Τίτλος Διπλωματικής</label>
+            <input type="text" class="form-control" placeholder="<?=$Thesis->title?>" readonly>
+        </div>
+    </form>
     <?php $form = ActiveForm::begin([
         'options' => [
             'enableAjaxValidation' => true,
             'enctype'=>'multipart/form-data'],
     ]); ?>
 
-    <?= $form->field($model, 'studentID')->textInput(['value'=>(\app\CustomHelpers\UserHelpers::User()->ID) ,'readonly'=>true])?>
+    <?= $form->field($model, 'studentID')->hiddenInput(['readonly'=>'true','value'=>(\app\CustomHelpers\UserHelpers::User()->ID)])->label(false)?>
 
-    <?= $form->field($model, 'thesisID')->textInput(['value'=>Yii::$app->request->get('id'),'readonly'=>true])?>
+    <?= $form->field($model, 'professorID')->hiddenInput(['readonly'=>'true','value'=>Yii::$app->request->get('professorID')])->label(false)?>
 
-    <?= $form->field($model, 'status')->textInput(['value'=>'δεν έχει εγκριθεί','readonly'=>true])?>
+    <?= $form->field($model, 'thesisID')->textInput(['readonly'=>'true','value'=>Yii::$app->request->get('id')])->label(('Κωδικός Διπλωματικής:'))?>
+
+    <?= $form->field($model, 'status')->textInput(['value'=>'δεν έχει εγκριθεί','readonly'=>true])->label(('Τρέχουσα κατάσταση διπλωματικής'))?>
+
 
     <div class="form-group">
-        <?= Html::submitButton('Αποστολή', ['class' => 'btn btn-success' ]) ?>
+        <?= Html::submitButton('Αποστολή δήλωσης ενδιαφέροντος', ['class' => 'btn btn-success' ]) ?>
 
     </div>
 

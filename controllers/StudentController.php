@@ -140,16 +140,16 @@ class StudentController extends Controller
     /**
      * Render the students application form for showing interest in a new thesis
      */
-    public function actionThesisApplicationForm()
+    public function actionThesisApplicationForm($id)
     {
-        $Theses = Thesis::find()->where(['masterID' => UserHelpers::User()->masterID])->all();
+        $Thesis = Thesis::find()->where(['ID' => $id])->one();
         $model = new StudentAppliesForThesis();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect('student/thesis-application-results');
+            return $this->redirect('thesis-application-results');
         }
         else {
             return $this->render('thesis-application-form', [
-                'Theses' => $Theses,
+                'Thesis' => $Thesis,
                 'model' => $model
             ]);
         }

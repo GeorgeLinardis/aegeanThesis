@@ -74,7 +74,7 @@ use yii\helpers\Url;
 
             <?php if(UserHelpers::UserRole()=="student" && UserHelpers::User()->masterID==$model->masterID) :?>
             <br><br><h3>Δηλώστε ενδιαφέρον για την διπλωματική:</h3>
-            <?= Html::a('Δήλωση', ['//student/thesis-application-form','id'=>$model->ID], ['class' => 'btn btn-primary center-block']) ?>
+            <?= Html::a('Δήλωση', ['//student/thesis-application-form','id'=>$model->ID,'professorID'=>$model->professorID], ['class' => 'btn btn-primary center-block']) ?>
         </div>
         <?php endif;?>
     </div>
