@@ -257,15 +257,21 @@ class ProfessorController extends Controller
      */
     public function actionStatistics()
     {
+
         $user = UserHelpers::User();
         $today = date('Y-m');
+
+
         $TotalReferencesCount = References::find()->where(['professorID' => ($user->ID)])->count();
-        if ($TotalReferencesCount != 0) {
+
+        if ($TotalReferencesCount != 0 ) {
 
             $TotalThesesCount = Thesis::find()->where(['professorID' => ($user->ID)])->count();
-            $TotalThesesPresentedThisMonth = count(Thesis::find()->where(['professorID' => ($user->ID)])
-                ->andWhere(['=', 'datePresented', $today])->all());;
-            $TotalReferencesThisMonth = count(References::find()->where(['>=', 'date_created_by_author', $today])->all());
+            $TotalThesesPresentedThisMonth = count(Thesis::find()->where(['professorID' => ($user->ID),'status'=>['για Επιτροπή']])
+                ->andWhere(['between', 'datePresented', (date('Y-m').'-01'),(date('Y-m').'-31')])->all());;
+            $TotalThesesThisYear = count(Thesis::find()->where(['professorID' => ($user->ID),'status'=>['ολοκληρώθηκε','εχει ανατεθεί','για Επιτροπή']])
+                ->andWhere(['between', 'datePresented', (date('Y').'-01-01'),(date('Y').'-12-31')])->all());
+            $TotalReferencesThisMonth = count(References::find()->where(['>=', 'date_created_by_student', $today])->all());
 
 
             //---------- 1st Pie chart ---------------------
@@ -313,8 +319,9 @@ class ProfessorController extends Controller
             $UnassignedThesesCount = count(Thesis::find()->where(['professorID' => ($user->ID), 'status' => 'Δεν έχει ανατεθεί'])->all());
             $ForApprovalThesesCount = count(Thesis::find()->where(['professorID' => ($user->ID), 'status' => 'Υπο έγκριση'])->all());
             $AssignedThesesCount = count(Thesis::find()->where(['professorID' => ($user->ID), 'status' => 'Έχει ανατεθεί'])->all());
+            $NotAssignedThesesCount = count(Thesis::find()->where(['professorID' => ($user->ID), 'status' => ['δεν έχει ανατεθεί','υπο έγκριση']])->all());
             $CommitteeThesesCount = count(Thesis::find()->where(['professorID' => ($user->ID), 'status' => 'Για Επιτροπή'])->all());
-            $CompletedThesesCount = count(Thesis::find()->where(['professorID' => ($user->ID), 'status' => 'Ολοκληρωμένες'])->all());
+            $CompletedThesesCount = count(Thesis::find()->where(['professorID' => ($user->ID), 'status' => 'Ολοκληρώθηκε'])->all());
 
 
             $UnassignedThesesAvg = round(($UnassignedThesesCount / $TotalThesesCount), 2);
@@ -327,10 +334,13 @@ class ProfessorController extends Controller
                 //Synopsis
                 'TotalReferencesCount' => $TotalReferencesCount,
                 'TotalThesesCount' => $TotalThesesCount,
+                'NotAssignedThesesCount'=> $NotAssignedThesesCount,
                 'AssignedThesesCount' => $AssignedThesesCount,
                 'CommitteeThesesCount' => $CommitteeThesesCount,
                 'TotalReferencesThisMonth' => $TotalReferencesThisMonth,
                 'TotalThesesPresentedThisMonth' => $TotalThesesPresentedThisMonth,
+                'CompletedThesesCount'=>$CompletedThesesCount,
+                'TotalThesesThisYear' =>$TotalThesesThisYear,
 
 
                 // 1st Pie Chart
