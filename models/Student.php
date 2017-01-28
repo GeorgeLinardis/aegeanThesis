@@ -110,4 +110,11 @@ class Student extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['username' => 'userUsername']);
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStudentAppliesForTheses()
+    {
+        return $this->hasMany(StudentAppliesForThesis::className(), ['studentID' => 'ID']);
+    }
 }

@@ -106,6 +106,14 @@ class Thesis extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getStudentAppliesForTheses()
+    {
+        return $this->hasMany(StudentAppliesForThesis::className(), ['thesisID' => 'ID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getCommittee10()
     {
         return $this->hasOne(Professor::className(), ['ID' => 'committee1']);

@@ -41,7 +41,7 @@ $this->title = 'Διπλωματικές';
             // 'prerequisite_knowledge:ntext',
             // 'max_students',
             // 'comments:ntext',
-            // 'status',
+             'status',
              'dateCreated:date',
              //'datePresented:date',
             // 'committee1',
