@@ -11,16 +11,16 @@ $this->title = 'Αναφορές';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="references-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>
         <?php
         if (Yii::$app->controller->id == 'student'){
         echo Html::a('Δημιουργία Αναφοράς', ['references/create'], ['class' => 'btn btn-success']);
         }; ?>
     </p>
+
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -30,13 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'author',
             'type',
-            'URL:url',
+            //'professorID',
+            //'URL:url',
              'date_created_by_author:date',
-             'date_created_by_student:date',
-             'date_updated_by_student:date',
+             //'date_created_by_student:date',
+             //'date_updated_by_student:date',
             // 'file:ntext',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
+                'controller'=>'references'
+
+                ],
+
         ],
     ]); ?>
 </div>

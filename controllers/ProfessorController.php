@@ -180,7 +180,6 @@ class ProfessorController extends Controller
         return $this->render('my-references',
             ['dataProvider' => $dataProvider,
                 'searchModel' => $searchModel,
-
             ]);
         }
         else{

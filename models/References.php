@@ -57,16 +57,16 @@ class References extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'professorID' => 'Professor ID',
-            'studentID' => 'Student ID',
-            'title' => 'Title',
-            'author' => 'Author',
-            'type' => 'Type',
+            'professorID' => 'Κωδικός Καθηγητή',
+            'studentID' => 'Κωδικός Φοιτητή',
+            'title' => 'Τίτλος',
+            'author' => 'Συγγραφέας',
+            'type' => 'Τύπος',
             'URL' => 'Url',
-            'date_created_by_author' => 'Date Created By Author',
-            'date_created_by_student' => 'Date Created By Student',
-            'date_updated_by_student' => 'Date Updated By Student',
-            'file' => 'File',
+            'date_created_by_author' => 'Ημ/νία δημιουργίας Συγγραφέα',
+            'date_created_by_student' => 'Ημ/νία δημιουργίας Φοιτητή',
+            'date_updated_by_student' => 'Ημ/νία ανανέωσης φοιτητή',
+            'file' => 'Αρχείο',
         ];
     }
 

@@ -8,14 +8,14 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\Thesis */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Theses', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+    $this->title = $model->title;
+
 ?>
+
     <div class="thesis-view">
     <div class="row">
         <div class="col-sm-9">
-            <h1><?= Html::encode($this->title) ?></h1>
+            <h1><?= Html::encode($this->title) ?></h1><br>
 
             <p>
                 <?php if (UserHelpers::UserRole()!= 'student') :?>

@@ -30,10 +30,10 @@ $this->title = 'Διπλωματικές';
             ],
 
             //'professorID',
-            [
-                'attribute' => 'professorID',
-                'value' => ('professor.lastname')
-            ],
+            //[
+            //    'attribute' => 'professorID',
+            //    'value' => ('professor.lastname')
+            //],
 
             'title',
             //'description:ntext',
