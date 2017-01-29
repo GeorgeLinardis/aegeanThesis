@@ -47,9 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
         <div class="col-sm-2">
             <a href="<?= Url::to('/professor/my-references')?>" class="thumbnail">
-                <img src="/images/professor/Professors-main-page-references" alt="My-References">
+                <img src="/images/professor/Professors-main-page-chat.jpg" alt="My-References">
             </a>
-            <h4> Αιτήσεις διπλωματικών</h4>
+            <h4> Επικοινωνία με φοιτητές</h4>
         </div>
     </div>
 </div>

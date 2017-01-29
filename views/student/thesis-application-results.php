@@ -28,7 +28,7 @@ use yii\grid\GridView;
                 },
 
             ],
-            'status',
+
 
             'dateCreated:datetime',
 

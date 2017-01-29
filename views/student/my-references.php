@@ -5,7 +5,7 @@ $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/m
 ?>
 
 
-<?php if ($message):?>
+<?php if (isset($message)):?>
 
         <div class="col-sm-12">
             <img class="broken-link-image" src="/images/broken-link.png" alt="broken link">
@@ -15,8 +15,9 @@ $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/m
 
 
 <?php else :?>
-<?
- echo $this->render('//references/index', [
+
+<?php
+    echo $this->render('//references/index', [
           'searchModel' => $searchModel,
           'dataProvider'=> $dataProvider,
           'Student'=>$Student,

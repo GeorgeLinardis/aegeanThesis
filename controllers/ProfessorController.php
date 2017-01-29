@@ -6,7 +6,9 @@ use app\CustomHelpers\CustomHelpers;
 use app\models\ProfessorHasMasters;
 use app\models\ReferencesSearch;
 use app\models\References;
+use app\models\Student;
 use app\models\StudentAppliesForThesis;
+use app\models\ThesisHasStudents;
 use app\models\User;
 use yii\web\Controller;
 use yii\data\ActiveDataProvider;
@@ -148,6 +150,33 @@ class ProfessorController extends Controller
         ]);
     }
 
+    /**
+     * Render the professor thesis-approval page
+     */
+    public function actionThesisApplicationAnswer($ThesisID=122,$StudentID=30)
+    {
+        $Thesis = Thesis::find()->where(['ID'=>$ThesisID])->one();
+        $Student = Student::find()->where(['ID'=>$StudentID])->one();
+        $Professor = Professor::find()->where(['ID'=>$Thesis->professorID])->one();
+        $Thesis_has_students = new ThesisHasStudents();
+
+
+        if ($Thesis->load(Yii::$app->request->post()) && $Thesis->save()) {
+            $Student->thesisID = $Thesis->ID;
+            $Thesis_has_students->thesisID=$Thesis->ID;
+            $Thesis_has_students->studentID=$Student->ID;
+            $Thesis->save();
+            $Student->save();
+            $Thesis_has_students->save();
+            return $this->render('thesis');
+        }
+        return $this->render('thesis-application-answer',[
+            'Thesis'=>$Thesis,
+            'Student'=>$Student,
+            'Professor'=>$Professor
+            ]
+        );
+    }
 
     /**
      * Renders the professors active thesis page by filtering status attribute from professor table

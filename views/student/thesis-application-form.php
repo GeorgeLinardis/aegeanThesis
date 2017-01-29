@@ -28,7 +28,6 @@ use yii\helpers\Html;
 
     <?= $form->field($model, 'thesisID')->textInput(['readonly'=>'true','value'=>Yii::$app->request->get('id')])->label(('Κωδικός Διπλωματικής:'))?>
 
-    <?= $form->field($model, 'status')->textInput(['value'=>'δεν έχει εγκριθεί','readonly'=>true])->label(('Τρέχουσα κατάσταση διπλωματικής'))?>
 
 
     <div class="form-group">

@@ -11,7 +11,6 @@ use Yii;
  * @property integer $thesisID
  * @property integer $studentID
  * @property string $dateCreated
- * @property string $status
  * @property integer $professorID
  *
  * @property Student $student
@@ -36,7 +35,6 @@ class StudentAppliesForThesis extends \yii\db\ActiveRecord
         return [
             [['thesisID', 'studentID', 'professorID'], 'integer'],
             [['dateCreated'], 'safe'],
-            [['status'], 'string'],
             [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['studentID' => 'ID']],
             [['thesisID'], 'exist', 'skipOnError' => true, 'targetClass' => Thesis::className(), 'targetAttribute' => ['thesisID' => 'ID']],
             [['professorID'], 'exist', 'skipOnError' => true, 'targetClass' => Professor::className(), 'targetAttribute' => ['professorID' => 'ID']],
@@ -53,7 +51,6 @@ class StudentAppliesForThesis extends \yii\db\ActiveRecord
             'thesisID' => 'Διπλωματική',
             'studentID' => 'Φοιτητής',
             'dateCreated' => 'Ημερομηνία Αίτησης',
-            'status' => 'Κατάσταση διπλωματικής',
             'professorID' => 'Καθηγητής',
         ];
     }
