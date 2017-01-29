@@ -46,21 +46,17 @@ AppAsset::register($this);
                 ['label' => 'Διπλωματικές', 'url' => ['/thesis/index']],
 
 
-                ['label' => 'Extra',
-                    'items' => [
-                        ['label' => 'Email', 'url' => ['email/committee']],
-                        ['label' => 'Chat', 'url' => ['chat/chat']],
-                        ['label' => 'ChatRoom', 'url' => ['chat/chat-room']],
-                    ],
-                ],
 
                 (UserHelpers::UserRole() == 'professor') ?
                     ['label' => 'Καθηγητής',
                         'items' => [
                             ['label' => 'Αρχική', 'url' => ['professor/main']],
-                            ['label' => 'Διπλωματικές', 'url' => ['professor/thesis']],
-                            ['label' => 'Επιτροπές', 'url' => ['professor/committee']],
+                            ['label' => 'Οι Διπλωματικές μου', 'url' => ['professor/thesis']],
+                            ['label' => 'Επιτροπές τρίτων', 'url' => ['professor/committee']],
                             ['label' => 'Στατιστικά', 'url' => ['professor/statistics']],
+                            ['label' => 'Πηγές φοιτητών μου', 'url' => ['professor/my-references']],
+                            ['label' => 'Αιτήσεις για νέες διπλωματικές', 'url' => ['professor/thesis-application-approvals']],
+                            ['label' => 'Επικοινωνία με φοιτητές', 'url' => ['professor/chat-main']],
                         ],
 
                     ]
