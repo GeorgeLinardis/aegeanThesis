@@ -10,6 +10,9 @@ use Yii;
  * @property integer $ID
  * @property integer $thesisID
  * @property integer $studentID
+ *
+ * @property Thesis $thesis
+ * @property Student $student
  */
 class ThesisHasStudents extends \yii\db\ActiveRecord
 {
@@ -28,6 +31,8 @@ class ThesisHasStudents extends \yii\db\ActiveRecord
     {
         return [
             [['thesisID', 'studentID'], 'integer'],
+            [['thesisID'], 'exist', 'skipOnError' => true, 'targetClass' => Thesis::className(), 'targetAttribute' => ['thesisID' => 'ID']],
+            [['studentID'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['studentID' => 'ID']],
         ];
     }
 
@@ -41,5 +46,21 @@ class ThesisHasStudents extends \yii\db\ActiveRecord
             'thesisID' => 'Thesis ID',
             'studentID' => 'Student ID',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getThesis()
+    {
+        return $this->hasOne(Thesis::className(), ['ID' => 'thesisID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStudent()
+    {
+        return $this->hasOne(Student::className(), ['ID' => 'studentID']);
     }
 }

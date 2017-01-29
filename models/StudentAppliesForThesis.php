@@ -50,7 +50,7 @@ class StudentAppliesForThesis extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'thesisID' => 'Κωδικός Διπλωματικής',
+            'thesisID' => 'Διπλωματική',
             'studentID' => 'Φοιτητής',
             'dateCreated' => 'Ημερομηνία Αίτησης',
             'status' => 'Κατάσταση διπλωματικής',

@@ -23,6 +23,8 @@ use dektrium\user\models\User;
  * @property string $photo
  *
  * @property References[] $references
+ * @property StudentAppliesForThesis[] $studentAppliesForTheses
+ * @property ThesisHasStudents[] $thesisHasStudents
  * @property Master $master
  * @property Thesis $thesis
  * @property User $userUsername0
@@ -44,7 +46,7 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['thesisID'], 'integer'],
-            [['masterID','firstname','lastname'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
+
             [['url', 'comments'], 'string'],
             [['masterID', 'firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
             [['userUsername'], 'string', 'max' => 255],
@@ -117,5 +119,13 @@ class Student extends \yii\db\ActiveRecord
     public function getStudentAppliesForTheses()
     {
         return $this->hasMany(StudentAppliesForThesis::className(), ['studentID' => 'ID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getThesisHasStudents()
+    {
+        return $this->hasMany(ThesisHasStudents::className(), ['studentID' => 'ID']);
     }
 }

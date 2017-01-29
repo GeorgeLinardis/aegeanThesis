@@ -16,6 +16,7 @@ use Yii;
  * @property integer $max_students
  * @property string $comments
  * @property string $status
+ * @property Master $master
  * @property string $dateCreated
  * @property string $datePresented
  * @property integer $committee1
@@ -30,6 +31,8 @@ use Yii;
  * @property Professor $committee30
  * @property ThesisHasModules[] $thesisHasModules
  * @property ThesisHasReferences[] $thesisHasReferences
+ * @property StudentAppliesForThesis[] $studentAppliesForTheses
+ * @property ThesisHasStudents[] $thesisHasStudents
  */
 class Thesis extends \yii\db\ActiveRecord
 {
@@ -154,5 +157,13 @@ class Thesis extends \yii\db\ActiveRecord
     public function getThesisHasReferences()
     {
         return $this->hasMany(ThesisHasReferences::className(), ['thesisID' => 'ID']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getThesisHasStudents()
+    {
+        return $this->hasMany(ThesisHasStudents::className(), ['thesisID' => 'ID']);
     }
 }
