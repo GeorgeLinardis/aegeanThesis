@@ -48,7 +48,7 @@ AppAsset::register($this);
 
 
                 (UserHelpers::UserRole() == 'professor') ?
-                    ['label' => 'Καθηγητής',
+                    ['label' => 'Καθηγητής','url'=>['professor/main'],
                         'items' => [
                             ['label' => 'Αρχική', 'url' => ['professor/main']],
                             ['label' => 'Οι Διπλωματικές μου', 'url' => ['professor/thesis']],
@@ -61,7 +61,7 @@ AppAsset::register($this);
 
                     ]
                     : ((UserHelpers::UserRole() == 'student') ?
-                    ['label' => 'Φοιτητής',
+                    ['label' => 'Φοιτητής','url'=>['student/main'],
                         'items' => [
                             ['label' => 'Αρχική', 'url' => ['student/main']],
                             ['label' => 'Η διπλωματική μου', 'url' => ['student/my-thesis']],
