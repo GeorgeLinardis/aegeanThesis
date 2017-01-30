@@ -11,6 +11,7 @@ use Yii;
  * @property string $username
  * @property string $message
  * @property string $date_time
+ * @property string $file
  *
  * @property User $username0
  */
@@ -32,8 +33,8 @@ class Chat extends \yii\db\ActiveRecord
         return [
             [['message'], 'string'],
             [['date_time'], 'safe'],
-            [['username'], 'string', 'max' => 255],
-            [['username'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['username' => 'username']],
+            [['username','file'], 'string', 'max' => 255],
+            [['username'], 'exist', 'skipOnError' => true, 'targetClass' => DatabaseUsers::className(), 'targetAttribute' => ['username' => 'username']],
         ];
     }
 
@@ -44,8 +45,8 @@ class Chat extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
-            'message' => 'Message',
+            'username' => 'Αποστολέας',
+            'message' => 'Μήνυμα',
             'date_time' => 'Date Time',
         ];
     }
