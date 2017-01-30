@@ -14,7 +14,10 @@ $this->title = 'Διπλωματικές';
 
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <?php if (Yii::$app->controller->id=="thesis"):?>
+    <h1><?= Html::encode($this->title) ?></h1><br>
+    <?php endif;?>
+    <p>Επιλέξτε το σύμβολο <span class="glyphicon glyphicon-eye-open" style="color:#0080ff"></span> στην δεξιά στήλη για να δείτε τα στοιχεία της διπλωματικής αναλυτικότερα.</p><br>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

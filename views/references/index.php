@@ -11,7 +11,9 @@ $this->title = 'Αναφορές';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="references-index">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <?php if (Yii::$app->controller->id=="references"):?>
+        <h1><?= Html::encode($this->title) ?></h1><br>
+    <?php endif;?>
 
     <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>

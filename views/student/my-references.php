@@ -1,4 +1,7 @@
 <?php
+use yii\helpers\Html;
+?>
+<?php
 
 $this->title = 'Οι Αναφορές μου';
 $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/main'];
@@ -16,6 +19,7 @@ $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/m
 
 <?php else :?>
 
+    <h1><?= Html::encode($this->title) ?></h1><br>
 <?php
     echo $this->render('//references/index', [
           'searchModel' => $searchModel,

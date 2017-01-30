@@ -11,6 +11,7 @@ use app\CustomHelpers\UserHelpers;
 $this->title = 'Διπλωματικές';
 ?>
 <div class="thesis-index">
+    <h1><?= Html::encode($this->title) ?></h1><br>
 
     <?php
     echo $this->render('//thesis/index', [
