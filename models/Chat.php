@@ -8,10 +8,11 @@ use Yii;
  * This is the model class for table "chat".
  *
  * @property integer $id
- * @property string $Sender
+ * @property string $username
  * @property string $message
- * @property string $reg_date
  * @property string $date_time
+ *
+ * @property User $username0
  */
 class Chat extends \yii\db\ActiveRecord
 {
@@ -30,8 +31,9 @@ class Chat extends \yii\db\ActiveRecord
     {
         return [
             [['message'], 'string'],
-            [['reg_date', 'date_time'], 'safe'],
-            [['Sender'], 'string', 'max' => 30],
+            [['date_time'], 'safe'],
+            [['username'], 'string', 'max' => 255],
+            [['username'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['username' => 'username']],
         ];
     }
 
@@ -42,10 +44,17 @@ class Chat extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'Sender' => 'Sender',
+            'username' => 'Username',
             'message' => 'Message',
-            'reg_date' => 'Reg Date',
             'date_time' => 'Date Time',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUsername0()
+    {
+        return $this->hasOne(User::className(), ['username' => 'username']);
     }
 }
