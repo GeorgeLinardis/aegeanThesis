@@ -3,10 +3,14 @@ use yii\grid\GridView;
 use yii\helpers\Html;
 ?>
 
+<?php
+$this->title = 'Αιτήσεις για νέες διπλωματικές';
 
+?>
 <div class="professor-thesis-application-approvals">
+    <h1><?= Html::encode($this->title) ?></h1>
+    <p>Επιλέξτε το σύμβολο <span class="glyphicon glyphicon-arrow-right " style="color:#0080ff"></span> στην δεξιά στήλη για να σας οδηγήσει στην οθόνη έγκρισης της αντίστοιχης αίτησης.</p><br>
 
-    <h1>Αιτήσεις για νέες διπλωματικές</h1>
     <??>
 
 
@@ -47,8 +51,12 @@ use yii\helpers\Html;
             ['class' => 'yii\grid\ActionColumn',
                 'template' => '{view}',
                 'buttons' => [
-                    'view'=> function ($model){
-                        return Html::a('<span class="glyphicon glyphicon-arrow-right"></span>',['thesis-application-answer']);//
+                    'view'=> function ($url,$model){
+                        return Html::a('<span class="glyphicon glyphicon-arrow-right"></span>',['thesis-application-answer',
+                            'ThesisID'=>($model->thesisID),
+                            'StudentID'=>($model->studentID)
+
+                        ]);//
                     },
 
 
