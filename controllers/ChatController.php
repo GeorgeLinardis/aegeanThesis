@@ -5,51 +5,62 @@ namespace app\controllers;
 use yii;
 use yii\web\Controller;
 use app\models\Chat;
-use app\models\Comment;
+use app\models\Professor;
+use app\models\Thesis;
+use app\models\Student;
 
 class ChatController extends Controller
 {
+    public function refresh($anchor = '')
+    {
+        return Yii::$app->getResponse()->redirect(Yii::$app->getRequest()->getUrl() . $anchor);
+    }
 
-    public function getMsg(){
-        $messages =  Chat::find()->where(['Sender'=>['maragkoudakis','linardis']])->orderBy('date_time')->all();
-
-
+    public function getMsg($users){
+        $messages =  Chat::find()->where(['username'=> $users])->orderBy(['date_time'=>SORT_DESC])->all();
         return $messages;
-
     }
 
     public function sendMsg($message){
-
-        $sender = Yii::$app->user->identity->username;
+        $sender = UserHelpers::Username();
         return $sender;
 
-
-
     }
 
-    public function actionChatRoom()
-    {
+    public function actionChatRoom($ThesisID){
         $model = new Chat();
-        $messages = $this->getMsg();
-
+        $users=[];
+        $Thesis=(Thesis::find()->where(['ID'=>$ThesisID])->one());
+        $Professor=Professor::find()->where(['ID'=>$Thesis->professorID])->one();
+        $StudentsThesisNumber=count(Thesis::find()->where(['ID'=>$ThesisID])->all());
+        $StudentsThesisStudents=(Student::find()->where(['thesisID'=>$ThesisID])->all());
+        $users[]=$Professor->userUsername;
+        foreach ($StudentsThesisStudents as $Student){
+            $users[] = $Student->userUsername;
+        }
+        $messages = $this->getMsg($users);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['//chat/chat-room', /*'id' => $model->ID*/]);
+            return $this->refresh();
         } else {
-            return $this->render('chatRoom',
-                ['model'=>$model,
-                 'messages'=>$messages]
+            return $this->render('chat-room',[
+                    'StudentsThesisNumber'=>$StudentsThesisNumber,
+                    'StudentsThesisStudents'=>$StudentsThesisStudents,
+                    'Professor'=>$Professor,
+                    'model'=>$model,
+                    'messages'=>$messages,
+                    'users'=>$users,
+                    'Thesis'=>$Thesis
 
+
+
+                ]
             );
         }
+
     }
 
-    public function actionChat(){
-        $model = new Comment();
-        $this-> render('chat',
-            ['model'=>$model]
-        );
-    }
+
 
 
 

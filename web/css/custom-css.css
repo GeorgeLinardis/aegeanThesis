@@ -12,7 +12,7 @@ footer .list-group-item:hover{
 }
 
 
-h1,h2,h3,h4,h5 {
+h1,h2,h3,h4 {
     text-align: center;
 
 }
@@ -65,5 +65,23 @@ p {
     margin-left: auto;
     margin-right: auto;
 }
+.professor-chat-room img {
+    width:50px;
+    height:70px;
+    display:block;
+    margin: 0 auto;
+}
+.chatting-main-window{
+    box-shadow: -2px 0 3px #ddd;
+    padding:5px;
+    min-height: 400px;
+    max-height: 400px;
+    overflow: auto;
+}
+.chatting-main-window .professor{
+    color:navy;
+}
 
-
+.chatting-main-window .student{
+    color:orangered;
+}

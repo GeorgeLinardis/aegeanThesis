@@ -21,6 +21,8 @@ use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 use app\CustomHelpers\UserHelpers;
 use yii\helpers\ArrayHelper;
+use app\models\Chat;
+
 
 
 class ProfessorController extends Controller
@@ -153,7 +155,7 @@ class ProfessorController extends Controller
     /**
      * Render the professor thesis-approval page
      */
-    public function actionThesisApplicationAnswer($ThesisID=122,$StudentID=30)
+    public function actionThesisApplicationAnswer($StudentID,$ThesisID)
     {
         $Thesis = Thesis::find()->where(['ID'=>$ThesisID])->one();
         $Student = Student::find()->where(['ID'=>$StudentID])->one();
@@ -254,7 +256,6 @@ class ProfessorController extends Controller
                 'searchModel' => $searchModel,
             ]);
     }
-
 
     /**
      * Professors Committee page .Pages shows theses where professor is part of the committee and maybe also the supervisor
@@ -398,6 +399,24 @@ class ProfessorController extends Controller
             ]);
         }
     }
+
+    public function actionChatMain(){
+        $professorID = UserHelpers::User()->ID;
+        $searchModel = new ThesisSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->andWhere(['professorID' => $professorID]); //->andFilterWhere(['status' => 'για Επιτροπή']);
+
+
+        return $this->render('chat-main',
+            ['dataProvider' => $dataProvider,
+                'searchModel' => $searchModel,
+            ]);
+
+    }
+
+
+
+
 
 
 }

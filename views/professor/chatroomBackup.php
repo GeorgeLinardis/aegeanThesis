@@ -45,8 +45,6 @@ use app\CustomHelpers\UserHelpers;
             </div>
         </div>
         <div class="col-sm-4 ">
-            <h3>Διπλωματική:</h3>
-            <p class="text-center"><?= $Thesis->title;?><br></p>
             <h3>Μέλη διπλωματικής: </h3><br>
             <div class="col-sm-10">Καθηγητής :<br> <b><?= $Professor->firstname.' '.$Professor->lastname?></b></div>
             <div class="col-sm-2"><img src="/images/userPhotos/<?php echo (isset($Professor->photo) && ($Professor->photo) != null) ? $Professor->photo: "User_photo_default"?>" alt="Professor Photo" ><br></div>
