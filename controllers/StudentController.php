@@ -173,7 +173,7 @@ class StudentController extends Controller
     {
         $model=Thesis::find()->where(['ID'=>UserHelpers::User()->thesisID])->one();
         $message = "Δεν έχει αναλάβει διπλωματική ακόμα.";
-        if (isset($model)){
+        if (isset($model)&&$model!=null){
         return $this->render('my-thesis',[
                     'model'=>$model]);
         }
