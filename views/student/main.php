@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
             <div class="col-sm-2">
                 <a href="<?= Url::to('/student/thesis-application-results')?>" class="thumbnail">
-                    <img src="/images/student/student-thesis-form.jpg" alt="Thesis-Application-Results">
+                    <img src="/images/student/student-thesis-form.jpg" alt="Thesis-Application-Reesults">
                 </a>
                 <h4> Αιτήσεις νέας διπλωματικής</h4>
             </div>
