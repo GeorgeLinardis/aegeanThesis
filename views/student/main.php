@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h4> Λίστα διπλωματικών</h4>
             </div>
             <div class="col-sm-2">
-                <a href="<?= Url::to('/student/student-chat')?>" class="thumbnail">
+                <a href="<?= Url::to(['//chat/chat-room','ThesisID'=>$StudentThesisID])?>" class="thumbnail">
                     <img src="/images/student/student-chat(pixabay).jpg" alt="Professor-chat">
                 </a>
                 <h4> Επικοινωνία με καθηγητή</h4>

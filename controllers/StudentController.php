@@ -133,8 +133,16 @@ class StudentController extends Controller
 
     public function actionMain()
     {
-
-        return $this->render('main');
+        $StudentThesis = Student::find()->where(['userUsername'=>UserHelpers::Username()])->one();
+        if (isset($StudentThesis ) && $StudentThesis !=NULL){
+            $StudentThesisID= $StudentThesis->thesisID;
+        }
+        else{
+            $StudentThesisID= false;
+        }
+        return $this->render('main', [
+            'StudentThesisID'=> $StudentThesisID,
+        ]);
     }
 
     /**
