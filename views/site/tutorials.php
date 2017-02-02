@@ -13,27 +13,63 @@ $this->params['breadcrumbs'][] = $this->title;
     <br>
 
     <div class="list-group">
-        <a href="#tutorials-new-user" class="list-group-item">Είσοδος χρήστη / δημιουργία νέου χρήστη</a>
-        <a href="#tutorials-new-thesis" class="list-group-item">Δημιουργία νέας διπλωματικής</a>
+        <a href="#tutorials-new-user" class="list-group-item">Δημιουργία νέου χρήστη</a>
+        <a href="#tutorials-new-user-steps" class="list-group-item">Αναγκαία πρώτα βήματα χρήστη</a>
+        <a href="#tutorials-student-new-thesis" class="list-group-item">Αίτηση θέματος διπλωματικής</a>
+        <a href="#tutorials-student-professor-chat" class="list-group-item">Επικοινωνία με επιβλέποντα καθηγητή</a>
+        <a href="#tutorials-student-add-reference" class="list-group-item">Προσθήκη νέας πηγής</a>
     </div>
+    <br>
 
-    <div class="row">
-        <h3 class="text-left" id="tutorials-new-user">Είσοδος χρήστη / δημιουργία νέου χρήστη</h3>
-        <div class="col-sm-10 embed-responsive embed-responsive-16by9">
-            <video autoplay loop class="embed-responsive-item">
-                <source src=/tutorial_videos/tutorial-new-user.mp4 type=video/mp4>
+    <h2>Δημιουργία νέου χρήστη</h2>
+    <div class="row" >
+        <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-new-user" >
+            <video autoplay loop class="embed-responsive-item" >
+                <source src="/tutorial_videos/tutorials-new-user" type=video/mp4>
             </video>
         </div>
     </div>
-    <div class="row">
-        <h3 class="text-left" id="tutorials-new-thesis">Δημιουργία νέας διπλωματικής</h3>
-        <div class="col-sm-10 embed-responsive embed-responsive-16by9">
+    <br>
+    <h2>Αναγκαία πρώτα βήματα χρήστη</h2>
+    <div class="row" >
+        <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-new-user-steps">
             <video autoplay loop class="embed-responsive-item">
-                <source src=/tutorial_videos/tutorial-new-thesis.mp4 type=video/mp4>
+                <source src="/tutorial_videos/tutorials-new-user-steps" type=video/mp4>
             </video>
-            <br>
         </div>
     </div>
+    <br>
+    <h2>Αίτηση θέματος διπλωματικής</h2>
+    <div class="row" >
+        <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-student-new-thesis">
+            <video autoplay loop class="embed-responsive-item">
+                <source src="/tutorial_videos/tutorials-student-new-thesis" type=video/mp4>
+            </video>
+        </div>
+    </div>
+    <br>
+    <h2>Επικοινωνία με επιβλέπων καθηγητή</h2>
+    <div class="row" >
+        <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-student-professor-chat">
+            <video autoplay loop class="embed-responsive-item">
+                <source src="/tutorial_videos/tutorials-student-professor-chat" type=video/mp4>
+            </video>
+        </div>
+    </div>
+    <br>
+    <h2>Προσθήκη νέας βιβλιογραφικής αναφοράς</h2>
+    <div class="row" >
+        <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-student-add-reference">
+            <video autoplay loop class="embed-responsive-item">
+                <source src="/tutorial_videos/tutorials-student-add-reference" type=video/mp4>
+            </video>
+        </div>
+    </div>
+    <br>
+
+
+
+
 
 
 </div>
