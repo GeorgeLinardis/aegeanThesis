@@ -17,7 +17,7 @@ class ChatController extends Controller
     }
 
     public function getMsg($users){
-        $messages =  Chat::find()->where(['username'=> $users])->orderBy(['date_time'=>SORT_DESC])->all();
+        $messages =  Chat::find()->where(['username'=> $users])->orderBy(['date_time'=>SORT_ASC])->all();
         return $messages;
     }
 
