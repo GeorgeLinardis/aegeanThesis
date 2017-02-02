@@ -14,7 +14,7 @@ use app\CustomHelpers\UserHelpers;
                             <span class="glyphicon glyphicon-user"></span>
                         </a>
                         <div class="media-body">
-                            <small class="pull-right"> <?= date("d/m/Y G:H", strtotime($message->date_time)) ?> <span class="glyphicon glyphicon-time"></span></small>
+                            <small class="pull-right"> <?= date("d/m/Y G:i", strtotime($message->date_time)) ?> <span class="glyphicon glyphicon-time"></span></small>
                             <?php  if ($message->username == $Professor->userUsername):?>
                                 <h5 class="media-heading professor"> <?php echo $Professor->firstname.' '.$Professor->lastname;?></h5>
                             <?php else :?>
