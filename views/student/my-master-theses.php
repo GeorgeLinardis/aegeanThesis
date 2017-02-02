@@ -8,7 +8,7 @@ use app\CustomHelpers\UserHelpers;
 /* @var $searchModel app\models\ThesisSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Διπλωματικές';
+$this->title = 'Λίστα διπλωματικών μου';
 ?>
 <div class="thesis-index">
     <h1><?= Html::encode($this->title) ?></h1><br>
