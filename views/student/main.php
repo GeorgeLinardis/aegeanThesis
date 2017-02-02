@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h4> Οι πηγές μου</h4>
             </div>
             <div class="col-sm-2">
-                <a href= "<?= Url::to('/thesis/index')?>" class="thumbnail" >
+                <a href= "<?= Url::to('/student/my-master-theses')?>" class="thumbnail" >
                     <img src="/images/student/student-alltheses" alt="All theses">
                 </a>
                 <h4> Λίστα διπλωματικών</h4>
