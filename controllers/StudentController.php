@@ -153,6 +153,7 @@ class StudentController extends Controller
         $Thesis = Thesis::find()->where(['ID' => $id])->one();
         $model = new StudentAppliesForThesis();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            \Yii::$app->getSession()->setFlash('success', 'Το αίτημα σας έχει αποσταλλεί');
             return $this->redirect('thesis-application-results');
         }
         else {
@@ -164,6 +165,7 @@ class StudentController extends Controller
     }
     public function actionThesisApplicationResults()
     {
+
         $dataProvider = new ActiveDataProvider(['query' => StudentAppliesForThesis::find()->where(['studentID'=>UserHelpers::User()->ID])]);
         return $this->render('thesis-application-results',[
                         'dataProvider'=>$dataProvider]);
