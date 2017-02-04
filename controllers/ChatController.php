@@ -16,8 +16,8 @@ class ChatController extends Controller
         return Yii::$app->getResponse()->redirect(Yii::$app->getRequest()->getUrl() . $anchor);
     }
 
-    public function getMsg($users){
-        $messages =  Chat::find()->where(['username'=> $users])->orderBy(['date_time'=>SORT_ASC])->all();
+    public function getMsg($users,$ThesisID){
+        $messages =  Chat::find()->where(['username'=> $users,'thesisID'=>$ThesisID])->orderBy(['date_time'=>SORT_ASC])->all();
         return $messages;
     }
 
@@ -38,7 +38,7 @@ class ChatController extends Controller
         foreach ($StudentsThesisStudents as $Student){
             $users[] = $Student->userUsername;
         }
-        $messages = $this->getMsg($users);
+        $messages = $this->getMsg($users,$ThesisID);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->refresh();

@@ -35,6 +35,7 @@ use app\CustomHelpers\UserHelpers;
             <div class="send-wrap ">
                 <?php $form = ActiveForm::begin(); ?>
                 <?= $form->field($model, 'username')->hiddenInput(['value'=>UserHelpers::Username()])->label(false)?>
+                <?= $form->field($model, 'thesisID')->hiddenInput(['value'=>$Thesis->ID])->label(false)?>
                 <?= $form->field($model, 'message')->textarea(['rows' => 6])->label(false)?>
                 <?= $form->field($model, 'file')->fileInput() ?>
 
