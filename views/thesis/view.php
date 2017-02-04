@@ -11,7 +11,7 @@ use yii\helpers\Url;
     $this->title = $model->title;
 if (UserHelpers::UserRole()=="professor") {
     $this->params['breadcrumbs'][] = ['label' => 'Καθηγητής', 'url' => 'main'];
-    $this->params['breadcrumbs'][] = ['label' => 'Οι διπλωματικές μου', 'url' => '/professor/thesis'];
+    $this->params['breadcrumbs'][] = ['label' => 'Οι διπλωματικές μου', 'url' => '//professor/thesis'];
     $this->params['breadcrumbs'][] = $this->title;
 }
 ?>

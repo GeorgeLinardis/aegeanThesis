@@ -35,6 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'url:url',
             'comments:ntext',
             'photo',
+            [
+                'label'=>'Βιογραφικό (max 2MB)',
+                'format' => 'raw',
+                'value' => ($model->cv!=null && isset($model->cv))?(Html::a("Βιογραφικό χρήστη",["documents\cv"."/".$model->cv],["target"=>"_blank"])):"Ο χρήστης δεν έχει ανεβάσει βιογραφικό"
+            ]
         ],
     ]) ?>
     <?= Html::a('Τροποποίηση', ['//student/update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>

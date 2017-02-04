@@ -79,8 +79,8 @@ class Student extends \yii\db\ActiveRecord
             'skypeUsername' => 'Skype Username',
             'url' => 'Url',
             'comments' => 'Σχόλια',
-            'photo' => 'Photo',
-            'cv'=>'CV'
+            'photo' => 'Φωτογραφία στο αρχείο',
+            'cv'=>'Βιογραφικό'
         ];
     }
 

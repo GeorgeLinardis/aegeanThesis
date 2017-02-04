@@ -45,6 +45,8 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'photo')->fileInput()  ?>
 
+    <?= $form->field($model, 'cv')->fileInput()  ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Τροποποίηση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',]) ?>
 

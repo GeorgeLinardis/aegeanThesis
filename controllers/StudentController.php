@@ -92,6 +92,12 @@ class StudentController extends Controller
             $image->saveAs('images\userPhotos'."/".$imageName);
             $model->photo=$imageName;
             $model->save();}
+            if (UploadedFile::getInstance($model,'cv')){
+                $cv = UploadedFile::getInstance($model,'cv');
+                $cvName = 'User_CV_'.$model->userUsername.".".$cv->getExtension();
+                $cv->saveAs('documents\cv'."/".$cvName);
+                $model->cv=$cvName;
+                $model->save();}
             return $this->redirect(['site/profile']);
         } else {
             return $this->render('update', [

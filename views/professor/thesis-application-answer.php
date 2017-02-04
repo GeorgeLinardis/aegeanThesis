@@ -35,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($Thesis, 'max_students')->textInput(['readonly'=>'true','value'=>$Thesis->max_students])->label('Μέγιστος αριθμός φοιτητών')?>
 
+    <?= $form->field($Thesis, 'dateCreated')->textInput(['readonly'=>'true','value'=>date("d/m/Y", strtotime($Thesis->dateCreated))])->label('Ημερομηνία δημιουργίας')?>
+
     <?= $form->field($Thesis, 'status')->hiddenInput(['readonly'=>'true','value'=>'έχει ανατεθεί'])->label(false)?>
 
         <div class="form-group">
@@ -57,11 +59,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($Student, 'lastname')->textInput(['readonly'=>'true','value'=>$Student->lastname])->label('Επώνυμο φοιτητή')?>
 
-        <?= $form->field($Student, 'skypeUsername')->textInput(['readonly'=>'true','value'=>$Student->skypeUsername])->label('Skype φοιτητή')?>
+        <?= $form->field($Student, 'email')->textInput(['readonly'=>'true','value'=>$Student->email])->label('Email φοιτητή')?>
+
+        <?= $form->field($Student, 'cv')->textInput(['readonly'=>'true','value'=>((isset($Student->cv) && $Student->cv!=null))?$Student->cv:'Ο χρήστης δεν έχει ανεβάσει βιογραφικό'])->label('Βιογραφικό φοιτητή')?>
+
+
 
 
         <?php ActiveForm::end(); ?>
-
+        <?php if(isset($Student->cv) && $Student->cv!=null):?>
+         <p>Για να δείτε το βιογραφικό επιλέξτε <a href="\documents\cv\<?= $Student->cv?>" target="_blank">εδώ</a></p>
+        <?php endif;?>
     </div>
 
 
