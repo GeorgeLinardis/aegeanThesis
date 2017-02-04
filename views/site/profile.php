@@ -19,6 +19,7 @@ $this->title = 'Προφίλ Χρήστη';
                 <?php else:?>
                 <img class="img-responsive center-block img-rounded" src="<?= '/images/userPhotos/User_photo_default.png'?>" alt="User_photo">
                 <?php endif;?>
+
             </div>
         </div>
     </div>
@@ -31,6 +32,7 @@ $this->title = 'Προφίλ Χρήστη';
                     'model' => $model,
                 ])
                 ?>
+
 
             <?php elseif ($role == 'student'):?>
 

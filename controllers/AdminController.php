@@ -45,7 +45,7 @@ class AdminController extends Controller
          $dataProvider = new ActiveDataProvider([
             'query' => Professor::find(),
         ]);
-        return $this->render('all-Professors',
+        return $this->render('all-professors',
             ['dataProvider' => $dataProvider]);
     }
 

@@ -45,7 +45,7 @@ class Master extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'Κωδικός',
-            'title' => 'Τίτλος',
+            'title' => 'Μεταπτυχιακό',
             'departmentID' => 'Κωδικός Τμήματος',
         ];
     }

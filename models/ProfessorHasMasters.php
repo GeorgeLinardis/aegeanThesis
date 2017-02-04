@@ -45,8 +45,8 @@ class ProfessorHasMasters extends \yii\db\ActiveRecord
     {
         return [
             'ID' => 'ID',
-            'professorID' => 'Professor ID',
-            'masterID' => 'Master ID',
+            'professorID' => 'Κωδ.Καθηγητή',
+            'masterID' => 'Μεταπτυχιακό',
         ];
     }
 

@@ -54,9 +54,50 @@ class ProfessorController extends Controller
      */
     public function actionView($id)
     {
+        $Professor_Masters = ProfessorHasMasters::find()->where(['professorID'=>52])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'Professor_Masters'=>$Professor_Masters
         ]);
+    }
+
+    public function actionProfessorMasters()
+    {
+        $dataProvider = new ActiveDataProvider(['query' => ProfessorHasMasters::find()->where(['professorID'=>UserHelpers::User()->ID])]);
+        $model = new ProfessorHasMasters;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->render('professor-masters',[
+                'dataProvider'=>$dataProvider,
+                'model' => $model,
+
+            ]);
+        }
+        else {
+            return $this->render('professor-masters', [
+                'model' => $model,
+                'dataProvider' => $dataProvider
+            ]);
+        }
+
+
+    }
+    public function actionProfessorMastersNew()
+    {
+        $model = new ProfessorHasMasters;
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        return $this->render('professor-masters');
+        } else {
+            return $this->render('professor-masters-new', [
+                'model' => $model,
+            ]);
+        }
+    }
+    public function actionDeleteMaster($id)
+    {
+         $MasterToDelete=ProfessorHasMasters::find()->where(['ID'=>$id])->one();
+         $MasterToDelete->delete();
+         \Yii::$app->getSession()->setFlash('success', 'Το μεταπτυχιακό που ζητήσατε αφαιρέθηκε');
+               return $this->redirect('/professor/professor-masters');
     }
     /**
      * Updates an existing Professor model.

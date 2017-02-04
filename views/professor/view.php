@@ -29,6 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
             //'photo',
         ],
     ]) ?>
+    <p>Για να οδηγηθείτε στην λίστα με τα μεταπτυχιακά στα οποία είστε μέλος επιλέξτε <a href="/professor/professor-masters">εδώ</a></p>
+
     <?= Html::a('Τροποποίηση', ['//professor/update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
 
 </div>
