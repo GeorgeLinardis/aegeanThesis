@@ -75,7 +75,6 @@ class StudentController extends Controller
         }
     }
 
-
     /**
      * Updates an existing Student model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -91,8 +90,8 @@ class StudentController extends Controller
             $image = UploadedFile::getInstance($model,'photo');
             $imageName = 'User_'.$model->userUsername.".".$image->getExtension();
             $image->saveAs('images\userPhotos'."/".$imageName);
-            $model->photo=$imageName;}
-            $model->save();
+            $model->photo=$imageName;
+            $model->save();}
             return $this->redirect(['site/profile']);
         } else {
             return $this->render('update', [

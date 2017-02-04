@@ -50,10 +50,10 @@ elseif (UserHelpers::UserRole()=="professor"){
                 <?= $form->field($model, 'username')->hiddenInput(['value'=>UserHelpers::Username()])->label(false)?>
                 <?= $form->field($model, 'thesisID')->hiddenInput(['value'=>$Thesis->ID])->label(false)?>
                 <?= $form->field($model, 'message')->textarea(['rows' => 6])->label(false)?>
-                <?= $form->field($model, 'file')->fileInput() ?>
+                <?= $form->field($model, 'file')->label("Αρχείο")->fileInput() ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Αποστολή μηνύματος', ['class' => 'btn btn-success' ]) ?>
+                    <?= Html::submitButton('Αποστολή', ['class' => 'btn btn-success' ]) ?>
                 </div>
                 <?php ActiveForm::end(); ?>
             </div>
@@ -73,5 +73,17 @@ elseif (UserHelpers::UserRole()=="professor"){
             <?php }?>
         </div>
     </div>
-    <hr>
-
+    <div class="row">
+        <h3>Λίστα αρχείων</h3>
+        <p style="text-align: center">Επιλέξτε απο την παρακάτω λίστα το αρχείο που θέλετε να ανοίξετε</p>
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="list-group" style="text-align: center">
+                <?php foreach ($messages as $message) {?>
+                    <?php if(isset($message->file)&&($message->file)!= null) :?>
+                        <a href="\documents\chat_documents\<?=$message->file?>" class="list-group-item" target="_blank"><?= "Κωδικός αρχείου: ".$message->id.". Εστάλη στις: ".date("d/m/Y G:i", strtotime($message->date_time));?> </a>
+                    <?php endif;?>
+                <?php }?>
+            </div>
+        </div>
+    </div>
+</div>

@@ -36,10 +36,11 @@ class Chat extends \yii\db\ActiveRecord
             [['thesisID'], 'required'],
             [['thesisID'], 'integer'],
             [['message'], 'string'],
-            [['date_time'], 'safe'],
+            [['date_time','file'], 'safe'],
             [['username', 'file'], 'string', 'max' => 255],
             [['username'], 'exist', 'skipOnError' => true, 'targetClass' => DatabaseUsers::className(), 'targetAttribute' => ['username' => 'username']],
             [['thesisID'], 'exist', 'skipOnError' => true, 'targetClass' => Thesis::className(), 'targetAttribute' => ['thesisID' => 'ID']],
+            [['file'], 'file', 'extensions' => 'txt,pdf,doc,xls,jpg,jpeg,ppt','maxSize'=>2000000,'tooBig' => 'Το μέγεθος του αρχείου δεν μπορεί να υπερβαίνει τo 2MB','wrongExtension'=>' Οι υποστηριζόμενοι τύποι αρχείων είναι: txt,pdf,doc,xls,jpg,jpeg,ppt']
         ];
     }
 

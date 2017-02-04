@@ -8,6 +8,7 @@ use app\models\Chat;
 use app\models\Professor;
 use app\models\Thesis;
 use app\models\Student;
+use yii\web\UploadedFile;
 
 class ChatController extends Controller
 {
@@ -27,6 +28,7 @@ class ChatController extends Controller
 
     }
 
+
     public function actionChatRoom($ThesisID){
         $model = new Chat();
         $users=[];
@@ -41,6 +43,14 @@ class ChatController extends Controller
         $messages = $this->getMsg($users,$ThesisID);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if (UploadedFile::getInstance($model,'file')){
+                $file = UploadedFile::getInstance($model,'file');
+                $fileName='ThesisID'."_".$model->thesisID.'_FileID_'.$model->id.".".$file->getExtension();
+                $model->message = $model->message.'(Εστάλη αρχείο με κωδικό:'.$model->id.")";
+                $file->saveAs('documents\chat_documents'."/".$fileName);
+                $model->file = $fileName;
+                $model->save();
+            }
             return $this->refresh();
         } else {
             return $this->render('chat-room',[
