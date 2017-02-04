@@ -21,7 +21,7 @@ use dektrium\user\models\User;
  * @property string $url
  * @property string $comments
  * @property string $photo
- *
+ * @property string $cv
  * @property References[] $references
  * @property StudentAppliesForThesis[] $studentAppliesForTheses
  * @property ThesisHasStudents[] $thesisHasStudents
@@ -52,6 +52,7 @@ class Student extends \yii\db\ActiveRecord
             [['userUsername'], 'string', 'max' => 255],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
             [['email'], 'string', 'max' => 200],
+            [['photo', 'cv'], 'string', 'max' => 256],
             //[['photo'], 'string', 'max' => 256],
             [['email'], 'unique'],
             [['masterID'], 'exist', 'skipOnError' => true, 'targetClass' => Master::className(), 'targetAttribute' => ['masterID' => 'ID']],
@@ -78,7 +79,8 @@ class Student extends \yii\db\ActiveRecord
             'skypeUsername' => 'Skype Username',
             'url' => 'Url',
             'comments' => 'Σχόλια',
-            //'photo' => 'Photo',
+            'photo' => 'Photo',
+            'cv'=>'CV'
         ];
     }
 
