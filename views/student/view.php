@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Student */
 
-$this->title = 'Προφίλ ';
+$this->title = 'Προφίλ Χρήστη';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="student-view">

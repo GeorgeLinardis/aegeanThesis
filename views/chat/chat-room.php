@@ -3,10 +3,23 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\CustomHelpers\UserHelpers;
 ?>
+<?php
+
+$this->title="Συνομιλία";
+if (UserHelpers::UserRole()=="student"){
+$this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'/student/main'];
+$this->params['breadcrumbs'][] = $this->title;
+}
+elseif (UserHelpers::UserRole()=="professor"){
+    $this->params['breadcrumbs'][]=['label'=>'Καθηγητής','url'=>'/professor/main'];
+    $this->params['breadcrumbs'][]=['label'=>'Επικοινωνία με φοιτητές','url'=>'/professor/chat-main'];
+    $this->params['breadcrumbs'][] = $this->title;
+}?>
+
 <div class="professor-chat-room">
     <div class="row">
         <div class="col-sm-8">
-            <h3>Συνομιλία</h3>
+            <h1><?= Html::encode($this->title) ?></h1>
             <div class="chatting-main-window">
                 <?php foreach ($messages as $message) {?>
                     <div class="media msg">
@@ -47,7 +60,7 @@ use app\CustomHelpers\UserHelpers;
         </div>
         <div class="col-sm-4 ">
             <h3>Διπλωματική:</h3>
-            <p class="text-center"><?= $Thesis->title;?><br></p>
+            <p class="text-center"><?= $Thesis->title;?><br></p><br>
             <h3>Μέλη διπλωματικής: </h3><br>
             <div class="col-sm-10">Καθηγητής :<br> <b><?= $Professor->firstname.' '.$Professor->lastname?></b></div>
             <div class="col-sm-2"><img src="/images/userPhotos/<?php echo (isset($Professor->photo) && ($Professor->photo) != null) ? $Professor->photo: "User_photo_default"?>" alt="Professor Photo" ><br></div>

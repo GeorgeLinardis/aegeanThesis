@@ -7,16 +7,15 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\Thesis */
 
-$this->title = 'Νέα Διπλωματική';
+$this->title = 'Δημιουργία νέας διπλωματικής';
 $this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'../professor'];
-$this->params['breadcrumbs'][] = ['label'=>'Διπλωματικές','url'=>'../professor/thesis'];
+$this->params['breadcrumbs'][] = ['label'=>'Οι διπλωματικές μου','url'=>'../professor/thesis'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
-<?php Yii::$app->controller->id?>
-
 <div class="thesis-create">
+    <h1><?= Html::encode($this->title) ?></h1><br>
     <div class="row">
         <div class="col-sm-6">
             <br>

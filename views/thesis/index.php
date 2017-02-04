@@ -7,9 +7,16 @@ use app\CustomHelpers\UserHelpers;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ThesisSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+if (Yii::$app->controller->id=="thesis") {
+    $this->title = 'Διπλωματικές Πανεπιστημίου';
+    $this->params['breadcrumbs'][] = $this->title;
+}
+elseif (Yii::$app->controller->id=="student"){
 
-$this->title = 'Διπλωματικές Πανεπιστημίου';
-?>
+    $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'main'];
+    $this->params['breadcrumbs'][] = $this->title;
+} ?>
+
 <div class="thesis-index">
 
 

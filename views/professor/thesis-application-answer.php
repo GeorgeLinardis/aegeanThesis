@@ -3,10 +3,16 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 ?>
 
+<?php
+$this->title = 'Έγκριση αιτήματος ανάθεσης διπλωματικής';
+$this->params['breadcrumbs'][]=['label'=>'Καθηγητής','url'=>'/professor/main'];
+$this->params['breadcrumbs'][]=['label'=>'Αιτήσεις για νέες διπλωματικές','url'=>'/professor/thesis-application-approvals'];
+$this->params['breadcrumbs'][] = $this->title;
+?>
 
 <div class="professor-thesis-application-answer">
 
-    <h1>Έγκριση αιτήματος ανάθεσης διπλωματικής</h1><br>
+    <h1><?= Html::encode($this->title) ?></h1><br>
 
     <div class="col-sm-6">
         <img src="/images/userPhotos/<?php echo (isset($Professor->photo) && ($Professor->photo) != null) ? $Professor->photo: "User_photo_default"?>" alt="User photo" id="aegean-logo"><br>

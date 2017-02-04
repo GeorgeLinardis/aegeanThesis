@@ -6,8 +6,10 @@ use yii\grid\GridView;
 
 <?php
 $this->title = 'Επικοινωνία με φοιτητές';
-
+$this->params['breadcrumbs'][]=['label'=>'Καθηγητής','url'=>'/professor/main'];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="professor-chat-main">
     <h1><?= Html::encode($this->title) ?></h1><br>
     <p>Επιλέξτε το σύμβολο <span class="glyphicon glyphicon-comment" style="color:#0080ff"></span> στην δεξιά στήλη για να σας οδηγήσει στην οθόνη επικοινωνίας της αντίστοιχης διπλωματικής.</p><br>

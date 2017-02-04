@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href= "<?= Url::to('/professor/thesis')?>" class="thumbnail">
                 <img src="/images/professor/Professors-main-page-thesis" alt="My Theses photo">
             </a>
-            <h4> Οι Διπλωματικές μου </h4>
+            <h4> Οι διπλωματικές μου </h4>
         </div>
 
         <div class="col-sm-2">
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href= "<?= Url::to('/professor/statistics')?>" class="thumbnail">
                 <img src="/images/professor/Professors-main-page-statistics(Pixabay)" alt="Statistics photo">
             </a>
-            <h4> Στατιστικά</h4>
+            <h4> Στατιστικά στοιχεία</h4>
         </div>
 
         <div class="col-sm-2">

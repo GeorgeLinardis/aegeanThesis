@@ -9,7 +9,7 @@ use dektrium\user\models\User;
 <?php
 $this->title = 'Τρέχουσες διπλωματικές';
 $this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'main'];
-$this->params['breadcrumbs'][] = ['label'=>'Διπλωματικές','url'=>'../professor/thesis'];
+$this->params['breadcrumbs'][] = ['label'=>'Οι διπλωματικές μου','url'=>'../professor/thesis'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

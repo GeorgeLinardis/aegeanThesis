@@ -28,14 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a href= "<?= Url::to('/student/my-master-theses')?>" class="thumbnail" >
                     <img src="/images/student/student-alltheses" alt="All theses">
                 </a>
-                <h4> Λίστα διπλωματικών</h4>
+                <h4> Λίστα διπλωματικών μου</h4>
             </div>
             <div class="col-sm-2">
                     <a href="<?=Url::to(['//chat/chat-room','ThesisID'=>$StudentThesisID])?>" style="<?= ($StudentThesisID==false)? 'cursor:not-allowed':'' ?>" class="thumbnail">
                         <img src="/images/student/student-chat(pixabay).jpg" alt="Professor-chat">
                     </a>
 
-                <h4> Επικοινωνία με καθηγητή</h4>
+                <h4> Συνομιλία με καθηγητή</h4>
             </div>
             <div class="col-sm-2">
                 <a href="<?= Url::to('/student/thesis-application-results')?>" class="thumbnail">

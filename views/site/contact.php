@@ -9,7 +9,7 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\grid\GridView;
 
-$this->title = 'Επικοινωνία Καθηγητές';
+$this->title = 'Στοιχεία επικοινωνίας καθηγητών';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">

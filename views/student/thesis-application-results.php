@@ -1,5 +1,12 @@
 <?php
 use yii\grid\GridView;
+use yii\helpers\Html;
+?>
+
+<?php
+$this->title = 'Αιτήσεις νέας διπλωματικής';
+$this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'main'];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div id="message">
@@ -12,7 +19,7 @@ use yii\grid\GridView;
 </div>
 <div class="student-thesis-application-results">
 
-    <h1>Δήλωση ενδιαφέροντος διπλωματικών</h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

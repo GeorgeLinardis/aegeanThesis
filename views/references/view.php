@@ -5,18 +5,8 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\References */
-if (Yii::$app->request->referrer == 'http://aegean/professor/my-references'){
-    $this->title = 'Οι Αναφορές μου';
-    $this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'/professor/my-references'];
-    $this->params['breadcrumbs'][] = $this->title;
 
-}
-else{
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Αναφορές', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 
-}
  ?>
 
 

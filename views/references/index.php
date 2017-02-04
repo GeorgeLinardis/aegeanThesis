@@ -6,14 +6,22 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ReferencesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
-$this->title = 'Αναφορές';
-$this->params['breadcrumbs'][] = $this->title;
+if (Yii::$app->controller->id=="references") {
+    $this->title = 'Κατάλογος Αναφορών';
+    $this->params['breadcrumbs'][] = $this->title;
+}
+elseif (Yii::$app->controller->id=="student"){
+    $this->title = 'Οι πηγές μου';
+    $this->params['breadcrumbs'][] = $this->title;
+}
+elseif (Yii::$app->controller->id=="professor"){
+$this->title = 'Πηγές φοιτητών μου';
+$this->params['breadcrumbs'][] = $this->title;}
 ?>
 <div class="references-index">
-    <?php if (Yii::$app->controller->id=="references"):?>
+
         <h1><?= Html::encode($this->title) ?></h1><br>
-    <?php endif;?>
+
 
     <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>

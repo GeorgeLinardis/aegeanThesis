@@ -3,7 +3,7 @@ use yii\helpers\Html;
 ?>
 <?php
 
-$this->title = 'Οι Αναφορές μου';
+$this->title = 'Οι πηγές μου';
 $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/main'];
 ?>
 

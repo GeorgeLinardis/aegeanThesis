@@ -5,8 +5,10 @@ use yii\helpers\Html;
 
 <?php
 $this->title = 'Αιτήσεις για νέες διπλωματικές';
-
+$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'main'];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="professor-thesis-application-approvals">
     <h1><?= Html::encode($this->title) ?></h1>
     <p>Επιλέξτε το σύμβολο <span class="glyphicon glyphicon-arrow-right " style="color:#0080ff"></span> στην δεξιά στήλη για να σας οδηγήσει στην οθόνη έγκρισης της αντίστοιχης αίτησης.</p><br>

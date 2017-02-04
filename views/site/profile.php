@@ -1,6 +1,6 @@
 <?php
 use yii\widgets\DetailView ;
-
+use yii\helpers\Html;
 ?>
 <?php
 $this->title = 'Προφίλ Χρήστη';
@@ -11,7 +11,7 @@ $this->title = 'Προφίλ Χρήστη';
 
         <div class="col-sm-8 col-sm-offset-2">
             <div class="col-sm-8">
-                <h2 >Προφίλ Χρήστη</h2>
+                    <h1><?= Html::encode($this->title) ?></h1><br>
             </div>
             <div class="col-sm-4">
                 <?php if(isset($model->photo)&& (!empty($model->photo))):?>

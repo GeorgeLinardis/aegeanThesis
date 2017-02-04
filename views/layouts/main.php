@@ -53,9 +53,9 @@ AppAsset::register($this);
                     ['label' => 'Καθηγητής','url'=>['professor/main'],
                         'items' => [
                             ['label' => 'Αρχική', 'url' => ['professor/main']],
-                            ['label' => 'Οι Διπλωματικές μου', 'url' => ['professor/thesis']],
+                            ['label' => 'Οι διπλωματικές μου', 'url' => ['professor/thesis']],
                             ['label' => 'Επιτροπές τρίτων', 'url' => ['professor/committee']],
-                            ['label' => 'Στατιστικά', 'url' => ['professor/statistics']],
+                            ['label' => 'Στατιστικά στοιχεία', 'url' => ['professor/statistics']],
                             ['label' => 'Πηγές φοιτητών μου', 'url' => ['professor/my-references']],
                             ['label' => 'Αιτήσεις για νέες διπλωματικές', 'url' => ['professor/thesis-application-approvals']],
                             ['label' => 'Επικοινωνία με φοιτητές', 'url' => ['professor/chat-main']],
@@ -68,7 +68,7 @@ AppAsset::register($this);
                             ['label' => 'Αρχική', 'url' => ['student/main']],
                             ['label' => 'Η διπλωματική μου', 'url' => ['student/my-thesis']],
                             ['label' => 'Οι πηγές μου', 'url' => ['student/my-references']],
-                            ['label' => 'Λίστα διπλωματικών', 'url' => ['student/my-master-theses']],
+                            ['label' => 'Λίστα διπλωματικών μου', 'url' => ['student/my-master-theses']],
                             ['label' => 'Αιτήσεις νέας διπλωματικής', 'url' => ['student/thesis-application-results']],
 
                         ],
