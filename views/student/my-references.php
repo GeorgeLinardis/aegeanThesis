@@ -19,7 +19,6 @@ $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'../student/m
 
 <?php else :?>
 
-    <h1><?= Html::encode($this->title) ?></h1><br>
 <?php
     echo $this->render('//references/index', [
           'searchModel' => $searchModel,
