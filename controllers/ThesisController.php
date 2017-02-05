@@ -107,6 +107,18 @@ class ThesisController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $PostData = $_POST;
+            $ThesisID = $model->ID;
+            $ProfessorID=($_POST['Thesis']['professorID']);
+            $Committee1ID=$_POST['Thesis']['committee1'];
+            $Committee2ID=$_POST['Thesis']['committee2'];
+            $Committee3ID=$_POST['Thesis']['committee3'];
+
+            if (isset($Committee1ID)&&($Committee1ID!=NULL)){EmailController::CreateCommitteeEmail($ProfessorID,$Committee1ID,$PostData,$ThesisID);};
+            if (isset($Committee2ID)&&($Committee2ID!=NULL)){EmailController::CreateCommitteeEmail($ProfessorID,$Committee2ID,$PostData,$ThesisID);};
+            if (isset($Committee3ID)&&($Committee3ID!=NULL)){EmailController::CreateCommitteeEmail($ProfessorID,$Committee3ID,$PostData,$ThesisID);};
+
+
             return $this->redirect(['view', 'id' => $model->ID]);
         } else {
             return $this->render('update', [
