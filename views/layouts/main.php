@@ -74,7 +74,17 @@ AppAsset::register($this);
                         ],
                     ]
                     :
-                    ['label' => 'Admin', 'url' => ['/admin/index']]),
+                    ['label' => 'Διαχειριστής','url'=>['admin/index'],
+                        'items' => [
+                            ['label' => 'Αρχική', 'url' => ['admin/index']],
+                            ['label' => 'Καθηγητές', 'url' => ['admin/all-professors']],
+                            ['label' => 'Φοιτητές', 'url' => ['admin/all-students']],
+                            ['label' => 'Διπλωματικές', 'url' => ['admin/all-theses']],
+                            ['label' => 'Στατιστικά', 'url' => ['admin/statistics']],
+
+                        ],
+                    ]
+                ),
             ],
         ]);
 
@@ -84,7 +94,13 @@ AppAsset::register($this);
         'items' =>
         [
             Yii::$app->user->isGuest
-                ? ['label' => 'Είσοδος', 'url' => ['/site/login']]
+                ? ['label' => 'Είσοδος', 'url' => ['/site/login']] :
+            UserHelpers::UserRole()=="administrator"
+                ? ['label' => Yii::$app->user->identity->username,
+                'items' => [
+                    ['label' => 'Έξοδος Χρήστη','url'=>['/site/logout'],'linkOptions'=>['data-method'=>'post']],
+                ],
+               ]
 
 
                 : ['label' => Yii::$app->user->identity->username,
