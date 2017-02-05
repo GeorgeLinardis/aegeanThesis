@@ -10,6 +10,11 @@ use yii\web\Controller;
 
 class EmailController extends Controller
 {
+    /* This function gets the data needed to create email send to professors that will be committee members.
+    * $SenderID,$ReceiverID,$ThesisID is an integer
+    * $PostData is an array
+   */
+
     public static function CreateCommitteeEmail($SenderID,$ReceiverID,$PostData,$ThesisID)
     {
         $Sender = Professor::find()->where(['id'=>($SenderID)])->one();
@@ -30,6 +35,9 @@ class EmailController extends Controller
 
     }
 
+    /* This function decoded the response received professor when he click the response link .
+   */
+
     public function ThesisEmailRespondDecode(){
         $ids = Yii::$app->getRequest()->getQueryParam('id');
         $urlData = array('ids'=>$ids);
@@ -46,6 +54,7 @@ class EmailController extends Controller
     /* This function uses the decoded id returned from ThesisEmailRespondDecode function and inserts null as value
      * to the Committee member that rejected the position in the Committee
      * */
+
     public function actionRejectThesisEmailRespond()
     {
         $thesis_id = $this->ThesisEmailRespondDecode()[0];
@@ -68,9 +77,11 @@ class EmailController extends Controller
             'thesis_title'=>$Referred_thesis->title
         ]);
     }
+
     /* This function uses the decoded id returned from ThesisEmailRespondDecode function and inserts the
      * Committee member id as a value since he accepted the position in the Committee
      * */
+
     public function actionAcceptThesisEmailRespond()
     {
         $thesis_id = $this->ThesisEmailRespondDecode()[0];

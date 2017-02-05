@@ -75,6 +75,11 @@ class ThesisController extends Controller
         }
     }
 
+    /**
+     * Creates a new Pdf for current thesis.
+     * Pdf is created using mPDF extension implemented and found in vendors folder.
+     * $id is integer
+     */
     public function actionThesisPdf($id)
     {
         $model =Thesis::find()->where(['ID'=>$id])->one();

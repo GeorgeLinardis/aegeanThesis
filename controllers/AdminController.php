@@ -16,15 +16,27 @@ use yii\data\ActiveDataProvider;
 
 class AdminController extends Controller
 {
+
+    /* This function renders the index view for the administrator
+    */
+
     public function actionIndex()
     {
         return $this->render('index');
     }
 
+
+    /* This function renders the view which shows all the University theses.
+    */
+
     public function actionThesesMain()
     {
         return $this->render('theses-main');
     }
+
+    /* This function renders all the University active theses based by the dataProvider filtering
+   */
+
     public function actionAllThesesActive()
     {
         $searchModel = new ThesisSearch();
@@ -37,6 +49,10 @@ class AdminController extends Controller
                 'searchModel'=>$searchModel,
             ]);
     }
+
+    /* This function renders all the University theses that are ready to be presented to a committee.
+    */
+
     public function actionAllThesesCommittee()
     {
     $searchModel = new ThesisSearch();
@@ -49,6 +65,11 @@ class AdminController extends Controller
             'searchModel'=>$searchModel,
         ]);
     }
+
+    /* This function renders all the University theses that belong to the past because they have already been presented
+    * to a committee.
+    */
+
     public function actionAllThesesPast()
     {
         $searchModel = new ThesisSearch();
@@ -62,6 +83,9 @@ class AdminController extends Controller
             ]);
     }
 
+    /* This function renders all the University students.
+    */
+
     public function actionAllStudents()
     {       $dataProvider = new ActiveDataProvider([
             'query' => Student::find(),
@@ -69,7 +93,10 @@ class AdminController extends Controller
         return $this->render('all-students',
             ['dataProvider' => $dataProvider]);
     }
-     
+
+    /* This function renders all the University professors.
+   */
+
     public function actionAllProfessors()
     {
         $query = Professor::find();
@@ -82,7 +109,8 @@ class AdminController extends Controller
         );
     }
 
-
+    /* This function use database data to create basic statistics for the administrator.
+   */
     public function actionStatistics()
     {
         

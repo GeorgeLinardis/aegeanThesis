@@ -120,8 +120,6 @@ class SiteController extends Controller
 
     /**
      * Displays about page.
-     *
-     * @return string
      */
     public function actionAbout()
     {
@@ -133,6 +131,9 @@ class SiteController extends Controller
         return $this->render('new-user');
     }
 
+    /**
+     * Displays profile page which shows current users analytical data (doesn't work for administrator).
+     */
     public function actionProfile()
     {
         $role = UserHelpers::UserRole();

@@ -61,6 +61,9 @@ class ProfessorController extends Controller
         ]);
     }
 
+    /**
+     * Displays the masters already assigned to a professor.
+     */
     public function actionProfessorMasters()
     {
         $dataProvider = new ActiveDataProvider(['query' => ProfessorHasMasters::find()->where(['professorID'=>UserHelpers::User()->ID])]);
@@ -79,8 +82,12 @@ class ProfessorController extends Controller
             ]);
         }
 
-
     }
+
+    /**
+     * Creates new master entry for a professor.
+     */
+
     public function actionProfessorMastersNew()
     {
         $model = new ProfessorHasMasters;
@@ -92,6 +99,11 @@ class ProfessorController extends Controller
             ]);
         }
     }
+
+    /**
+     * Deletes a master entry.
+     */
+
     public function actionDeleteMaster($id)
     {
          $MasterToDelete=ProfessorHasMasters::find()->where(['ID'=>$id])->one();
@@ -183,7 +195,7 @@ class ProfessorController extends Controller
     }
 
     /**
-     * Render the professor thesis-approval page
+     * Render the professor thesis-approval page based by professorID filtering
      */
     public function actionThesisApplicationApprovals()
     {   $dataProvider = new ActiveDataProvider(['query' => StudentAppliesForThesis::find()->where(['professorID'=>UserHelpers::User()->ID])]);
@@ -195,6 +207,7 @@ class ProfessorController extends Controller
 
     /**
      * Render the professor thesis-approval page
+     * $StudentID,$ThesisID are voth integers
      */
     public function actionThesisApplicationAnswer($StudentID,$ThesisID)
     {
@@ -241,6 +254,9 @@ class ProfessorController extends Controller
             ]);
     }
 
+    /**
+     * Renders the professors references created by his students - return message if no entry has been made
+     */
     public function actionMyReferences()
     {   $message = "Δεν έχει πραγματοποιηθεί κάποια εγγραφή στην βάση δεδομένων των αναφορών ώστε να λειτουργήσει αποτελεσματικά η συγκεκριμένη σελίδα.";
         $professor = UserHelpers::User();
@@ -441,6 +457,9 @@ class ProfessorController extends Controller
         }
     }
 
+    /**
+     * Renders the chat-main view where professor chooses in which thesis to enter for chatting with students
+     */
     public function actionChatMain(){
         $professorID = UserHelpers::User()->ID;
         $searchModel = new ThesisSearch();

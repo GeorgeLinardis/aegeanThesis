@@ -168,6 +168,11 @@ class StudentController extends Controller
             ]);
         }
     }
+
+    /**
+     * Render the students application already made as list
+     */
+
     public function actionThesisApplicationResults()
     {
 
@@ -176,6 +181,9 @@ class StudentController extends Controller
                         'dataProvider'=>$dataProvider]);
     }
 
+    /**
+     * When student is assigned a thesis this page will be activated which shows thesis data else message will be printed
+     */
     public function actionMyThesis()
     {
         $model=Thesis::find()->where(['ID'=>UserHelpers::User()->thesisID])->one();
@@ -190,6 +198,9 @@ class StudentController extends Controller
         }
     }
 
+    /**
+     * Students thesis references only are presented in this view
+     */
 
     public function actionMyReferences()
     {

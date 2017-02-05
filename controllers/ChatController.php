@@ -12,15 +12,25 @@ use yii\web\UploadedFile;
 
 class ChatController extends Controller
 {
+    /* This function is used to refresh the page after a message or file is sent.
+    * anchor is defined as '' because there is no need to return to a specific place in page.
+   */
     public function refresh($anchor = '')
     {
         return Yii::$app->getResponse()->redirect(Yii::$app->getRequest()->getUrl() . $anchor);
     }
 
+    /* This function gathers all the messages sent for the ThesisID provided and for all users that belong to this thesis.
+    * $ThesisID is a int and $users is an array
+   */
+
     public function getMsg($users,$ThesisID){
         $messages =  Chat::find()->where(['username'=> $users,'thesisID'=>$ThesisID])->orderBy(['date_time'=>SORT_ASC])->all();
         return $messages;
     }
+
+    /* This function defines the sender for the message sent.
+   */
 
     public function sendMsg($message){
         $sender = UserHelpers::Username();
@@ -28,6 +38,9 @@ class ChatController extends Controller
 
     }
 
+    /* This is the basic function of this controller and is used to create the chat room view.
+    * $ThesisID is integer
+   */
 
     public function actionChatRoom($ThesisID){
         $model = new Chat();
