@@ -64,7 +64,7 @@ elseif (Yii::$app->controller->id=="student"){
 
 
             ['class' => 'yii\grid\ActionColumn',
-                'template'=> UserHelpers::UserRole()== 'student'? '{view}':'{view}{update}{delete}',
+                'template'=> '{view}',
                 'controller'=>'thesis'
 
 

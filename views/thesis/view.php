@@ -9,9 +9,14 @@ use yii\helpers\Url;
 /* @var $model app\models\Thesis */
 
     $this->title = $model->title;
-if (UserHelpers::UserRole()=="professor") {
-    $this->params['breadcrumbs'][] = ['label' => 'Καθηγητής', 'url' => 'main'];
-    $this->params['breadcrumbs'][] = ['label' => 'Οι διπλωματικές μου', 'url' => '//professor/thesis'];
+if ($model->professorID==UserHelpers::User()->ID) {
+    $this->params['breadcrumbs'][] = ['label' => 'Καθηγητής', 'url' => '/professor/main'];
+    $this->params['breadcrumbs'][] = ['label' => 'Οι διπλωματικές μου', 'url' => '/professor/thesis'];
+    $this->params['breadcrumbs'][] = $this->title;
+}
+else  {
+    $this->params['breadcrumbs'][] = ['label' => 'Διπλωματικές Πανεπιστημίου', 'url' => '/thesis/index'];
+
     $this->params['breadcrumbs'][] = $this->title;
 }
 ?>
@@ -23,9 +28,8 @@ if (UserHelpers::UserRole()=="professor") {
 
             <p>
                 <?php if (UserHelpers::UserRole()!= 'student') :?>
-
                 <?= Html::a('<span class="glyphicon glyphicon-list-alt"></span> Αίτηση PDF', ['thesis-pdf','id'=>($model->ID)], ['class' => 'btn btn-primary' ]) ?>
-                <?= Html::a('Ανανέωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
+                <?php  if (UserHelpers::UserRole()!= 'administrator'){echo  Html::a('Ανανέωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ;}?>
                 <?= Html::a('Διαγραφή', ['delete', 'id' => $model->ID], [
                     'class' => 'btn btn-danger',
                     'data' => [

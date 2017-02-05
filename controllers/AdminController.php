@@ -21,12 +21,42 @@ class AdminController extends Controller
         return $this->render('index');
     }
 
-    public function actionAllTheses()
+    public function actionThesesMain()
+    {
+        return $this->render('theses-main');
+    }
+    public function actionAllThesesActive()
     {
         $searchModel = new ThesisSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->andFilterWhere(['status' => ['δεν έχει ανατεθεί','έχει ανατεθεί','υπο έγκριση']]);
 
-        return $this->render('all-theses',
+
+        return $this->render('all-theses-active',
+            ['dataProvider'=>$dataProvider,
+                'searchModel'=>$searchModel,
+            ]);
+    }
+    public function actionAllThesesCommittee()
+    {
+    $searchModel = new ThesisSearch();
+    $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    $dataProvider->query->andFilterWhere(['status' => ['για Επιτροπή']]);
+
+
+    return $this->render('all-theses-committee',
+        ['dataProvider'=>$dataProvider,
+            'searchModel'=>$searchModel,
+        ]);
+    }
+    public function actionAllThesesPast()
+    {
+        $searchModel = new ThesisSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->andFilterWhere(['status' => ['ολοκληρώθηκε']]);
+
+
+        return $this->render('all-theses-past',
             ['dataProvider'=>$dataProvider,
                 'searchModel'=>$searchModel,
             ]);
@@ -41,13 +71,17 @@ class AdminController extends Controller
     }
      
     public function actionAllProfessors()
-    {   
-         $dataProvider = new ActiveDataProvider([
-            'query' => Professor::find(),
-        ]);
+    {
+        $query = Professor::find();
+        $dataProvider = new ActiveDataProvider(
+            ['query'=>$query,
+            ]);
+
         return $this->render('all-professors',
-            ['dataProvider' => $dataProvider]);
+            ['dataProvider'=>$dataProvider]
+        );
     }
+
 
     public function actionStatistics()
     {
@@ -108,7 +142,8 @@ class AdminController extends Controller
         $AssignedThesesAvg = round(($AssignedThesesCount/$TotalThesesCount),2);
         $CommitteeThesesAvg = round(($CommitteeThesesCount/$TotalThesesCount),2);
         $CompletedThesesAvg = round(($CompletedThesesCount/$TotalThesesCount),2);
-            
+
+        $NotAssignedThesesCount = count(Thesis::find()->where(['status' => ['δεν έχει ανατεθεί','υπο έγκριση']])->all());
         return $this->render('statistics',[
             //Synopsis
             'TotalReferencesCount'=>$TotalReferencesCount,
@@ -117,7 +152,7 @@ class AdminController extends Controller
             'CommitteeThesesCount'=>$CommitteeThesesCount,
             'TotalReferencesThisMonth'=>$TotalReferencesThisMonth,
             'TotalThesesPresentedThisMonth'=>$TotalThesesPresentedThisMonth,
-
+            'NotAssignedThesesCount'=>$NotAssignedThesesCount,
 
 
           //----------- 1st Pie Chart

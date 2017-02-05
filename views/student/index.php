@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\CustomHelpers\UserHelpers;
 
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -34,6 +35,7 @@ $this->title = 'Students';
             //'photo',
 
             ['class' => 'yii\grid\ActionColumn',
+             'template' => (UserHelpers::UserRole()=='administrator')?'{view}':'{view}{update}{delete}',
              'controller'=>'student'],
         ],
     ]); ?>

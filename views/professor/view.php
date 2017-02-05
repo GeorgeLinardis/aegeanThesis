@@ -2,12 +2,24 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\CustomHelpers\UserHelpers;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\professor */
+?>
 
-$this->title = 'Προφίλ ';
-$this->params['breadcrumbs'][] = $this->title;
+
+<?php if (UserHelpers::UserRole()=='administrator'){
+    $this->title = 'Επισκόπηση στοιχείων καθηγητή';
+    $this->params['breadcrumbs'][] = ['label'=>'Διαχειριστής','url'=>'/admin/index'];
+    $this->params['breadcrumbs'][] = ['label'=>'Καθηγητές','url'=>'/admin/all-professors'];
+    $this->params['breadcrumbs'][] = $this->title;
+    echo '<h1>'.Html::encode($this->title).'</h1>';
+}
+else {
+    $this->title = 'Προφίλ ';
+    $this->params['breadcrumbs'][] = $this->title;
+}
 ?>
 
 <div class="professor-view">
@@ -29,8 +41,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'photo',
         ],
     ]) ?>
+
+<?php if (UserHelpers::UserRole()!='administrator'):?>
     <p>Για να οδηγηθείτε στην λίστα με τα μεταπτυχιακά στα οποία είστε μέλος επιλέξτε <a href="/professor/professor-masters">εδώ</a></p>
 
     <?= Html::a('Τροποποίηση', ['//professor/update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
-
+<?php endif;?>
 </div>

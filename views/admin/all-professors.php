@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+use yii\grid\GridView;
 ?>
 <?php
 $this->title = 'Καθηγητές';
@@ -7,13 +8,32 @@ $this->params['breadcrumbs'][] = ['label'=>'Διαχειριστής','url'=>'in
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="admin-professors">
-    <div class="text-center"><h1><?= Html::encode($this->title) ?> </h1></div><br>
+<div class="admin-all-professors">
+    <h1><?= Html::encode($this->title) ?></h1>
 
- <?= $this->render('//professor/index', [
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-    ]) ?>
+        'columns' => [
+            //['class' => 'yii\grid\SerialColumn'],
 
+            //'thesisID',
+            'ID',
+            //'userUsername',
+            'firstname',
+            'lastname',
+            'telephone1',
+            'telephone2',
+            'email:email',
+            'skypeUsername',
+            //'url:ntext',
+            //'comments:ntext',
+            //'photo',
+
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
+                'controller'=>'professor'],
+        ],
+    ]); ?>
 
 
 </div>

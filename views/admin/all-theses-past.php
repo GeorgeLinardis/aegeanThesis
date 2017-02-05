@@ -2,8 +2,9 @@
 use yii\helpers\Html;
 ?>
 <?php
-$this->title = 'Διπλωματικές';
+$this->title = 'Διπλωματικές στο παρελθόν';
 $this->params['breadcrumbs'][] = ['label'=>'Διαχειριστής','url'=>'index'];
+$this->params['breadcrumbs'][] = ['label'=>'Διπλωματικές','url'=>'theses-main'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="admin-theses">

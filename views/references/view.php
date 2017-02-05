@@ -6,7 +6,13 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\References */
 
+if (Yii::$app->controller->id=="references") {
+    $this->title = 'Επισκόπηση πηγής';
+    $this->params['breadcrumbs'][] = ['label' => 'Πηγές', 'url' => '/references/index'];
+    $this->params['breadcrumbs'][] = $this->title;
 
+
+}
  ?>
 
 

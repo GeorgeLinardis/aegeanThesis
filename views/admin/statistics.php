@@ -16,10 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <h3>Συνοπτική παρουσίαση</h3><br>
 
         <ul class="list-group">
-            <li class="list-group-item">Διπλωματικές υπο εξέλιξη<span class="badge"> <?=$AssignedThesesCount?></span></li>
-            <li class="list-group-item list-group-item-success"">Διπλωματικές που πρέπει να παρουσιασθούν αυτόν τον μήνα<span class="badge"> <?=$TotalThesesPresentedThisMonth?></span></li>
-            <li class="list-group-item">Ολοκληρωμένες Διπλωματικές προς Επιτροπή<span class="badge"> <?=$CommitteeThesesCount?></span></li>
-            <li class="list-group-item">Διπλωματικές που έχουν αναλάβει οι καθηγητές συνολικά<span class="badge"><?=$TotalThesesCount?></span></li>
+            <li class="list-group-item">Διπλωματικές έτοιμες προς Επιτροπή εκ των οποίων για αυτόν τον μήνα<span class="badge"> <?=$TotalThesesPresentedThisMonth?></span></li>
+            <li class="list-group-item">Διπλωματικές έτοιμες προς Επιτροπή<span class="badge"> <?=$CommitteeThesesCount?></span></li>
+            <li class="list-group-item">Διπλωματικές που έχουν ανατεθεί σε φοιτητές και είναι υπο εξέλιξη<span class="badge"> <?=$AssignedThesesCount?></span></li>
+            <li class="list-group-item"><b>Σύνολο θεμάτων που έχουν δημιουργηθεί σε όλα τα έτη</b><span class="badge"><?=$TotalThesesCount?></span></li>
+            <li class="list-group-item">Ελεύθερα θέματα διπλωματικών<span class="badge"> <?=$NotAssignedThesesCount?></span></li>
             <li class="list-group-item">Σύνολο πηγών αυτον τον μήνα<span class="badge"><?=$TotalReferencesThisMonth?></span></li>
             <li class="list-group-item">Σύνολο πηγών μέχρι σήμερα<span class="badge"><?=$TotalReferencesCount?></span></li>
 

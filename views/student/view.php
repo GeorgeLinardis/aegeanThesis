@@ -2,12 +2,22 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\CustomHelpers\UserHelpers;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Student */
 
-$this->title = 'Προφίλ Χρήστη';
-$this->params['breadcrumbs'][] = $this->title;
+
+if (UserHelpers::UserRole()=="administrator") {
+    $this->title = 'Στοιχεία Φοιτητή';
+    $this->params['breadcrumbs'][] = ['label'=>'Διαχειριστής','url'=>'/admin/index'];
+    $this->params['breadcrumbs'][] = ['label'=>'Φοιτητές','url'=>'/admin/all-students'];
+    $this->params['breadcrumbs'][] = $this->title;
+}
+else {
+    $this->title = 'Προφίλ Χρήστη';
+    $this->params['breadcrumbs'][] = $this->title;
+}
 ?>
 <div class="student-view">
 
@@ -42,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ],
     ]) ?>
+    <?php if (UserHelpers::UserRole() != 'administrator') : ?>
     <?= Html::a('Τροποποίηση', ['//student/update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
-
+    <?php endif;?>
 </div>

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ReferencesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 if (Yii::$app->controller->id=="references") {
-    $this->title = 'Κατάλογος Αναφορών';
+    $this->title = 'Πηγές';
     $this->params['breadcrumbs'][] = $this->title;
 }
 elseif (Yii::$app->controller->id=="student"){
