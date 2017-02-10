@@ -7,6 +7,8 @@ use app\models\Professor;
 
     <div class="pdfForm">
         <br />
+        <h5 style="text-align: left; color:dimgray">ΠΑΝΕΠΙΣΤΗΜΙΟ ΑΙΓΑΙΟΥ <br><?= $model->master->title?><br><br></h5>
+
         <h2 style="text-align: center">ΔΙΠΛΩΜΑΤΙΚΗ ΕΡΓΑΣΙΑ</h2>
         <br>
         <b class="titles-color"> Επιβλέπων Καθηγητής</b><br/>
