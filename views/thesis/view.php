@@ -27,7 +27,7 @@ else  {
             <h1><?= Html::encode($this->title) ?></h1><br>
 
             <p>
-                <?php if (UserHelpers::UserRole()!= 'student') :?>
+                <?php if (UserHelpers::User()->ID== $model->professorID) :?>
                 <?= Html::a('<span class="glyphicon glyphicon-list-alt"></span> Αίτηση PDF', ['thesis-pdf','id'=>($model->ID)], ['class' => 'btn btn-primary' ]) ?>
                 <?php  if (UserHelpers::UserRole()!= 'administrator'){echo  Html::a('Ανανέωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ;}?>
                 <?= Html::a('Διαγραφή', ['delete', 'id' => $model->ID], [
