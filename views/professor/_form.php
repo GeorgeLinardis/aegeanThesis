@@ -26,7 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telephone2')->textInput(['maxlength' => true]) ?>
 
-    <?php// echo $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+
 
     <?= $form->field($model, 'skypeUsername')->textInput(['maxlength' => true]) ?>
 

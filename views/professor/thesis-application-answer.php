@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($Thesis, 'max_students')->textInput(['readonly'=>'true','value'=>$Thesis->max_students])->label('Μέγιστος αριθμός φοιτητών')?>
 
-    <?= $form->field($Thesis, 'dateCreated')->textInput(['readonly'=>'true','value'=>date("d/m/Y", strtotime($Thesis->dateCreated))])->label('Ημερομηνία δημιουργίας')?>
+    <?= $form->field($Thesis, 'dateCreated')->textInput(['readonly'=>'true','value'=>$Thesis->dateCreated])->label('Ημερομηνία δημιουργίας')?>
 
     <?= $form->field($Thesis, 'status')->hiddenInput(['readonly'=>'true','value'=>'έχει ανατεθεί'])->label(false)?>
 
