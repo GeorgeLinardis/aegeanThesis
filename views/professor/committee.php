@@ -27,7 +27,9 @@ GridView::widget([
         'status',
         'datePresented',
         ['class' => 'yii\grid\ActionColumn',
-            'template'=>'{view}'], //{delete} {update}
+            'template'=>'{view}',
+            'controller'=>'thesis'], //{delete} {update}
+
     ],
 ]); ?>
 
