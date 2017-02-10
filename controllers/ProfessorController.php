@@ -120,12 +120,18 @@ class ProfessorController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $currentPhoto = $model->photo;
         //if ($model->load(Yii::$app->request->post()) && $model->save()) {
         if ($model->load(Yii::$app->request->post())) {
+            if (UploadedFile::getInstance($model,'photo') && UploadedFile::getInstance($model,'photo')!= null){
             $image = UploadedFile::getInstance($model,'photo');
             $imageName = 'User_'.$model->userUsername.".".$image->getExtension();
             $image->saveAs('images\userPhotos'."/".$imageName);
             $model->photo=$imageName;
+            }
+        else {
+            $model->photo = $currentPhoto;
+        }
             $model->save();
             return $this->redirect(['site/profile']);
         } else {
