@@ -85,21 +85,36 @@ class StudentController extends Controller
     {
         $model = $this->findModel($id);
         //if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        $currentCv = $model->cv;
+        $currentPhoto = $model->photo;
         if ($model->load(Yii::$app->request->post())) {
-            if (UploadedFile::getInstance($model,'photo')){
+
+            if (UploadedFile::getInstance($model,'photo') && UploadedFile::getInstance($model,'photo')!= null){
             $image = UploadedFile::getInstance($model,'photo');
             $imageName = 'User_'.$model->userUsername.".".$image->getExtension();
             $image->saveAs('images\userPhotos'."/".$imageName);
             $model->photo=$imageName;
-            $model->save();}
-            if (UploadedFile::getInstance($model,'cv')){
+
+            }
+            else{
+                $model->photo=$currentPhoto;
+
+            }
+            if (UploadedFile::getInstance($model,'cv')&& UploadedFile::getInstance($model,'cv')!= null){
                 $cv = UploadedFile::getInstance($model,'cv');
                 $cvName = 'User_CV_'.$model->userUsername.".".$cv->getExtension();
                 $cv->saveAs('documents\cv'."/".$cvName);
                 $model->cv=$cvName;
-                $model->save();}
+
+               }
+            else{
+                $model->cv=$currentCv;
+
+            }
+            $model->save();
             return $this->redirect(['site/profile']);
-        } else {
+        }
+        else {
             return $this->render('update', [
                 'model' => $model,
             ]);
