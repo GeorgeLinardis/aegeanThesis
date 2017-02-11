@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;}
 <div class="references-index">
 
         <h1><?= Html::encode($this->title) ?></h1><br>
-
+    <p>Επιλέξτε το σύμβολο <span class="glyphicon glyphicon-eye-open" style="color:#0080ff"></span> στην δεξιά στήλη για να δείτε τα στοιχεία της αναφοράς αναλυτικότερα.</p><br>
 
     <?php  //echo $this->render('_search', ['model' => $searchModel]); ?>
     <p>
