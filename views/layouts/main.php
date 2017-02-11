@@ -112,11 +112,12 @@ AppAsset::register($this);
 
                 ['label' => 'Χρήσιμα',
              'items'=>[
-                 ['label'=>'Aegean','url'=>'https://www.aegean.gr/','linkOptions'=>['target'=>'_blank']],
-                 ['label'=>'Eclass','url'=>'https://eclass.aegean.gr/','linkOptions'=>['target'=>'_blank']],
-                 ['label'=>'Webmail','url'=>'http://webmail.aegean.gr/','linkOptions'=>['target'=>'_blank']],
+                 ['label'=>'Aegean University','url'=>'https://www.aegean.gr/','linkOptions'=>['target'=>'_blank']],
+                 ['label'=>'E-class','url'=>'https://eclass.aegean.gr/','linkOptions'=>['target'=>'_blank']],
+                 ['label'=>'Aegean Webmail','url'=>'http://webmail.aegean.gr/','linkOptions'=>['target'=>'_blank']],
                  ['label'=>'Icarus','url'=>'https://icarus-icsd.aegean.gr/','linkOptions'=>['target'=>'_blank']],
                  ['label'=>'Github','url'=>'https://github.com/Github','linkOptions'=>['target'=>'_blank']],
+                 ['label'=>'StackOverflow','url'=>'http://stackoverflow.com/','linkOptions'=>['target'=>'_blank']],
                       ],
             ],
 
