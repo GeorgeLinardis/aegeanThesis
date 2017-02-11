@@ -227,6 +227,7 @@ class ProfessorController extends Controller
             $Student->thesisID = $Thesis->ID;
             $Thesis_has_students->thesisID=$Thesis->ID;
             $Thesis_has_students->studentID=$Student->ID;
+            $Thesis->status="έχει ανατεθεί";
             $Thesis->save();
             $Student->save();
             $Thesis_has_students->save();
