@@ -40,6 +40,18 @@ use app\models\Professor;
         <i class="text-color"><?= $model->max_students;?></i>
         <br /><br />
 
+        <b class="titles-color"><?= $model->getAttributeLabel('committee1').": "?></b>
+        <i class="text-color"><?php $committee1 = Professor::find()->where(['ID'=> ($model->committee1)])->one(); echo $committee1->lastname.' '.$committee1->firstname?></i>
+        <br /><br />
+
+        <b class="titles-color"><?= $model->getAttributeLabel('committee2').": "?></b>
+        <i class="text-color"><?php $committee2 = Professor::find()->where(['ID'=> ($model->committee2)])->one(); echo $committee2->lastname.' '.$committee2->firstname?></i>
+        <br /><br />
+
+        <b class="titles-color"><?= $model->getAttributeLabel('committee3').": "?></b>
+        <i class="text-color"><?php $committee3 = Professor::find()->where(['ID'=> ($model->committee3)])->one(); echo $committee3->lastname.' '.$committee3->firstname?></i>
+        <br /><br />
+
         <b class="titles-color"><?= $model->getAttributeLabel('dateCreated').": "?></b>
         <i class="text-color"><?= $model->dateCreated;?></i>
         <br /><br />

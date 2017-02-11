@@ -38,6 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'studentID',
                 'value'=>function ($model) {
+                    if ($model->student->lastname ==null || $model->student->firstname ==null){
+                        return $model->student->ID;
+                    }
                     return $model->student->lastname.' '. $model->student->firstname;
                 },
 
