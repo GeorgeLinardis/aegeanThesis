@@ -18,6 +18,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
+            [
+                'attribute' => 'photo',
+                'format' => 'html',
+                'label' => '',
+                'value' => function ($data) {
+                    if (isset($data['photo']) && $data['photo']!= null){
+                    return Html::img('/images/userPhotos/' . $data['photo'],
+                        ['width' => '60px']);
+                    }
+                    else{
+                        return Html::img('/images/userPhotos/User_unknown_profile.png',
+                            ['width' => '60px']);
+
+                    }
+    },
+            ],
             'firstname',
             'lastname',
             'telephone1',
