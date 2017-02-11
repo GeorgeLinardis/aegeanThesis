@@ -22,9 +22,13 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'PublishedTo')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'type')->dropDownList([ 'άλλο' => 'άλλο', 'βιβλίο' => 'βιβλίο', 'paper' => 'Paper', 'URL' => 'URL', 'περιοδικό' => 'περιοδικό', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'URL')->textarea(['rows' => 1]) ?>
+    <?= $form->field($model, 'URL')->textarea(['rows' => 2]) ?>
+
+    <?= $form->field($model, 'BipText')->textarea(['rows' => 2]) ?>
 
     <?= $form->field($model, 'date_created_by_author')->widget(
                             DatePicker::className(), [
@@ -51,7 +55,7 @@ use dosamigos\datepicker\DatePicker;
                                     'format' => 'yyyy-mm-dd'
                                 ]
                             ]);?>
-    <?= $form->field($model, 'file')->textarea(['rows' => 1]) ?>
+    <?= $form->field($model, 'file')->fileInput()  ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Ανανέωση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

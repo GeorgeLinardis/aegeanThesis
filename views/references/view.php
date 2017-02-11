@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\CustomHelpers\UserHelpers;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\References */
@@ -21,7 +22,7 @@ if (Yii::$app->controller->id=="references") {
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?php if (\app\CustomHelpers\UserHelpers::UserRole()=='student') :?>
+        <?php if (UserHelpers::User()->ID==$model->studentID) :?>
         <?= Html::a('Ανανέωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Διαγραφή', ['delete', 'id' => $model->ID], [
             'class' => 'btn btn-danger',
@@ -37,12 +38,19 @@ if (Yii::$app->controller->id=="references") {
         'model' => $model,
         'attributes' => [
             'ID',
-            'professorID',
-            'studentID',
+            [   'label'=>'Καθηγητής/Καθηγήτρια',
+                'value'=>(($model->professor->firstname)!=null ||($model->professor->lastname)!=null )?($model->professor->lastname.' '.$model->professor->firstname):$model->professorID,
+            ],
+            [   'label'=>'Φοιτητής/Φοιτητήτρια',
+                'value'=>(($model->student->firstname)!=null ||($model->student->lastname)!=null )?($model->student->lastname.' '.$model->student->firstname):$model->studentID,
+            ],
             'title',
             'author',
+            'PublishedTo',
             'type',
             'URL:url',
+            'BipText',
+
             'date_created_by_author:date',
             'date_created_by_student:date',
             'date_updated_by_student:date',
