@@ -202,7 +202,7 @@ class StudentController extends Controller
     public function actionMyThesis()
     {
         $model=Thesis::find()->where(['ID'=>UserHelpers::User()->thesisID])->one();
-        $message = "Δεν έχει αναλάβει διπλωματική ακόμα.";
+        $message = "Δεν έχετε αναλάβει διπλωματική ακόμα.";
         if (isset($model)&&$model!=null){
         return $this->render('my-thesis',[
                     'model'=>$model]);
@@ -219,11 +219,12 @@ class StudentController extends Controller
 
     public function actionMyReferences()
     {
-        $message = "Δεν έχει αναλάβει διπλωματική ακόμα οπότε δεν μπορείτε να δημιουργήσετε κάποια αναφορά.";
+        $message = "Δεν έχετε αναλάβει διπλωματική ακόμα οπότε δεν μπορείτε να δημιουργήσετε κάποια αναφορά.";
         $model = Thesis::find()->where(['ID' => UserHelpers::User()->thesisID])->one();
         $Student = UserHelpers::User();
         $searchModel = new ReferencesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->andWhere(['studentID' => UserHelpers::User()->ID]);
         if (isset($model)) {
 
             return $this->render('my-references', [
