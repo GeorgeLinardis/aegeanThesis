@@ -4,6 +4,7 @@ namespace app\controllers;
 
 
 use app\CustomHelpers\UserHelpers;
+use app\models\Ldap;
 use app\models\Professor;
 use app\models\Student;
 use Yii;
@@ -69,7 +70,20 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+    /**
+     * Displays homepage.
+     *
+     * @return string
+     */
+    public function actionLdap()
+    {
 
+
+
+        return $this->render('ldap');
+
+
+    }
     /**
      * Displays tutorials page.
      *
