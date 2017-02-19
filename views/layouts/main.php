@@ -105,7 +105,7 @@ AppAsset::register($this);
 
                 : ['label' => Yii::$app->user->identity->username,
                     'items' => [
-                        ['label' => 'Προφίλ', 'url' => ['site/profile']],
+                        ['label' => 'Προφίλ', 'url' => ['/site/profile']],
                         ['label' => 'Έξοδος Χρήστη','url'=>['/site/logout'],'linkOptions'=>['data-method'=>'post']],
                     ],
                 ]),
@@ -141,8 +141,8 @@ AppAsset::register($this);
 <footer>
 
     <div class="list-group">
-        <a href="/site/about" class="list-group-item">Σχετικά</a>
-        <a href="/site/contact" class="list-group-item">Επικοινωνία</a>
+         <?= Html::a("Σχετικά",['/site/about'],['class'=>"list-group-item"])?>
+         <?= Html::a("Επικοινωνία",['/site/contact'],['class'=>"list-group-item"])?>
     </div>
     <div class="container">
         <p class="pull-left">George Linardis - Aegean University <?= date('Y') ?></p>

@@ -13,7 +13,7 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών';
     <div class="jumbotron" style="padding-top: 18px;">
         <h1><?= Html::encode($this->title) ?></h1>
         <p class="text-center">Καλώς ήρθατε στο σύστημα διαχείρισης διπλωματικών του Πανεπιστημίου Αιγαίου.</p><br>
-        <p><a class="btn btn-primary btn-lg center-block" href="<?= Url::to('/site/tutorials')?>" role="button">Πως λειτουργεί ;</a></p>
+        <p><?= Html::a("Πως λειτουργεί;",['/site/tutorials'],['class'=>"btn btn-primary btn-lg center-block"])?></p>
     </div>
 
 

@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <h3 >Είστε καθηγητής;</h3>
             <a href = "<?= Url::to(['/user/register','role'=>'professor'])?>"><!--links to dektrium module user -->
-                <img class="center-block" src = "<?= Url::to('@web/images/newuser/professor(Pixabay).jpg')?>" alt = "Professor">
+                <img class="center-block" src = "/images/newUser/professor(Pixabay).jpg" alt = "Professor">
             </a>
 
 
@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-sm-6" >
         <h3>Είστε φοιτητής;</h3>
          <a href = "<?= Url::to(['/user/register','role'=>'student'])?>"> <!--links to dektrium module user -->
-            <img class="center-block" src = "<?= Url::to('@web/images/newuser/student(Pixabay).jpg')?>" alt = "Student">
+            <img class="center-block" src = "/images/newUser/student(Pixabay).jpg" alt = "Student">
         </a>
 
 
