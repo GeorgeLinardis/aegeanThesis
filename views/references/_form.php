@@ -44,17 +44,7 @@ use dosamigos\datepicker\DatePicker;
 
     <?=  $form->field($model, 'date_created_by_student')->hiddenInput(['disabled'=>true])->label(false) ?>
 
-    <?= $form->field($model, 'date_updated_by_student')->widget(
-                                DatePicker::className(), [
-                                // inline too, not bad
-                                'inline' => false,
-                                // modify template for custom rendering
-                                //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
-                                'clientOptions' => [
-                                    'autoclose' => true,
-                                    'format' => 'yyyy-mm-dd'
-                                ]
-                            ]);?>
+
     <?= $form->field($model, 'file')->fileInput()  ?>
 
     <div class="form-group">

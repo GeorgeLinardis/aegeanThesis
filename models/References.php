@@ -39,7 +39,7 @@ class References extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['professorID', 'studentID', 'title', 'author'], 'required'],
+            [['professorID', 'studentID', 'title', 'author','type'], 'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['professorID', 'studentID'], 'integer'],
             [['type', 'URL', 'BipText','file'], 'string'],
             [['title'], 'string', 'max' => 200],

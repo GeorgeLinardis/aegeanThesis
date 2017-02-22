@@ -96,6 +96,8 @@ class ReferencesController extends Controller
         $Professor=Professor::find()->where(['ID'=>$ProfessorID])->one();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->date_updated_by_student = date('Y-m-d');
+            $model->save();
             return $this->redirect(['view', 'id' => $model->ID]);
         } else {
             return $this->render('update', [
