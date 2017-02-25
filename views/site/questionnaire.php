@@ -14,7 +14,7 @@
 
             </p>
 
-                <a class="btn btn-success" href="https://www.surveymonkey.com/r/NZJ67VH" target = "_blank">Ερωτηματολόγιο</a>
+                <a class="btn btn-success" href="https://goo.gl/forms/NWw1KemDhBWHAHlP2" target = "_blank">Ερωτηματολόγιο</a>
 
         </div>
 
