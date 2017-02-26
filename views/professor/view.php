@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\CustomHelpers\UserHelpers;
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\professor */
 ?>
@@ -43,7 +43,7 @@ else {
     ]) ?>
 
 <?php if (UserHelpers::UserRole()!='administrator'):?>
-    <p>Για να οδηγηθείτε στην λίστα με τα μεταπτυχιακά στα οποία είστε μέλος επιλέξτε <a href="/professor/professor-masters">εδώ</a></p>
+    <p>Για να οδηγηθείτε στην λίστα με τα μεταπτυχιακά στα οποία είστε μέλος επιλέξτε  <a href= "<?= Url::to('@web/professor/professor-masters')?>" >εδώ</a></p>
 
     <?= Html::a('Τροποποίηση', ['//professor/update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ?>
 <?php endif;?>

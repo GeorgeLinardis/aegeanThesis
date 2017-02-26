@@ -14,7 +14,8 @@ $this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'main'];
 <?php if (isset($message)):?>
 
         <div class="col-sm-12">
-            <img src="/images/broken-link.png" class="thumbnail" alt="broken link" style="display: block; margin: 0 auto" id="broken-link-image-statistics-professor">
+            <?=Html::img("@web/images/broken-link.png",['alt'=>"Broken link","class"=>"thumbnail img-responsive center-block","style"=>"display: block; margin: 0 auto", "id"=>"broken-link-image-statistics-professor"  ])?>
+
 
         </div>
         <?= "<h2>".$message."</h2>"?>

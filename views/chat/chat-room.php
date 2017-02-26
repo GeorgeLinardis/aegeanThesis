@@ -63,11 +63,22 @@ elseif (UserHelpers::UserRole()=="professor"){
             <p class="text-center"><?= $Thesis->title;?><br></p><br>
             <h3>Μέλη διπλωματικής: </h3><br>
             <div class="col-sm-10">Καθηγητής/Καθηγήτρια :<br> <b><?= $Professor->firstname.' '.$Professor->lastname?></b></div>
-            <div class="col-sm-2"><img src="/images/userPhotos/<?php echo (isset($Professor->photo) && ($Professor->photo) != null) ? $Professor->photo: "User_photo_default"?>" alt="Professor Photo" ><br></div>
+            <div class="col-sm-2">
+                <?php if((isset($Professor->photo) && ($Professor->photo) != null)){
+                    echo Html::img("@web/images/userPhotos/".$Professor->photo,['alt'=>"Professor photo","class"=>"center-block"  ]);
+                }else{
+                echo Html::img("@web/images/userPhotos/User_photo_default",['alt'=>"Professor photo","class"=>"center-block"  ]);}?><br>
+
+            </div>
 
             <?php foreach ($StudentsThesisStudents as $Student){?>
                 <div class="col-sm-10"><br>Φοιτητής/Φοιτήτρια :<br> <b> <?= $Student->firstname.' '.$Student->lastname?> </b></div>
-                <div class="col-sm-2"> <img src="/images/userPhotos/<?php echo (isset($Student->photo) && ($Student->photo) != null) ? $Student->photo: "User_photo_default"?>" alt="Student Photo" ><br></div>
+                <div class="col-sm-2">
+                    <?php if((isset($Student->photo) && ($Student->photo) != null)){
+                        echo Html::img("@web/images/userPhotos/".$Student->photo,['alt'=>"Student photo","class"=>"center-block"  ]);
+                    }else{
+                    echo Html::img("@web/images/userPhotos/User_photo_default",['alt'=>"Student photo","class"=>"center-block"  ]);
+                    }?><br>
 
 
             <?php }?>

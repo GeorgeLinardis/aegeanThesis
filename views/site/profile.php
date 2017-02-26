@@ -15,9 +15,10 @@ $this->title = 'Προφίλ Χρήστη';
             </div>
             <div class="col-sm-4">
                 <?php if(isset($model->photo)&& (!empty($model->photo))):?>
-                <img class="img-responsive center-block img-rounded" src="<?= '/images/userPhotos/'.$model->photo ?>" alt="<?= '/images/userPhotos/'.$model->photo ?>">
+                <?php echo Html::img("@web/images/userPhotos/".$model->photo ,['alt'=>"Professor photo","class"=>"img-responsive center-block img-rounded"]); ?>
                 <?php else:?>
-                <img class="img-responsive center-block img-rounded" src="<?= '/images/userPhotos/User_photo_default.png'?>" alt="User_photo">
+                <?php echo Html::img("@web/images/userPhotos/User_photo_default.png".$model->photo ,['alt'=>"User_photo","class"=>"img-responsive center-block img-rounded"]); ?>
+
                 <?php endif;?>
 
             </div>
@@ -33,7 +34,6 @@ $this->title = 'Προφίλ Χρήστη';
                 ])
                 ?>
 
-
             <?php elseif ($role == 'student'):?>
 
                 <?= $this->render('//student/view', [
@@ -41,7 +41,6 @@ $this->title = 'Προφίλ Χρήστη';
 
                 ])
                 ?>
-
             <?php endif;?>
             <br>
             <p> <span class="glyphicon glyphicon-exclamation-sign"style="color:#0080ff"></span> Για την καλύτερη εξυπηρέτηση σας και την ομαλότερη λειτουργία του συστήματος παρακαλώ να συμπληρώσετε όλα τα στοιχεία της παραπάνω λίστας.</p>

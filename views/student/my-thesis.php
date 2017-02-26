@@ -10,11 +10,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="student-my-thesis">
+    <div class="row">
     <h1><?= Html::encode($this->title) ?></h1><br>
+    </div>
 <?php if(isset($message)): ?>
     <div class="row">
         <div class="col-sm-12">
-            <img src="/images/broken-link.png" class="thumbnail broken-link-image" alt="broken link">
+            <?=Html::img("@web/images/broken-link.png",['alt'=>"broken link","class"=>"thumbnail broken-link-image"  ])?>
             <?= "<h2>".$message."</h2>"?>
         </div>
 

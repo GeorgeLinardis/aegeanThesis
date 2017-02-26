@@ -13,30 +13,30 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-sm-3">
-            <a href= "<?= url::to('all-professors')?>" class="thumbnail">
-                <img src="/images/admin/admin-professors(Pixabay)" alt="All Professors">
+            <a href= "<?= url::to('@web/admin/all-professors')?>" class="thumbnail">
+                <?=Html::img("@web/images/admin/admin-professors(Pixabay)",['alt'=>"All Professors","class"=>"img-responsive center-block"  ])?>
             </a>
             <h4> Καθηγητές</h4>
         </div>
 
         <div class="col-sm-3">
-            <a href="<?= url::to('all-students')?>" class="thumbnail">
-                <img src="/images/admin/admin-students(Pexels)" alt="All-students">
+            <a href="<?= url::to('@web/admin/all-students')?>" class="thumbnail">
+                <?=Html::img("@web/images/admin/admin-students(Pexels)",['alt'=>"All Students","class"=>"img-responsive center-block"  ])?>
             </a>
             <h4> Φοιτητές</h4>
         </div>
 
         <div class="col-sm-3">
-            <a href="<?= url::to('theses-main')?>" class="thumbnail">
-                <img src="/images/admin/admin-theses" alt="All-theses">
+            <a href="<?= url::to('@web/admin/theses-main')?>" class="thumbnail">
+                <?=Html::img("@web/images/admin/admin-theses",['alt'=>"All theses","class"=>"img-responsive center-block"  ])?>
             </a>
             <h4> Διπλωματικές</h4>
         </div>
 
         <div class="col-sm-3">
 
-            <a href="<?= url::to('statistics')?>" class="thumbnail">
-                <img src="/images/admin/admin-statistics(Pixabay)" alt="Statistics">
+            <a href="<?= url::to('@web/admin/statistics')?>" class="thumbnail">
+                <?=Html::img("@web/images/admin/admin-statistics(Pixabay)",['alt'=>"Statistics","class"=>"img-responsive center-block"])?>
             </a>
             <h4> Σατιστικά</h4>
 
