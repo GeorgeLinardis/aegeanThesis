@@ -24,11 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => '',
                 'value' => function ($data) {
                     if (isset($data['photo']) && $data['photo']!= null){
-                    return Html::img('/images/userPhotos/' . $data['photo'],
+                    return Html::img('@web/images/userPhotos/' . $data['photo'],
                         ['width' => '60px']);
                     }
                     else{
-                        return Html::img('/images/userPhotos/User_unknown_profile.png',
+                        return Html::img('@web/images/userPhotos/User_unknown_profile.png',
                             ['width' => '60px']);
 
                     }

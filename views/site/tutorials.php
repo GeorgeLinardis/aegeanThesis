@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row" >
         <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-new-user" >
             <video autoplay loop class="embed-responsive-item" >
-                <source <?=Html::img("/tutorial_videos/tutorials-new-user")?> type=video/mp4>
+                <source <?=Html::img("@web/tutorial_videos/tutorials-new-user")?> type=video/mp4>
             </video>
         </div>
     </div>
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row" >
         <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-new-user-steps">
             <video autoplay loop class="embed-responsive-item">
-                <source <?=Html::img("/tutorial_videos/tutorials-new-user-steps")?> type=video/mp4>
+                <source <?=Html::img("@web/tutorial_videos/tutorials-new-user-steps")?> type=video/mp4>
             </video>
         </div>
     </div>
@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row" >
         <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-student-new-thesis">
             <video autoplay loop class="embed-responsive-item">
-                <source <?=Html::img("/tutorial_videos/tutorials-student-new-thesis")?> type=video/mp4>
+                <source <?=Html::img("@web/tutorial_videos/tutorials-student-new-thesis")?> type=video/mp4>
             </video>
         </div>
     </div>
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row" >
         <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-student-professor-chat">
             <video autoplay loop class="embed-responsive-item">
-                <source <?=Html::img("/tutorial_videos/tutorials-student-professor-chat")?> type=video/mp4>
+                <source <?=Html::img("@web/tutorial_videos/tutorials-student-professor-chat")?> type=video/mp4>
             </video>
         </div>
     </div>
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row" >
         <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-student-add-reference">
             <video autoplay loop class="embed-responsive-item">
-                <source <?=Html::img("/tutorial_videos/tutorials-student-add-reference")?> type=video/mp4>
+                <source <?=Html::img("@web/tutorial_videos/tutorials-student-add-reference")?> type=video/mp4>
             </video>
         </div>
     </div>

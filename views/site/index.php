@@ -8,7 +8,7 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών';
 ?>
 <div class="site-index">
 
-<img src="/images/Aegean_logo.png" alt="Aegean_Logo" class="img-responsive center-block" style="width: 150px;height: 150px;">
+<?=Html::img("@web/images/Aegean_logo.png",['alt'=>"Aegean_Logo","class"=>"img-responsive center-block","style"=>"width: 150px;height: 150px;"  ])?>
 
     <div class="jumbotron" style="padding-top: 18px;">
         <h1><?= Html::encode($this->title) ?></h1>
