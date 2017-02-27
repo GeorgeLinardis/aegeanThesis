@@ -34,12 +34,15 @@ $this->params['breadcrumbs'][] = $this->title;
             <h4> Λίστα διπλωματικών μου</h4>
         </div>
         <div class="col-sm-2" id="Communication">
-                <a href="<?=Url::to(['@web/chat/chat-room','ThesisID'=>$StudentThesisID])?>" style="<?= ($StudentThesisID==null)? "pointer-events:none":""?>"
+                <a href="<?=Url::to(['/chat/chat-room','ThesisID'=>$StudentThesisID])?>" style="<?= ($StudentThesisID==null)? "pointer-events:none":""?>"
                    class="thumbnail">
                     <?=Html::img("@web/images/student/student-chat(pixabay).jpg",['alt'=>"Professor-chat","class"=>"img-responsive center-block"])?>
                 </a>
             <h4> Επικοινωνία με επιβλέποντα</h4>
+            <?php if ($StudentThesisID==null):?>
             <span id="chatInfo" ><br>Η επιλογή θα ενεργοποιηθεί όταν αναλάβετε διπλωματική</span>
+            <?php endif;?>
+
 
         </div>
         <div class="col-sm-2">
