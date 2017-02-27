@@ -31,7 +31,7 @@ p {
     height: 150px;
 }
 
-.professor-thesis a:hover,.student-all-theses a:hover{
+.professor-thesis a:hover,.student-main a:hover{
     opacity: 0.4;
 
 }
@@ -66,7 +66,7 @@ p {
     margin-right: auto;
 }
 .professor-chat-room img {
-    width:50px;
+    width:70px;
     height:70px;
     display:block;
     margin: 0 auto;
@@ -84,4 +84,13 @@ p {
 
 .chatting-main-window .student{
     color:orangered;
+}
+
+#chatInfo {
+    visibility: hidden;
+
+}
+#Communication:hover #chatInfo{
+    visibility: visible;
+    text-align: center;
 }
