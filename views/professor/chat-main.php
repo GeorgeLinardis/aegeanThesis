@@ -6,7 +6,7 @@ use yii\grid\GridView;
 
 <?php
 $this->title = 'Επικοινωνία με φοιτητές';
-$this->params['breadcrumbs'][]=['label'=>'Καθηγητής','url'=>'/professor/main'];
+$this->params['breadcrumbs'][]=['label'=>'Καθηγητής','url'=>'@web/professor/main'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
