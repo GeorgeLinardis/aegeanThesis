@@ -13,7 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <br>
 
     <div class="list-group">
-        <a href="#tutorials-new-user" class="list-group-item">Δημιουργία νέου χρήστη</a>
         <a href="#tutorials-new-user-steps" class="list-group-item">Αναγκαία πρώτα βήματα χρήστη</a>
         <a href="#tutorials-student-new-thesis" class="list-group-item">Αίτηση θέματος διπλωματικής</a>
         <a href="#tutorials-student-professor-chat" class="list-group-item">Επικοινωνία με επιβλέποντα καθηγητή</a>
@@ -21,15 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <br>
 
-    <h2>Δημιουργία νέου χρήστη</h2>
-    <div class="row" >
-        <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-new-user" >
-            <video autoplay loop class="embed-responsive-item" >
-                <source <?=Html::img("@web/tutorial_videos/tutorials-new-user")?> type=video/mp4>
-            </video>
-        </div>
-    </div>
-    <br>
+     <br>
     <h2>Αναγκαία πρώτα βήματα χρήστη</h2>
     <div class="row" >
         <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-new-user-steps">
@@ -48,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <br>
-    <h2>Επικοινωνία με επιβλέπων καθηγητή</h2>
+    <h2>Επικοινωνία με καθηγητή</h2>
     <div class="row" >
         <div class="embed-responsive embed-responsive-16by9" align="center" id="tutorials-student-professor-chat">
             <video autoplay loop class="embed-responsive-item">
