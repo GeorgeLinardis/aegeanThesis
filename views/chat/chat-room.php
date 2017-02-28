@@ -11,8 +11,8 @@ $this->params['breadcrumbs'][]=['label'=>'Φοιτητής','url'=>'/student/mai
 $this->params['breadcrumbs'][] = $this->title;
 }
 elseif (UserHelpers::UserRole()=="professor"){
-    $this->params['breadcrumbs'][]=['label'=>'Καθηγητής','url'=>'/professor/main'];
-    $this->params['breadcrumbs'][]=['label'=>'Επικοινωνία με φοιτητές','url'=>'/professor/chat-main'];
+    $this->params['breadcrumbs'][]=['label'=>'Καθηγητής','url'=>'@web/professor/main'];
+    $this->params['breadcrumbs'][]=['label'=>'Επικοινωνία με φοιτητές','url'=>'@web/professor/chat-main'];
     $this->params['breadcrumbs'][] = $this->title;
 }?>
 
@@ -80,8 +80,8 @@ elseif (UserHelpers::UserRole()=="professor"){
                     echo Html::img("@web/images/userPhotos/User_photo_default",['alt'=>"Student photo","class"=>"center-block"  ]);
                     }?><br>
 
-
-            <?php }?>
+                <?php }?>
+                </div>
         </div>
     </div>
     <div class="row">
