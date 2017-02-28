@@ -61,7 +61,7 @@ if (Yii::$app->controller->id=="references") {
             'date_created_by_author:date',
             'date_created_by_student:date',
             'date_updated_by_student:date',
-            'file:ntext',
+            //'file:ntext',
         ],
     ]) ?>
 
