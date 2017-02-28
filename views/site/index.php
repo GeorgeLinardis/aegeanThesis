@@ -17,8 +17,6 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών';
             <p><?= Html::a("Πως λειτουργεί;",['/site/tutorials'],['class'=>"btn btn-primary btn-lg center-block"])?></p>
         </div>
 
-
-
         <div class="body-content">
 
             <div class="row">
@@ -30,7 +28,7 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών';
                         που δραστηριοποιούνται στη Μυτιλήνη, τη Χίο, τη Σάμο, τη Ρόδο, τη Σύρο και τη Λήμνο,
                         συγκροτώντας ένα εκπαιδευτικό δίκτυο που καλύπτει όλους τους νομούς του Αιγαίου Πελάγους. </p><br>
 
-                    <p><a class="btn btn-primary" href="http://www.aegean.gr/">Πανεπιστήμιο &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="http://www.aegean.gr/" target="_blank">Πανεπιστήμιο &raquo;</a></p>
                 </div>
                 <div class="col-lg-4">
                     <h2>Σχολή Θετικών Επιστημών</h2>
@@ -42,7 +40,7 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών';
                         Τμήμα Μηχανικών Σχεδίασης Προϊόντων και Συστημάτων.
                     </p>
 
-                    <p><a class="btn btn-primary" href="https://www.aegean.gr/aegean2/schools.html">Σχολή Θ.Ε &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="https://www.aegean.gr/aegean2/schools.html" target="_blank">Σχολή Θ.Ε &raquo;</a></p>
                 </div>
                 <div class="col-lg-4">
                     <h2>Τμήμα Μ.Π.Ε.Σ</h2>
@@ -53,7 +51,7 @@ $this->title = 'Σύστημα διαχείρισης διπλωματικών';
                         και ξεκίνησε τη λειτουργία του το 1998 ως τμήμα τετραετούς φοιτήσεως. </p>
 
 
-                    <p><a class="btn btn-primary" href="http://www.icsd.aegean.gr/icsd/">Τμήμα Μ.Π.Ε.Σ &raquo;</a></p>
+                    <p><a class="btn btn-primary" href="http://www.icsd.aegean.gr/icsd/" target="_blank">Τμήμα Μ.Π.Ε.Σ &raquo;</a></p>
                 </div>
             </div>
 
