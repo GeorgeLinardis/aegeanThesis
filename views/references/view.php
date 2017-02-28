@@ -48,7 +48,14 @@ if (Yii::$app->controller->id=="references") {
             'author',
             'PublishedTo',
             'type',
-            'URL:url',
+            [
+                'attribute'=>"URL",
+                'value'=>$model->URL,
+                'format'=>'url',
+                'target'=>"_blank",
+
+            ],
+
             'BipText',
 
             'date_created_by_author:date',
