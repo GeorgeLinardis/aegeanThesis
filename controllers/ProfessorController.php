@@ -68,12 +68,26 @@ class ProfessorController extends Controller
     {
         $dataProvider = new ActiveDataProvider(['query' => ProfessorHasMasters::find()->where(['professorID'=>UserHelpers::User()->ID])]);
         $model = new ProfessorHasMasters;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->render('professor-masters',[
-                'dataProvider'=>$dataProvider,
-                'model' => $model,
+        $message = "Έχετε ήδη εγγραφεί στο συγκεκριμένο πρόγραμμα";
 
-            ]);
+        if ($model->load(Yii::$app->request->post())) {
+            $isSigned = ProfessorHasMasters::find()->where(['professorID'=>(UserHelpers::User()->ID)])->andWhere(['masterID'=>$model->masterID])->all();
+            if ($isSigned == null) {
+                $model->save();
+                \Yii::$app->getSession()->setFlash('success', 'Το πρόγραμμα που ζητήσατε προστέθηκε');
+                return $this->render('professor-masters', [
+                    'dataProvider' => $dataProvider,
+                    'model' => $model,
+                  ]);
+            } else {
+
+                return $this->render('professor-masters', [
+                    'dataProvider' => $dataProvider,
+                    'model' => $model,
+                    'message'=>$message,
+
+                ]);
+            }
         }
         else {
             return $this->render('professor-masters', [
@@ -91,9 +105,10 @@ class ProfessorController extends Controller
     public function actionProfessorMastersNew()
     {
         $model = new ProfessorHasMasters;
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        return $this->render('professor-masters');
-        } else {
+        $message="Έχετε ήδη εγγραφεί στο συγκεκριμένο πρόγραμμα";
+        if ($model->load(Yii::$app->request->post()) && $model->save()){
+                return $this->render('professor-masters');
+            } else {
             return $this->render('professor-masters-new', [
                 'model' => $model,
             ]);
@@ -108,8 +123,10 @@ class ProfessorController extends Controller
     {
          $MasterToDelete=ProfessorHasMasters::find()->where(['ID'=>$id])->one();
          $MasterToDelete->delete();
-         \Yii::$app->getSession()->setFlash('success', 'Το μεταπτυχιακό που ζητήσατε αφαιρέθηκε');
-               return $this->redirect('/professor/professor-masters');
+
+
+         \Yii::$app->getSession()->setFlash('danger', 'Το πρόγραμμα που ζητήσατε αφαιρέθηκε');
+               return $this->redirect('@web/professor/professor-masters');
     }
     /**
      * Updates an existing Professor model.
@@ -231,6 +248,7 @@ class ProfessorController extends Controller
             $Thesis->save();
             $Student->save();
             $Thesis_has_students->save();
+            \Yii::$app->getSession()->setFlash('success', 'Η έγκριση της διπλωματικής πραγματοποιήθηκε');
             return $this->render('thesis');
         }
         return $this->render('thesis-application-answer',[

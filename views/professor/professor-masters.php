@@ -24,6 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Yii::$app->session->getFlash('success') ?>
             </div>
         <?php endif; ?>
+        <?php if (Yii::$app->session->hasFlash('danger')): ?>
+            <div class="alert alert-danger alert-dismissable">
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <?= Yii::$app->session->getFlash('danger') ?>
+            </div>
+        <?php endif; ?>
     </div>
     <div class="professor-masters">
         <h1> <?= (Html::encode($this->title)) ?></h1><br>
@@ -50,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'template' => '{delete}',
                     'buttons' => [
                         'delete'=> function ($url,$model){
-                            return Html::a('<span class="glyphicon glyphicon-remove"></span>',['delete-master',
+                            return Html::a('<span class="glyphicon glyphicon-remove"></span>',['professor/delete-master',
                                 'id'=>($model->ID),
                             ]);//
                         },
@@ -88,6 +94,11 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <?php ActiveForm::end(); ?>
+        <?php
+        if (isset($message) && $message!=null){
+            echo "<p class='text-danger'>".$message."<p>";
+        }
+        ?>
 
     </div>
 
