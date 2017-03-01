@@ -10,8 +10,8 @@ use yii\helpers\Url;
 
     $this->title = $model->title;
 if ($model->professorID==UserHelpers::User()->ID) {
-    $this->params['breadcrumbs'][] = ['label' => 'Καθηγητής', 'url' => '/professor/main'];
-    $this->params['breadcrumbs'][] = ['label' => 'Οι διπλωματικές μου', 'url' => '/professor/thesis'];
+    $this->params['breadcrumbs'][] = ['label' => 'Καθηγητής', 'url' => '@web/professor/main'];
+    $this->params['breadcrumbs'][] = ['label' => 'Οι διπλωματικές μου', 'url' => '@web/professor/thesis'];
     $this->params['breadcrumbs'][] = $this->title;
 }
 else  {
@@ -29,7 +29,7 @@ else  {
             <p>
                 <?php if (UserHelpers::User()->ID== $model->professorID) :?>
                 <?= Html::a('<span class="glyphicon glyphicon-list-alt"></span> Αίτηση PDF', ['thesis-pdf','id'=>($model->ID)], ['class' => 'btn btn-primary' ]) ?>
-                <?php  if (UserHelpers::UserRole()!= 'administrator'){echo  Html::a('Ανανέωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ;}?>
+                <?php  if (UserHelpers::UserRole()!= 'administrator'){echo  Html::a('Διόρθωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ;}?>
                 <?= Html::a('Διαγραφή', ['delete', 'id' => $model->ID], [
                     'class' => 'btn btn-danger',
                     'data' => [

@@ -78,7 +78,7 @@ use app\models\Professor;
                             ['prompt' => 'Επιλέξτε ένα απο τα προγράμματα σας']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Ανανέωση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Διόρθωση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
