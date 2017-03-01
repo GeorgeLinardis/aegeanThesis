@@ -10,16 +10,16 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div id="message">
-    <?php if (Yii::$app->session->hasFlash('success')): ?>
+    <?php if (isset($message) && $message!=null): ?>
         <div class="alert alert-success alert-dismissable">
-            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-            <?= Yii::$app->session->getFlash('success') ?>
+            <?= $message?>
         </div>
     <?php endif; ?>
 </div>
 <div class="student-thesis-application-results">
 
     <h1><?= Html::encode($this->title) ?></h1>
+
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -45,10 +45,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
 
             ],
-
-
             'dateCreated:datetime',
-
+            [
+                'attribute'=>'thesisID',
+                'value'=>('thesis.status')
+            ],
 
 
 

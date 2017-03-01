@@ -203,12 +203,20 @@ class StudentController extends Controller
 
     public function actionThesisApplicationResults()
     {
-
+        if (UserHelpers::User()->thesisID !=null){
+            $message = "Σας έχει ανατεθεί η διπλωματική με τίτλο: ".UserHelpers::User()->thesis->title;
+            $dataProvider = new ActiveDataProvider(['query' => StudentAppliesForThesis::find()->where(['studentID'=>UserHelpers::User()->ID])]);
+            return $this->render('thesis-application-results',[
+                'dataProvider'=>$dataProvider,
+                'message'=>$message
+            ]);
+        }
         $dataProvider = new ActiveDataProvider(['query' => StudentAppliesForThesis::find()->where(['studentID'=>UserHelpers::User()->ID])]);
         return $this->render('thesis-application-results',[
-                        'dataProvider'=>$dataProvider]);
+                        'dataProvider'=>$dataProvider,
+                        
+        ]);
     }
-
     /**
      * When student is assigned a thesis this page will be activated which shows thesis data else message will be printed
      */
