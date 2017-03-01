@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\base\NotSupportedException;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -27,8 +29,9 @@ use Yii;
  * @property Student[] $students
  * @property Token[] $tokens
  */
-class DatabaseUsers extends \yii\db\ActiveRecord
+class DatabaseUsers extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
+
     /**
      * @inheritdoc
      */
@@ -62,9 +65,9 @@ class DatabaseUsers extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'username' => 'Username',
+            'username' => 'Χρήστης',
             'email' => 'Email',
-            'password_hash' => 'Password Hash',
+            'password_hash' => 'Κωδικός',
             'auth_key' => 'Auth Key',
             'confirmed_at' => 'Confirmed At',
             'unconfirmed_email' => 'Unconfirmed Email',
@@ -75,6 +78,38 @@ class DatabaseUsers extends \yii\db\ActiveRecord
             'flags' => 'Flags',
             'role' => 'role',
         ];
+    }
+
+
+
+
+    public function getAuthKey() {
+        return $this->auth_key;
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function validateAuthKey($authKey){
+       return  $this->auth_key === $authKey;
+
+    }
+
+    public static function findIdentity($id){
+            return self::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type=null){
+        return new NotSupportedException();
+    }
+
+    public static function findByUsername($username){
+        return self::findOne(['username'=>$username]);
+    }
+
+    public function validatePassword($password){
+        return password_verify($password,$this->password_hash);//$this->password_hash === $password;
     }
 
     /**

@@ -46,7 +46,7 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['thesisID'], 'integer'],
-
+            [['masterID'],'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['url', 'comments'], 'string'],
             [['masterID', 'firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
             [['userUsername'], 'string', 'max' => 255],
