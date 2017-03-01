@@ -172,10 +172,23 @@ class StudentController extends Controller
     {
         $Thesis = Thesis::find()->where(['ID' => $id])->one();
         $model = new StudentAppliesForThesis();
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $isAssigned = StudentAppliesForThesis::find()->where(['ThesisID'=>$Thesis->ID])->andWhere(['studentID'=>UserHelpers::User()->ID])->one();
+            if ($isAssigned==null){
+            $model->save();
             \Yii::$app->getSession()->setFlash('success', 'Το αίτημα σας έχει αποσταλλεί');
             return $this->redirect('thesis-application-results');
+            }
+            else{
+                $message = "Έχετε ήδη κάνει αίτηση για αυτή την διπλωματική";
+                return $this->render('thesis-application-form', [
+                    'Thesis' => $Thesis,
+                    'model' => $model,
+                    'message'=>$message
+                ]);
+            }
         }
+
         else {
             return $this->render('thesis-application-form', [
                 'Thesis' => $Thesis,
