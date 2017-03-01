@@ -11,6 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-tutorials">
     <h1><?= Html::encode($this->title) ?></h1>
     <br>
+    <p>Επιλέξτε μια απο τις παρακάτω λειτουργίες του συστήματος που σας ενδιαφέρει:</p>
 
     <div class="list-group">
         <a href="#tutorials-new-user-steps" class="list-group-item">Αναγκαία πρώτα βήματα χρήστη</a>
