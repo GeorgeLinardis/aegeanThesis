@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $model app\models\Thesis */
 
 $this->title = 'Δημιουργία νέας διπλωματικής';
-$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'../professor'];
+$this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'main'];
 $this->params['breadcrumbs'][] = ['label'=>'Οι διπλωματικές μου','url'=>'../professor/thesis'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
