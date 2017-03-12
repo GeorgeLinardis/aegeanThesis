@@ -80,7 +80,6 @@ class ProfessorController extends Controller
                     'model' => $model,
                   ]);
             } else {
-
                 return $this->render('professor-masters', [
                     'dataProvider' => $dataProvider,
                     'model' => $model,

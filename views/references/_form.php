@@ -44,9 +44,6 @@ use dosamigos\datepicker\DatePicker;
 
     <?=  $form->field($model, 'date_created_by_student')->hiddenInput(['disabled'=>true])->label(false) ?>
 
-
-    <?= $form->field($model, 'file')->fileInput()  ?>
-
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Δημιουργία' : 'Ανανέωση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?= Html::a('Επιστροφή', ['index'], ['class' => 'btn btn-default']) ?>

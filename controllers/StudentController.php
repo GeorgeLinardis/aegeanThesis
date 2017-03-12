@@ -214,7 +214,7 @@ class StudentController extends Controller
         $dataProvider = new ActiveDataProvider(['query' => StudentAppliesForThesis::find()->where(['studentID'=>UserHelpers::User()->ID])]);
         return $this->render('thesis-application-results',[
                         'dataProvider'=>$dataProvider,
-                        
+
         ]);
     }
     /**

@@ -16,10 +16,34 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="site-login">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-5 col-md-offset-4">
         <h1><?= Html::encode($this->title) ?></h1>
 
-        <?= Login::widget()?>
+            <?php $form = ActiveForm::begin(); ?>
+
+            <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+
+            <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
+
+            <div class="form-group">
+                <?= Html::submitButton('Είσοδος',['class'=>'btn btn-success']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+
+            <h4 class="text-danger"><?php if (isset($message)){echo $message."<br>";}?></h4>
+
+
+            <?php
+                if (isset($entry)) {
+                    var_dump($entry);
+                }
+            ?>
+        </div>
+
+
+        <!--
+        <?//= Login::widget()?>
         <br>
         <a href="/user/forgot">Ξεχάσατε τον κωδικό σας;</a><br>
         <a href="/user/resend">Δεν έχετε λάβει email επιβεβαίωσης;</a>
@@ -40,6 +64,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <a href="ldap">Είσοδος με LDAP</a>
 
         </div>
+    </div>
+     -->
     </div>
 
 </div>
