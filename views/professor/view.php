@@ -38,6 +38,7 @@ else {
             'skypeUsername',
             'comments:ntext',
             'url:url',
+            'signature',
             //'photo',
         ],
     ]) ?>

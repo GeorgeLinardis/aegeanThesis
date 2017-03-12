@@ -36,6 +36,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'photo')->fileInput() ?>
 
+    <?= $form->field($model, 'signature')->fileInput() ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Ανανέωση', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

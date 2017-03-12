@@ -137,6 +137,7 @@ class ProfessorController extends Controller
     {
         $model = $this->findModel($id);
         $currentPhoto = $model->photo;
+        $currentSignature = $model->signature;
         //if ($model->load(Yii::$app->request->post()) && $model->save()) {
         if ($model->load(Yii::$app->request->post())) {
             if (UploadedFile::getInstance($model,'photo') && UploadedFile::getInstance($model,'photo')!= null){
@@ -145,8 +146,18 @@ class ProfessorController extends Controller
             $image->saveAs('images\userPhotos'."/".$imageName);
             $model->photo=$imageName;
             }
+            else {
+                $model->photo = $currentPhoto;
+            }
+
+        if (UploadedFile::getInstance($model,'signature') && UploadedFile::getInstance($model,'signature')!= null){
+                $image = UploadedFile::getInstance($model,'signature');
+                $imageName = 'User_signature_'.$model->userUsername.".".$image->getExtension();
+                $image->saveAs('images\userPhotos\signatures'."/".$imageName);
+                $model->signature=$imageName;
+            }
         else {
-            $model->photo = $currentPhoto;
+            $model->signature= $currentSignature;
         }
             $model->save();
             return $this->redirect(['site/profile']);
