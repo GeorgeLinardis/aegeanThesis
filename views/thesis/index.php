@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use app\CustomHelpers\UserHelpers;
 
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ThesisSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -50,6 +51,18 @@ elseif (Yii::$app->controller->id=="student"){
                     'attribute' => 'professorID',
                     'value'=>function ($model) {
                         return $model->professor->lastname.' '. $model->professor->firstname;
+                    },
+                ],
+                [
+                    'attribute' => 'description',
+                    'label'=>'Φοιτητές',
+                    'value'=>function ($model) {
+                        $Students = \app\models\Student::find()->where(['ThesisID'=>$model->ID])->all();
+                        $results = "";
+                        foreach ($Students as $student){
+                            $results .= ($student->lastname)." ".$student->firstname.",\n";
+                        };
+                        return $results;
                     },
                 ],
 
