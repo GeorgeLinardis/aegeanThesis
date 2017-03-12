@@ -21,6 +21,18 @@ $this->params['breadcrumbs'][] = $this->title;
             // ['class' => 'yii\grid\SerialColumn'],
             'ID',
             'title',
+            [
+                'attribute' => 'description',
+                'label'=>'Φοιτητές',
+                'value'=>function ($model) {
+                    $Students = \app\models\Student::find()->where(['ThesisID'=>$model->ID])->all();
+                    $results = "";
+                    foreach ($Students as $student){
+                        $results .= ($student->lastname)." ".$student->firstname.",\n";
+                    };
+                    return $results;
+                },
+            ],
 
             [
                 'attribute'=>'professorID',
