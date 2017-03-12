@@ -19,6 +19,7 @@ use dektrium\user\models\User;
  * @property string $comments
  * @property string $url
  * @property string $photo
+ * @property string $signature
  *
  * @property ProfessorHasMasters[] $professorHasMasters
  * @property References[] $references
@@ -43,7 +44,7 @@ class Professor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['comments', 'url'], 'string'],
+            [['comments', 'url','signature'], 'string'],
             [['userUsername'], 'string', 'max' => 255],
             [['firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
@@ -71,6 +72,7 @@ class Professor extends \yii\db\ActiveRecord
             'comments' => 'Σχόλια',
             'url' => 'Url',
             'photo' => 'Photo',
+            'signature'=>'Υπογραφή',
         ];
     }
 
