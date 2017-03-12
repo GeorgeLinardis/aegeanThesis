@@ -16,6 +16,7 @@ use Yii;
  * @property integer $max_students
  * @property string $comments
  * @property string $status
+ * @property string $grade
  * @property Master $master
  * @property string $dateCreated
  * @property string $datePresented
@@ -53,7 +54,7 @@ class Thesis extends \yii\db\ActiveRecord
             [['professorID', 'max_students', 'committee1', 'committee2', 'committee3'], 'integer'],
             [['title','masterID', 'description','status' ], 'required','message'=>(Yii::$app->params['requiredMsg'])],
             [['description', 'goal', 'prerequisite_knowledge', 'comments', 'status'], 'string'],
-            [['dateCreated', 'datePresented'], 'safe'],
+            [['dateCreated', 'datePresented','grade'], 'safe'],
             [['title'], 'string', 'max' => 200],
             [['RequestPDf'], 'string', 'max' => 256],
             [['masterID'], 'string', 'max' => 50],
@@ -87,6 +88,7 @@ class Thesis extends \yii\db\ActiveRecord
             'committee2' => '2ο Μέλος Επιτροπής',
             'committee3' => '3ο Μέλος Επιτροπής',
             'RequestPDf' => 'Αίτηση (pdf)',
+            'grade'=>'Βαθμός',
         ];
     }
 
