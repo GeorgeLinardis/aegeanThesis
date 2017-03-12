@@ -62,6 +62,7 @@ else  {
                     'grade',
                     'dateCreated:date',
                     'datePresented:date',
+                    'dateCompleted:date',
                     [   'attribute'=>'committee1',
                         'value'=>(isset($model->committee10)?$model->committee10->lastname.' '.$model->committee10->firstname:" "),
                     ],
