@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\ThesisHasStudents;
 use mPDF;
 use Yii;
 use app\models\Thesis;
@@ -88,6 +89,27 @@ class ThesisController extends Controller
         $document->WriteHTML($this->renderPartial('thesis-pdf',['model'=>$model]));
         $document->title = "Thesis Application";
         $document->Output(('documents/'.$path),'F');
+        $document->Output();
+        $model->RequestPDf = $path;
+        $model->save();
+
+        exit();
+    }
+
+    /**
+     * Creates a new Pdf for finalized thesis.
+     * Pdf is created using mPDF extension implemented and found in vendors folder.
+     * $id is integer
+     */
+    public function actionThesisPdfFinalized($id)
+    {
+        $model =Thesis::find()->where(['ID'=>$id])->one();
+        $modelStudents = ThesisHasStudents::find()->where(['ThesisID'=>$model->ID])->all();
+        $path = 'Thesis Application ID_'.$model->ID.'.pdf';
+        $document = new mPDF();
+        $document->WriteHTML($this->renderPartial('thesis-pdf-finalized',['model'=>$model,'modelStudents'=>$modelStudents]));
+        $document->title = "Thesis Completed";
+        $document->Output(('documents/thesis_completed/'.$path),'F');
         $document->Output();
         $model->RequestPDf = $path;
         $model->save();

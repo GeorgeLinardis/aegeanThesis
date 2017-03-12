@@ -36,6 +36,7 @@ else {
                 'value'=>$model->master?$model->master->title:"Δεν έχει τεθεί",
             ],
             'userUsername',
+            'registrationNumber',
             'firstname',
             'lastname',
             'telephone1',

@@ -17,6 +17,7 @@ use dektrium\user\models\User;
  * @property string $telephone1
  * @property string $telephone2
  * @property string $email
+ * @property string $registrationNumber
  * @property string $skypeUsername
  * @property string $url
  * @property string $comments
@@ -47,7 +48,7 @@ class Student extends \yii\db\ActiveRecord
         return [
             [['thesisID'], 'integer'],
             [['masterID'],'required','message'=>(Yii::$app->params['requiredMsg'])],
-            [['url', 'comments'], 'string'],
+            [['url', 'comments','registrationNumber'], 'string'],
             [['masterID', 'firstname', 'lastname', 'skypeUsername'], 'string', 'max' => 50],
             [['userUsername'], 'string', 'max' => 255],
             [['telephone1', 'telephone2'], 'string', 'max' => 30],
@@ -80,7 +81,8 @@ class Student extends \yii\db\ActiveRecord
             'url' => 'Url',
             'comments' => 'Σχόλια',
             'photo' => 'Φωτογραφία στο αρχείο',
-            'cv'=>'Βιογραφικό'
+            'cv'=>'Βιογραφικό',
+            'registrationNumber'=>'Αριθμός μητρώου',
         ];
     }
 

@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <a href="<?= url::to('@web/professor/thesis-past')?>" class="thumbnail">
                 <?=Html::img("@web/images/professor/professor-thesis-past-thesis(pixabay).jpg",['alt'=>"Old thesis","class"=>"img-responsive center-block"  ])?>
             </a>
-            <h4> Διπλωματικές στο παρελθόν</h4>
+            <h4> Ολοκληρωμένες Διπλωματικές</h4>
 
         </div>
 

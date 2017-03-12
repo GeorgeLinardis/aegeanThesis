@@ -37,9 +37,22 @@ use app\models\Professor;
                                                         'για Επιτροπή' => 'για Επιτροπή',
                                                         'ολοκληρώθηκε' => 'ολοκληρώθηκε', ], ['prompt' => 'Επιλογή κατάστασης']) ?>
 
-    <?php // echo $form->field($model, 'dateCreated')->textarea() ?>
+    <?php echo $form->field($model, 'grade')->textInput(['maxlength' => true]) ?>
+
 
     <?= $form->field($model, 'datePresented')->widget(
+        DatePicker::className(), [
+        // inline too, not bad
+        'inline' => false,
+        // modify template for custom rendering
+        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd'
+        ]
+    ]);?>
+
+    <?= $form->field($model, 'dateCompleted')->widget(
                         DatePicker::className(), [
                         // inline too, not bad
                         'inline' => false,

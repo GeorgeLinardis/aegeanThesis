@@ -30,6 +30,10 @@ p {
     width: 170px;
     height: 150px;
 }
+.professor-signature{
+    width: 300px;
+    height: 70px;
+}
 
 .professor-thesis a:hover,.student-main a:hover{
     opacity: 0.4;

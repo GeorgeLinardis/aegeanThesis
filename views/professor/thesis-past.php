@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $dataProvider \app\controllers\ThesisController*/
 ?>
 <?php
-$this->title = 'Διπλωματικές στο παρελθόν';
+$this->title = 'Ολοκληρωμένες διπλωματικές';
 $this->params['breadcrumbs'][] = ['label'=>'Καθηγητής','url'=>'main'];
 $this->params['breadcrumbs'][] = ['label'=>'Οι διπλωματικές μου','url'=>'../professor/thesis'];
 $this->params['breadcrumbs'][] = $this->title;

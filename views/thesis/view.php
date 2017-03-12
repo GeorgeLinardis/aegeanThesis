@@ -27,7 +27,10 @@ else  {
             <h1><?= Html::encode($this->title) ?></h1><br>
 
             <p>
-                <?php if (UserHelpers::User()->ID== $model->professorID) :?>
+                <?php if (UserHelpers::User()->ID== $model->professorID  && $model->status=="ολοκληρώθηκε"):?>
+                <?= Html::a('<span class="glyphicon glyphicon-list-alt"></span> Αίτηση ολοκλήρωσης', ['thesis-pdf-finalized','id'=>($model->ID)], ['class' => 'btn btn-success' ]) ?>
+                <?= Html::a('Διόρθωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ;?>
+                <?php elseif (UserHelpers::User()->ID== $model->professorID ) :?>
                 <?= Html::a('<span class="glyphicon glyphicon-list-alt"></span> Αίτηση PDF', ['thesis-pdf','id'=>($model->ID)], ['class' => 'btn btn-primary' ]) ?>
                 <?php  if (UserHelpers::UserRole()!= 'administrator'){echo  Html::a('Διόρθωση', ['update', 'id' => $model->ID], ['class' => 'btn btn-primary']) ;}?>
                 <?= Html::a('Διαγραφή', ['delete', 'id' => $model->ID], [
@@ -56,6 +59,7 @@ else  {
                     'max_students',
                     'comments:ntext',
                     'status',
+                    'grade',
                     'dateCreated:date',
                     'datePresented:date',
                     [   'attribute'=>'committee1',

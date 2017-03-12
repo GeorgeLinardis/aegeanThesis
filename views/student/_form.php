@@ -26,7 +26,7 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'thesisID')->hiddenInput()->label(false) ?>
 
-    <?php // echo $form->field($model, 'userUsername')->textInput(['value'=>(\Yii::$app->user->identity->username) ,'readonly'=>true])?>
+    <?= $form->field($model, 'registrationNumber')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'firstname')->textInput(['maxlength' => true]) ?>
 
@@ -35,7 +35,6 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'telephone1')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'telephone2')->textInput(['maxlength' => true]) ?>
-
 
     <?= $form->field($model, 'skypeUsername')->textInput(['maxlength' => true]) ?>
 
