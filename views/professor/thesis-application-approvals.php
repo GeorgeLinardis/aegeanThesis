@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>('thesis.title')
             ],
             [
-                'label'=>'',
                 'attribute'=>'masterID',
+                'label'=>'',
                 'value'=>('thesis.masterID')
             ],
 
