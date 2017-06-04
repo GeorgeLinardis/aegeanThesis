@@ -1,5 +1,6 @@
 # AegeanThesis - Creating a thesis management system
-![AegeanThesis - management system][indexPhoto.png]
+![AegeanThesis - management system](IndexPhoto.png)
+
 As a part of my Master in Computer Science in the Department of Information & Communication Systems Engineering of the 
 University of the Aegean I created  a thesis management system under the supervision of professor Manolis Maragkoudakis.
 
